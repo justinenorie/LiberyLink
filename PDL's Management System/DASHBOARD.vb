@@ -29,7 +29,7 @@ Public Class DASHBOARD
             MessageBox.Show("Database connection is not open.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
-    Private Sub TabButton_Click(sender As Object, e As EventArgs) Handles Btn_1.Click, Btn_2.Click, Btn_3.Click, Btn_4.Click, Btn_5.Click
+    Private Sub TabButton_Click(sender As Object, e As EventArgs) Handles Btn_1.Click, Btn_2.Click, Btn_3.Click, Btn_4.Click, Btn_5.Click, log_out.Click
         ' Cast the sender object back to a Button to identify which button was clicked
         Dim clickedButton = DirectCast(sender, Guna2Button)
         Select Case clickedButton.Name
@@ -43,8 +43,13 @@ Public Class DASHBOARD
                 TabControl.SelectedTab = vis
             Case "Btn_5"
                 TabControl.SelectedTab = rep
+            Case "log_out"
+                LOGINFORM.Show()
+                Me.Close()
+                LOGINFORM.txtUsername.Text = ""
+                LOGINFORM.txtPassword.Text = ""
         End Select
-        For Each btn In {Btn_1, Btn_2, Btn_3, Btn_4, Btn_5}
+        For Each btn In {Btn_1, Btn_2, Btn_3, Btn_4, Btn_5, log_out}
             btn.Checked = btn Is clickedButton
         Next
     End Sub
@@ -104,7 +109,4 @@ Public Class DASHBOARD
         End If
     End Sub
 
-    Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
-
-    End Sub
 End Class

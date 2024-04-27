@@ -1,7 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
-
 Public Class LOGINFORM
     Private Sub LOGINFORM_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtUsername.Text = ""
+        txtPassword.Text = ""
         Me.StartPosition = FormStartPosition.CenterScreen
     End Sub
 
@@ -21,7 +22,6 @@ Public Class LOGINFORM
 
                     If reader.HasRows Then
                         MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        ' Close the MySqlDataReader
                         reader.Close()
                         Dim dashboardForm As New DASHBOARD()
                         dashboardForm.Show()
