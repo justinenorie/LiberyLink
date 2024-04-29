@@ -1,9 +1,11 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
+Imports MySql.Data.MySqlClient
 Public Class LOGINFORM
     Private Sub LOGINFORM_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtUsername.Text = ""
-        txtPassword.Text = ""
+        txtPassword.PasswordChar = "*"
         Me.StartPosition = FormStartPosition.CenterScreen
+
     End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
@@ -39,4 +41,17 @@ Public Class LOGINFORM
             Connection.CloseConnection()
         End Try
     End Sub
+
+    Private isPasswordVisible As Boolean = False
+
+    Private Sub Guna2ImageCheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles Guna2ImageCheckBox1.CheckedChanged
+        If Guna2ImageCheckBox1.Checked Then
+            txtPassword.PasswordChar = ""
+            isPasswordVisible = True
+        Else
+            txtPassword.PasswordChar = "*"
+            isPasswordVisible = False
+        End If
+    End Sub
+
 End Class

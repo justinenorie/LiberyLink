@@ -1,34 +1,52 @@
 ﻿Imports Guna.UI2.WinForms
 Imports MySql.Data.MySqlClient
 Public Class DASHBOARD
-    Private Sub DASHBOARD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.StartPosition = FormStartPosition.CenterScreen
-        If Connection.conn.State = ConnectionState.Open Then
-            Try
-                ' SQL query to retrieve the admin_key for the entered username and password
-                Dim query As String = "SELECT admin_key FROM admin WHERE username = @username AND password = @password;"
-                Using cmd As New MySqlCommand(query, Connection.conn)
-                    ' Provide parameter values for username and password from text boxes
-                    cmd.Parameters.AddWithValue("@username", LOGINFORM.txtUsername.Text.Trim())
-                    cmd.Parameters.AddWithValue("@password", LOGINFORM.txtPassword.Text.Trim())
+    Public Sub DASHBOARD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            Connection.OpenConnection()
+            If Connection.conn.State = ConnectionState.Open Then
+                ' Retrieve the admin key
+                Dim adminQuery As String = "SELECT admin_key FROM admin WHERE username = @username AND password = @password;"
+                Using adminCmd As New MySqlCommand(adminQuery, Connection.conn)
+                    adminCmd.Parameters.AddWithValue("@username", LOGINFORM.txtUsername.Text.Trim())
+                    adminCmd.Parameters.AddWithValue("@password", LOGINFORM.txtPassword.Text.Trim())
 
-                    ' Execute the query and retrieve the admin_key
-                    Dim adminKey As Object = cmd.ExecuteScalar()
+                    Dim adminKey As Object = adminCmd.ExecuteScalar()
 
                     If adminKey IsNot Nothing AndAlso Not DBNull.Value.Equals(adminKey) Then
-                        ' Display the admin_key in a label on the form
                         admin_key.Text = "Admin - " & Convert.ToString(adminKey)
                     Else
                         MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End Using
-            Catch ex As Exception
-                MessageBox.Show("Error retrieving admin key: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        Else
-            MessageBox.Show("Database connection is not open.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
+
+                ' Populate the DataGridView
+                Dim pdlQuery As String = "SELECT case_num, pdl_name, status, crime FROM pdl_list"
+                Using pdlCmd As New MySqlCommand(pdlQuery, Connection.conn)
+                    Using reader As MySqlDataReader = pdlCmd.ExecuteReader()
+                        If reader.HasRows Then
+                            While reader.Read()
+                                Dim caseNum As String = reader.GetString("case_num")
+                                Dim pdlName As String = reader.GetString("pdl_name")
+                                Dim status As String = reader.GetString("status")
+                                Dim crime As String = reader.GetString("crime")
+                                Guna2DataGridView2.Rows.Add(caseNum, pdlName, status, crime)
+                            End While
+                        Else
+                            MessageBox.Show("No data found in the pdl_list table.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End If
+                    End Using
+                End Using
+            Else
+                MessageBox.Show("Database connection is not open.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Connection.CloseConnection()
+        End Try
     End Sub
+
     Private Sub TabButton_Click(sender As Object, e As EventArgs) Handles Btn_1.Click, Btn_2.Click, Btn_3.Click, Btn_4.Click, Btn_5.Click, log_out.Click
         ' Cast the sender object back to a Button to identify which button was clicked
         Dim clickedButton = DirectCast(sender, Guna2Button)
@@ -71,42 +89,58 @@ Public Class DASHBOARD
         End Select
     End Sub
 
-    Private Sub dash_load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Add sample data to the Guna2DataGridView
-        Guna2DataGridView1.Rows.Add("Block A", "Cell 101", "Male")
-        Guna2DataGridView1.Rows.Add("Block B", "Cell 202", "Female")
-
-        ' Add action buttons to each row
-        For Each row As DataGridViewRow In Guna2DataGridView1.Rows
-            Dim actionCell As New DataGridViewButtonCell()
-            actionCell.Value = "View"
-            row.Cells("act") = actionCell
-            actionCell.Style.ForeColor = Color.White ' Set text color
-            actionCell.Style.Font = New Font("Segoe UI Semibold", 10, FontStyle.Bold)
-            actionCell.Style.Padding = New Padding(10, 5, 10, 5)
-        Next
+    Private Sub YourForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Add a DataGridViewButtonColumn to the DataGridView
+        Dim buttonColumn As New DataGridViewButtonColumn()
+        buttonColumn.Name = "acti"
+        buttonColumn.HeaderText = "Action"
+        buttonColumn.Text = "View"
+        buttonColumn.UseColumnTextForButtonValue = True
+        Guna2DataGridView2.Columns.Add(buttonColumn)
+        Guna2DataGridView2.Columns("acti").Width = 70
     End Sub
 
-    Private Sub Guna2DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Guna2DataGridView1.CellContentClick
-        ' Check if the clicked cell is in the "Action" column
-        If e.ColumnIndex = Guna2DataGridView1.Columns("act").Index AndAlso e.RowIndex >= 0 Then
-            Dim selectedRow = Guna2DataGridView1.Rows(e.RowIndex)
+    Public Sub Guna2DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Guna2DataGridView2.CellContentClick
+        ' Check if the clicked cell is in the "acti" column and not in the header row
+        If e.ColumnIndex = Guna2DataGridView2.Columns("acti").Index AndAlso e.RowIndex >= 0 Then
+            Try
+                ' Get all information for the selected row
+                Dim rowData As List(Of String) = GetRowDataFromDatabase(e.RowIndex)
 
-            ' Check if the cell value is not Nothing before accessing it
-            If selectedRow.Cells("block_num").Value IsNot Nothing AndAlso
-                   selectedRow.Cells("cell_num").Value IsNot Nothing AndAlso
-                   selectedRow.Cells("gen").Value IsNot Nothing Then
-                Dim blockNumber = selectedRow.Cells("block_num").Value.ToString
-                Dim cellNumber = selectedRow.Cells("cell_num").Value.ToString
-                Dim gender = selectedRow.Cells("gen").Value.ToString
-
-                ' Perform action based on the data in the row
-                ' Change this into Panel Display hide, If the button clicked it will show the panel
-                MessageBox.Show($"Block Number: {blockNumber}, Cell Number: {cellNumber}, Gender: {gender}", "Action Button Clicked", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                selectedRow.Cells("act").Value = Nothing
-            End If
+                ' Open the PDL_INFO form and pass the row data
+                Dim pdlInfoForm As New PDL_INFO(rowData)
+                pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage1
+                pdlInfoForm.ShowDialog()
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
         End If
     End Sub
 
+    Private Function GetRowDataFromDatabase(rowIndex As Integer) As List(Of String)
+        Dim rowData As New List(Of String)()
+        Try
+            Connection.OpenConnection()
+            If Connection.conn.State = ConnectionState.Open Then
+                ' Fetch all information for the selected row
+                Dim query As String = "SELECT * FROM pdl_list LIMIT @rowIndex, 1"
+                Using cmd As New MySqlCommand(query, Connection.conn)
+                    cmd.Parameters.AddWithValue("@rowIndex", rowIndex)
+                    Dim reader As MySqlDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        ' Add all fields to the rowData list
+                        For i As Integer = 0 To reader.FieldCount - 1
+                            rowData.Add(reader(i).ToString())
+                        Next
+                    End If
+                    reader.Close()
+                End Using
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error fetching row data from database: " & ex.Message)
+        Finally
+            Connection.CloseConnection()
+        End Try
+        Return rowData
+    End Function
 End Class

@@ -28,7 +28,9 @@ Partial Class LOGINFORM
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Panel1 = New Panel()
+        Guna2ImageCheckBox1 = New Guna.UI2.WinForms.Guna2ImageCheckBox()
         Label5 = New Label()
         txtPassword = New Guna.UI2.WinForms.Guna2TextBox()
         Label4 = New Label()
@@ -43,6 +45,7 @@ Partial Class LOGINFORM
         ' Panel1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
+        Panel1.Controls.Add(Guna2ImageCheckBox1)
         Panel1.Controls.Add(Label5)
         Panel1.Controls.Add(txtPassword)
         Panel1.Controls.Add(Label4)
@@ -55,6 +58,23 @@ Partial Class LOGINFORM
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(510, 529)
         Panel1.TabIndex = 0
+        ' 
+        ' Guna2ImageCheckBox1
+        ' 
+        Guna2ImageCheckBox1.BackColor = Color.Transparent
+        Guna2ImageCheckBox1.CheckedState.Image = My.Resources.Resources.icons8_show_60
+        Guna2ImageCheckBox1.CheckedState.ImageSize = New Size(30, 30)
+        Guna2ImageCheckBox1.HoverState.ImageSize = New Size(30, 30)
+        Guna2ImageCheckBox1.Image = My.Resources.Resources.icons8_hide_50
+        Guna2ImageCheckBox1.ImageOffset = New Point(0, 0)
+        Guna2ImageCheckBox1.ImageRotate = 0F
+        Guna2ImageCheckBox1.ImageSize = New Size(30, 30)
+        Guna2ImageCheckBox1.Location = New Point(412, 313)
+        Guna2ImageCheckBox1.Name = "Guna2ImageCheckBox1"
+        Guna2ImageCheckBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges1
+        Guna2ImageCheckBox1.Size = New Size(40, 31)
+        Guna2ImageCheckBox1.TabIndex = 12
+        Guna2ImageCheckBox1.UseTransparentBackground = True
         ' 
         ' Label5
         ' 
@@ -71,7 +91,7 @@ Partial Class LOGINFORM
         ' 
         txtPassword.BackColor = Color.Transparent
         txtPassword.BorderRadius = 15
-        txtPassword.CustomizableEdges = CustomizableEdges1
+        txtPassword.CustomizableEdges = CustomizableEdges2
         txtPassword.DefaultText = ""
         txtPassword.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         txtPassword.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -87,7 +107,7 @@ Partial Class LOGINFORM
         txtPassword.PasswordChar = ChrW(0)
         txtPassword.PlaceholderText = ""
         txtPassword.SelectedText = ""
-        txtPassword.ShadowDecoration.CustomizableEdges = CustomizableEdges2
+        txtPassword.ShadowDecoration.CustomizableEdges = CustomizableEdges3
         txtPassword.Size = New Size(419, 45)
         txtPassword.TabIndex = 8
         ' 
@@ -128,7 +148,7 @@ Partial Class LOGINFORM
         ' 
         txtUsername.BackColor = Color.Transparent
         txtUsername.BorderRadius = 15
-        txtUsername.CustomizableEdges = CustomizableEdges3
+        txtUsername.CustomizableEdges = CustomizableEdges4
         txtUsername.DefaultText = ""
         txtUsername.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         txtUsername.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -144,14 +164,14 @@ Partial Class LOGINFORM
         txtUsername.PasswordChar = ChrW(0)
         txtUsername.PlaceholderText = ""
         txtUsername.SelectedText = ""
-        txtUsername.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        txtUsername.ShadowDecoration.CustomizableEdges = CustomizableEdges5
         txtUsername.Size = New Size(419, 45)
         txtUsername.TabIndex = 4
         ' 
         ' btnLogin
         ' 
         btnLogin.BorderRadius = 15
-        btnLogin.CustomizableEdges = CustomizableEdges5
+        btnLogin.CustomizableEdges = CustomizableEdges6
         btnLogin.DisabledState.BorderColor = Color.DarkGray
         btnLogin.DisabledState.CustomBorderColor = Color.DarkGray
         btnLogin.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -161,7 +181,7 @@ Partial Class LOGINFORM
         btnLogin.ForeColor = Color.Black
         btnLogin.Location = New Point(162, 408)
         btnLogin.Name = "btnLogin"
-        btnLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        btnLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges7
         btnLogin.Size = New Size(180, 45)
         btnLogin.TabIndex = 2
         btnLogin.Text = "LOGIN"
@@ -188,6 +208,7 @@ Partial Class LOGINFORM
         DoubleBuffered = True
         FormBorderStyle = FormBorderStyle.None
         Name = "LOGINFORM"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "PDL's Management System"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
@@ -203,4 +224,5 @@ Partial Class LOGINFORM
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents txtPassword As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2ImageCheckBox1 As Guna.UI2.WinForms.Guna2ImageCheckBox
 End Class

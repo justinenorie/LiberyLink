@@ -22,12 +22,6 @@ Partial Class DASHBOARD
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -51,11 +45,15 @@ Partial Class DASHBOARD
         Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim DataGridViewCellStyle16 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle17 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle18 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -91,18 +89,17 @@ Partial Class DASHBOARD
         Dim CustomizableEdges52 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges49 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges50 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         TabControl = New Guna.UI2.WinForms.Guna2TabControl()
         dash = New TabPage()
         Label4 = New Label()
         Label2 = New Label()
         Guna2Panel7 = New Guna.UI2.WinForms.Guna2Panel()
-        Guna2Panel6 = New Guna.UI2.WinForms.Guna2Panel()
-        Guna2Panel5 = New Guna.UI2.WinForms.Guna2Panel()
-        Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
         TextBox1 = New TextBox()
         cell = New TabPage()
         Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
@@ -117,12 +114,12 @@ Partial Class DASHBOARD
         Guna2TextBox4 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         Guna2DataGridView2 = New Guna.UI2.WinForms.Guna2DataGridView()
-        case_num = New DataGridViewTextBoxColumn()
+        case_unique_num = New DataGridViewTextBoxColumn()
         pdl_name = New DataGridViewTextBoxColumn()
         stat = New DataGridViewTextBoxColumn()
         crime = New DataGridViewTextBoxColumn()
-        action1 = New DataGridViewTextBoxColumn()
         vis = New TabPage()
+        Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2DataGridView5 = New Guna.UI2.WinForms.Guna2DataGridView()
         visitor = New DataGridViewTextBoxColumn()
         contact_num = New DataGridViewTextBoxColumn()
@@ -130,6 +127,7 @@ Partial Class DASHBOARD
         sched_date = New DataGridViewTextBoxColumn()
         dura = New DataGridViewTextBoxColumn()
         rep = New TabPage()
+        Guna2TextBox5 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2DataGridView3 = New Guna.UI2.WinForms.Guna2DataGridView()
         list_date = New DataGridViewTextBoxColumn()
         list_name = New DataGridViewTextBoxColumn()
@@ -153,8 +151,9 @@ Partial Class DASHBOARD
         Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         lblDisplay = New Label()
         Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
-        Guna2TextBox5 = New Guna.UI2.WinForms.Guna2TextBox()
+        Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
+        Guna2Panel6 = New Guna.UI2.WinForms.Guna2Panel()
+        Guna2PictureBox3 = New Guna.UI2.WinForms.Guna2PictureBox()
         TabControl.SuspendLayout()
         dash.SuspendLayout()
         cell.SuspendLayout()
@@ -171,6 +170,7 @@ Partial Class DASHBOARD
         CType(Guna2PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Guna2Panel3.SuspendLayout()
         CType(Guna2PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Guna2PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' TabControl
@@ -188,17 +188,17 @@ Partial Class DASHBOARD
         TabControl.Size = New Size(816, 622)
         TabControl.TabButtonHoverState.BorderColor = Color.White
         TabControl.TabButtonHoverState.FillColor = Color.White
-        TabControl.TabButtonHoverState.Font = New Font("Segoe UI Semibold", 10.0F)
+        TabControl.TabButtonHoverState.Font = New Font("Segoe UI Semibold", 10F)
         TabControl.TabButtonHoverState.ForeColor = Color.Black
         TabControl.TabButtonHoverState.InnerColor = Color.Black
         TabControl.TabButtonIdleState.BorderColor = Color.Empty
         TabControl.TabButtonIdleState.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
-        TabControl.TabButtonIdleState.Font = New Font("Segoe UI Semibold", 10.0F)
+        TabControl.TabButtonIdleState.Font = New Font("Segoe UI Semibold", 10F)
         TabControl.TabButtonIdleState.ForeColor = Color.White
         TabControl.TabButtonIdleState.InnerColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
         TabControl.TabButtonSelectedState.BorderColor = Color.Empty
         TabControl.TabButtonSelectedState.FillColor = Color.FromArgb(CByte(29), CByte(37), CByte(49))
-        TabControl.TabButtonSelectedState.Font = New Font("Segoe UI Semibold", 10.0F)
+        TabControl.TabButtonSelectedState.Font = New Font("Segoe UI Semibold", 10F)
         TabControl.TabButtonSelectedState.ForeColor = Color.White
         TabControl.TabButtonSelectedState.InnerColor = Color.FromArgb(CByte(76), CByte(132), CByte(255))
         TabControl.TabButtonSize = New Size(100, 40)
@@ -210,12 +210,12 @@ Partial Class DASHBOARD
         ' dash
         ' 
         dash.BackColor = Color.FromArgb(CByte(154), CByte(175), CByte(191))
+        dash.Controls.Add(Guna2PictureBox3)
+        dash.Controls.Add(Guna2Panel6)
+        dash.Controls.Add(Guna2Panel4)
         dash.Controls.Add(Label4)
         dash.Controls.Add(Label2)
         dash.Controls.Add(Guna2Panel7)
-        dash.Controls.Add(Guna2Panel6)
-        dash.Controls.Add(Guna2Panel5)
-        dash.Controls.Add(Guna2Panel4)
         dash.Controls.Add(TextBox1)
         dash.Location = New Point(4, 44)
         dash.Name = "dash"
@@ -227,7 +227,7 @@ Partial Class DASHBOARD
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
+        Label4.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
         Label4.ForeColor = Color.Black
         Label4.Location = New Point(38, 61)
         Label4.Name = "Label4"
@@ -238,7 +238,7 @@ Partial Class DASHBOARD
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI Semibold", 20.0F, FontStyle.Bold)
+        Label2.Font = New Font("Segoe UI Semibold", 20F, FontStyle.Bold)
         Label2.ForeColor = Color.Black
         Label2.Location = New Point(14, 18)
         Label2.Name = "Label2"
@@ -249,50 +249,14 @@ Partial Class DASHBOARD
         ' Guna2Panel7
         ' 
         Guna2Panel7.BorderColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Guna2Panel7.BorderRadius = 10
-        Guna2Panel7.CustomizableEdges = CustomizableEdges1
+        Guna2Panel7.BorderRadius = 30
+        Guna2Panel7.CustomizableEdges = CustomizableEdges7
         Guna2Panel7.FillColor = Color.White
         Guna2Panel7.Location = New Point(433, 342)
         Guna2Panel7.Name = "Guna2Panel7"
-        Guna2Panel7.ShadowDecoration.CustomizableEdges = CustomizableEdges2
+        Guna2Panel7.ShadowDecoration.CustomizableEdges = CustomizableEdges8
         Guna2Panel7.Size = New Size(315, 140)
         Guna2Panel7.TabIndex = 3
-        ' 
-        ' Guna2Panel6
-        ' 
-        Guna2Panel6.BorderColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Guna2Panel6.BorderRadius = 10
-        Guna2Panel6.CustomizableEdges = CustomizableEdges3
-        Guna2Panel6.FillColor = Color.White
-        Guna2Panel6.Location = New Point(63, 342)
-        Guna2Panel6.Name = "Guna2Panel6"
-        Guna2Panel6.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        Guna2Panel6.Size = New Size(315, 140)
-        Guna2Panel6.TabIndex = 2
-        ' 
-        ' Guna2Panel5
-        ' 
-        Guna2Panel5.BorderColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Guna2Panel5.BorderRadius = 10
-        Guna2Panel5.CustomizableEdges = CustomizableEdges5
-        Guna2Panel5.FillColor = Color.White
-        Guna2Panel5.Location = New Point(433, 146)
-        Guna2Panel5.Name = "Guna2Panel5"
-        Guna2Panel5.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        Guna2Panel5.Size = New Size(315, 140)
-        Guna2Panel5.TabIndex = 2
-        ' 
-        ' Guna2Panel4
-        ' 
-        Guna2Panel4.BorderColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Guna2Panel4.BorderRadius = 10
-        Guna2Panel4.CustomizableEdges = CustomizableEdges7
-        Guna2Panel4.FillColor = Color.White
-        Guna2Panel4.Location = New Point(63, 146)
-        Guna2Panel4.Name = "Guna2Panel4"
-        Guna2Panel4.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        Guna2Panel4.Size = New Size(315, 140)
-        Guna2Panel4.TabIndex = 1
         ' 
         ' TextBox1
         ' 
@@ -327,7 +291,7 @@ Partial Class DASHBOARD
         Guna2Button2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button2.FillColor = Color.FromArgb(CByte(24), CByte(81), CByte(114))
-        Guna2Button2.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        Guna2Button2.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         Guna2Button2.ForeColor = Color.White
         Guna2Button2.HoverState.FillColor = Color.Silver
         Guna2Button2.HoverState.ForeColor = Color.Black
@@ -354,7 +318,7 @@ Partial Class DASHBOARD
         Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button1.FillColor = Color.FromArgb(CByte(24), CByte(81), CByte(114))
-        Guna2Button1.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        Guna2Button1.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         Guna2Button1.ForeColor = Color.White
         Guna2Button1.HoverState.FillColor = Color.Silver
         Guna2Button1.HoverState.ForeColor = Color.Black
@@ -373,7 +337,7 @@ Partial Class DASHBOARD
         ' 
         Guna2DataGridView1.AllowUserToResizeRows = False
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         DataGridViewCellStyle1.SelectionForeColor = Color.Black
@@ -383,7 +347,7 @@ Partial Class DASHBOARD
         Guna2DataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
-        DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         DataGridViewCellStyle2.ForeColor = Color.Black
         DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -407,7 +371,7 @@ Partial Class DASHBOARD
         Guna2DataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle4.BackColor = Color.White
-        DataGridViewCellStyle4.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle4.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle4.Padding = New Padding(5)
         DataGridViewCellStyle4.SelectionBackColor = Color.White
@@ -416,7 +380,7 @@ Partial Class DASHBOARD
         Guna2DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Guna2DataGridView1.RowHeadersVisible = False
         DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
+        DataGridViewCellStyle5.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         DataGridViewCellStyle5.Padding = New Padding(5)
         DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
         Guna2DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle5
@@ -425,7 +389,7 @@ Partial Class DASHBOARD
         Guna2DataGridView1.TabIndex = 2
         Guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.WetAsphalt
         Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
-        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9.0F)
+        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9F)
         Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = SystemColors.ControlText
         Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Black
@@ -433,7 +397,7 @@ Partial Class DASHBOARD
         Guna2DataGridView1.ThemeStyle.GridColor = Color.Black
         Guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
         Guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Single
-        Guna2DataGridView1.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        Guna2DataGridView1.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         Guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.Black
         Guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 35
@@ -478,10 +442,11 @@ Partial Class DASHBOARD
         Guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox1.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Guna2TextBox1.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2TextBox1.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox1.IconLeft = My.Resources.Resources.icons8_search_50
-        Guna2TextBox1.IconLeftSize = New Size(35, 35)
+        Guna2TextBox1.IconLeftOffset = New Point(10, 0)
+        Guna2TextBox1.IconLeftSize = New Size(25, 25)
         Guna2TextBox1.Location = New Point(14, 26)
         Guna2TextBox1.Margin = New Padding(4)
         Guna2TextBox1.Name = "Guna2TextBox1"
@@ -517,10 +482,11 @@ Partial Class DASHBOARD
         Guna2TextBox4.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox4.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox4.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox4.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Guna2TextBox4.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2TextBox4.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox4.IconLeft = My.Resources.Resources.icons8_search_50
-        Guna2TextBox4.IconLeftSize = New Size(35, 35)
+        Guna2TextBox4.IconLeftOffset = New Point(10, 0)
+        Guna2TextBox4.IconLeftSize = New Size(25, 25)
         Guna2TextBox4.Location = New Point(14, 26)
         Guna2TextBox4.Margin = New Padding(4)
         Guna2TextBox4.Name = "Guna2TextBox4"
@@ -543,7 +509,7 @@ Partial Class DASHBOARD
         Guna2Button3.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button3.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button3.FillColor = Color.FromArgb(CByte(24), CByte(81), CByte(114))
-        Guna2Button3.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        Guna2Button3.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         Guna2Button3.ForeColor = Color.White
         Guna2Button3.HoverState.FillColor = Color.Silver
         Guna2Button3.HoverState.ForeColor = Color.Black
@@ -562,17 +528,17 @@ Partial Class DASHBOARD
         ' 
         Guna2DataGridView2.AllowUserToResizeRows = False
         DataGridViewCellStyle6.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
-        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle6.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         DataGridViewCellStyle6.SelectionForeColor = Color.Black
         Guna2DataGridView2.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
-        Guna2DataGridView2.BorderStyle = BorderStyle.FixedSingle
+        Guna2DataGridView2.BorderStyle = BorderStyle.Fixed3D
         Guna2DataGridView2.CellBorderStyle = DataGridViewCellBorderStyle.SunkenVertical
-        Guna2DataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+        Guna2DataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken
         DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle7.BackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
-        DataGridViewCellStyle7.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        DataGridViewCellStyle7.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         DataGridViewCellStyle7.ForeColor = Color.Black
         DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
         DataGridViewCellStyle7.SelectionForeColor = Color.Black
@@ -580,7 +546,7 @@ Partial Class DASHBOARD
         Guna2DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Guna2DataGridView2.ColumnHeadersHeight = 35
         Guna2DataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Guna2DataGridView2.Columns.AddRange(New DataGridViewColumn() {case_num, pdl_name, stat, crime, action1})
+        Guna2DataGridView2.Columns.AddRange(New DataGridViewColumn() {case_unique_num, pdl_name, stat, crime})
         DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle8.BackColor = Color.White
         DataGridViewCellStyle8.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
@@ -596,7 +562,7 @@ Partial Class DASHBOARD
         Guna2DataGridView2.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle9.BackColor = Color.White
-        DataGridViewCellStyle9.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle9.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle9.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle9.Padding = New Padding(5)
         DataGridViewCellStyle9.SelectionBackColor = Color.White
@@ -605,24 +571,24 @@ Partial Class DASHBOARD
         Guna2DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Guna2DataGridView2.RowHeadersVisible = False
         DataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.Font = New Font("Segoe UI Semibold", 6.0F, FontStyle.Bold)
+        DataGridViewCellStyle10.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         DataGridViewCellStyle10.Padding = New Padding(5)
         DataGridViewCellStyle10.WrapMode = DataGridViewTriState.True
         Guna2DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle10
-        Guna2DataGridView2.RowTemplate.Height = 35
+        Guna2DataGridView2.RowTemplate.Height = 30
         Guna2DataGridView2.Size = New Size(779, 470)
         Guna2DataGridView2.TabIndex = 4
         Guna2DataGridView2.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.WetAsphalt
         Guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
-        Guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9.0F)
+        Guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9F)
         Guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.ForeColor = SystemColors.ControlText
         Guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         Guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Black
         Guna2DataGridView2.ThemeStyle.BackColor = Color.White
         Guna2DataGridView2.ThemeStyle.GridColor = Color.Black
         Guna2DataGridView2.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
-        Guna2DataGridView2.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Single
-        Guna2DataGridView2.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        Guna2DataGridView2.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Sunken
+        Guna2DataGridView2.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         Guna2DataGridView2.ThemeStyle.HeaderStyle.ForeColor = Color.Black
         Guna2DataGridView2.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Guna2DataGridView2.ThemeStyle.HeaderStyle.Height = 35
@@ -631,14 +597,14 @@ Partial Class DASHBOARD
         Guna2DataGridView2.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SunkenVertical
         Guna2DataGridView2.ThemeStyle.RowsStyle.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
         Guna2DataGridView2.ThemeStyle.RowsStyle.ForeColor = Color.Black
-        Guna2DataGridView2.ThemeStyle.RowsStyle.Height = 35
+        Guna2DataGridView2.ThemeStyle.RowsStyle.Height = 30
         Guna2DataGridView2.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         Guna2DataGridView2.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black
         ' 
-        ' case_num
+        ' case_unique_num
         ' 
-        case_num.HeaderText = "Case Number "
-        case_num.Name = "case_num"
+        case_unique_num.HeaderText = "Case Number "
+        case_unique_num.Name = "case_unique_num"
         ' 
         ' pdl_name
         ' 
@@ -655,11 +621,6 @@ Partial Class DASHBOARD
         crime.HeaderText = "Crime"
         crime.Name = "crime"
         ' 
-        ' action1
-        ' 
-        action1.HeaderText = "Action"
-        action1.Name = "action1"
-        ' 
         ' vis
         ' 
         vis.BackColor = Color.FromArgb(CByte(154), CByte(175), CByte(191))
@@ -672,11 +633,38 @@ Partial Class DASHBOARD
         vis.TabIndex = 5
         vis.Text = "Visitor"
         ' 
+        ' Guna2TextBox3
+        ' 
+        Guna2TextBox3.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Guna2TextBox3.BorderRadius = 10
+        Guna2TextBox3.BorderThickness = 2
+        Guna2TextBox3.CustomizableEdges = CustomizableEdges19
+        Guna2TextBox3.DefaultText = ""
+        Guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        Guna2TextBox3.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        Guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox3.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Guna2TextBox3.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox3.IconLeft = My.Resources.Resources.icons8_search_50
+        Guna2TextBox3.IconLeftOffset = New Point(10, 0)
+        Guna2TextBox3.IconLeftSize = New Size(25, 25)
+        Guna2TextBox3.Location = New Point(14, 26)
+        Guna2TextBox3.Margin = New Padding(4)
+        Guna2TextBox3.Name = "Guna2TextBox3"
+        Guna2TextBox3.PasswordChar = ChrW(0)
+        Guna2TextBox3.PlaceholderText = "Search"
+        Guna2TextBox3.SelectedText = ""
+        Guna2TextBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges20
+        Guna2TextBox3.Size = New Size(230, 36)
+        Guna2TextBox3.TabIndex = 12
+        ' 
         ' Guna2DataGridView5
         ' 
         Guna2DataGridView5.AllowUserToResizeRows = False
         DataGridViewCellStyle11.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
-        DataGridViewCellStyle11.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle11.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle11.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         DataGridViewCellStyle11.SelectionForeColor = Color.Black
@@ -686,7 +674,7 @@ Partial Class DASHBOARD
         Guna2DataGridView5.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
         DataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle12.BackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
-        DataGridViewCellStyle12.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        DataGridViewCellStyle12.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         DataGridViewCellStyle12.ForeColor = Color.Black
         DataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
         DataGridViewCellStyle12.SelectionForeColor = Color.Black
@@ -710,7 +698,7 @@ Partial Class DASHBOARD
         Guna2DataGridView5.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle14.BackColor = Color.White
-        DataGridViewCellStyle14.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle14.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle14.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle14.Padding = New Padding(5)
         DataGridViewCellStyle14.SelectionBackColor = Color.White
@@ -719,7 +707,7 @@ Partial Class DASHBOARD
         Guna2DataGridView5.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
         Guna2DataGridView5.RowHeadersVisible = False
         DataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle15.Font = New Font("Segoe UI Semibold", 6.0F, FontStyle.Bold)
+        DataGridViewCellStyle15.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         DataGridViewCellStyle15.Padding = New Padding(5)
         DataGridViewCellStyle15.WrapMode = DataGridViewTriState.True
         Guna2DataGridView5.RowsDefaultCellStyle = DataGridViewCellStyle15
@@ -728,7 +716,7 @@ Partial Class DASHBOARD
         Guna2DataGridView5.TabIndex = 5
         Guna2DataGridView5.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.WetAsphalt
         Guna2DataGridView5.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
-        Guna2DataGridView5.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9.0F)
+        Guna2DataGridView5.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9F)
         Guna2DataGridView5.ThemeStyle.AlternatingRowsStyle.ForeColor = SystemColors.ControlText
         Guna2DataGridView5.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         Guna2DataGridView5.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Black
@@ -736,7 +724,7 @@ Partial Class DASHBOARD
         Guna2DataGridView5.ThemeStyle.GridColor = Color.Black
         Guna2DataGridView5.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
         Guna2DataGridView5.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Single
-        Guna2DataGridView5.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        Guna2DataGridView5.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         Guna2DataGridView5.ThemeStyle.HeaderStyle.ForeColor = Color.Black
         Guna2DataGridView5.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Guna2DataGridView5.ThemeStyle.HeaderStyle.Height = 45
@@ -786,11 +774,38 @@ Partial Class DASHBOARD
         rep.TabIndex = 7
         rep.Text = "Reports"
         ' 
+        ' Guna2TextBox5
+        ' 
+        Guna2TextBox5.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Guna2TextBox5.BorderRadius = 10
+        Guna2TextBox5.BorderThickness = 2
+        Guna2TextBox5.CustomizableEdges = CustomizableEdges21
+        Guna2TextBox5.DefaultText = ""
+        Guna2TextBox5.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        Guna2TextBox5.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        Guna2TextBox5.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox5.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox5.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox5.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Guna2TextBox5.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox5.IconLeft = My.Resources.Resources.icons8_search_50
+        Guna2TextBox5.IconLeftOffset = New Point(10, 0)
+        Guna2TextBox5.IconLeftSize = New Size(25, 25)
+        Guna2TextBox5.Location = New Point(14, 26)
+        Guna2TextBox5.Margin = New Padding(4)
+        Guna2TextBox5.Name = "Guna2TextBox5"
+        Guna2TextBox5.PasswordChar = ChrW(0)
+        Guna2TextBox5.PlaceholderText = "Search"
+        Guna2TextBox5.SelectedText = ""
+        Guna2TextBox5.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        Guna2TextBox5.Size = New Size(230, 36)
+        Guna2TextBox5.TabIndex = 13
+        ' 
         ' Guna2DataGridView3
         ' 
         Guna2DataGridView3.AllowUserToResizeRows = False
         DataGridViewCellStyle16.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
-        DataGridViewCellStyle16.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle16.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle16.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle16.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         DataGridViewCellStyle16.SelectionForeColor = Color.Black
@@ -800,7 +815,7 @@ Partial Class DASHBOARD
         Guna2DataGridView3.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
         DataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle17.BackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
-        DataGridViewCellStyle17.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        DataGridViewCellStyle17.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         DataGridViewCellStyle17.ForeColor = Color.Black
         DataGridViewCellStyle17.SelectionBackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
         DataGridViewCellStyle17.SelectionForeColor = Color.Black
@@ -824,7 +839,7 @@ Partial Class DASHBOARD
         Guna2DataGridView3.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle19.BackColor = Color.White
-        DataGridViewCellStyle19.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle19.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle19.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle19.Padding = New Padding(5)
         DataGridViewCellStyle19.SelectionBackColor = Color.White
@@ -833,7 +848,7 @@ Partial Class DASHBOARD
         Guna2DataGridView3.RowHeadersDefaultCellStyle = DataGridViewCellStyle19
         Guna2DataGridView3.RowHeadersVisible = False
         DataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle20.Font = New Font("Segoe UI Semibold", 6.0F, FontStyle.Bold)
+        DataGridViewCellStyle20.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         DataGridViewCellStyle20.Padding = New Padding(5)
         DataGridViewCellStyle20.WrapMode = DataGridViewTriState.True
         Guna2DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle20
@@ -842,7 +857,7 @@ Partial Class DASHBOARD
         Guna2DataGridView3.TabIndex = 6
         Guna2DataGridView3.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.WetAsphalt
         Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
-        Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9.0F)
+        Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9F)
         Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.ForeColor = SystemColors.ControlText
         Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Black
@@ -850,7 +865,7 @@ Partial Class DASHBOARD
         Guna2DataGridView3.ThemeStyle.GridColor = Color.Black
         Guna2DataGridView3.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
         Guna2DataGridView3.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Single
-        Guna2DataGridView3.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        Guna2DataGridView3.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         Guna2DataGridView3.ThemeStyle.HeaderStyle.ForeColor = Color.Black
         Guna2DataGridView3.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Guna2DataGridView3.ThemeStyle.HeaderStyle.Height = 35
@@ -865,13 +880,13 @@ Partial Class DASHBOARD
         ' 
         ' list_date
         ' 
-        list_date.FillWeight = 30.0F
+        list_date.FillWeight = 30F
         list_date.HeaderText = "Date"
         list_date.Name = "list_date"
         ' 
         ' list_name
         ' 
-        list_name.FillWeight = 35.0F
+        list_name.FillWeight = 35F
         list_name.HeaderText = "PDL Name"
         list_name.Name = "list_name"
         ' 
@@ -884,7 +899,7 @@ Partial Class DASHBOARD
         ' admin_key
         ' 
         admin_key.AutoSize = True
-        admin_key.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        admin_key.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         admin_key.ForeColor = Color.White
         admin_key.Location = New Point(617, 17)
         admin_key.Name = "admin_key"
@@ -896,7 +911,7 @@ Partial Class DASHBOARD
         ' label1
         ' 
         label1.AutoSize = True
-        label1.Font = New Font("Segoe UI Semibold", 14.0F, FontStyle.Bold)
+        label1.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold)
         label1.ForeColor = Color.White
         label1.Location = New Point(103, 60)
         label1.Name = "label1"
@@ -1000,7 +1015,7 @@ Partial Class DASHBOARD
         log_out.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         log_out.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         log_out.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
-        log_out.Font = New Font("Segoe UI Semibold", 15.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        log_out.Font = New Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         log_out.ForeColor = Color.White
         log_out.HoverState.FillColor = Color.Silver
         log_out.HoverState.ForeColor = Color.Black
@@ -1019,7 +1034,7 @@ Partial Class DASHBOARD
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI Semibold", 18.0F, FontStyle.Bold)
+        Label3.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold)
         Label3.ForeColor = Color.White
         Label3.Location = New Point(103, 22)
         Label3.Name = "Label3"
@@ -1039,7 +1054,7 @@ Partial Class DASHBOARD
         Btn_5.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Btn_5.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Btn_5.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
-        Btn_5.Font = New Font("Segoe UI Semibold", 15.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Btn_5.Font = New Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Btn_5.ForeColor = Color.White
         Btn_5.HoverState.FillColor = Color.Silver
         Btn_5.HoverState.ForeColor = Color.Black
@@ -1067,7 +1082,7 @@ Partial Class DASHBOARD
         Btn_4.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Btn_4.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Btn_4.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
-        Btn_4.Font = New Font("Segoe UI Semibold", 15.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Btn_4.Font = New Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Btn_4.ForeColor = Color.White
         Btn_4.HoverState.FillColor = Color.Silver
         Btn_4.HoverState.ForeColor = Color.Black
@@ -1095,7 +1110,7 @@ Partial Class DASHBOARD
         Btn_3.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Btn_3.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Btn_3.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
-        Btn_3.Font = New Font("Segoe UI Semibold", 15.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Btn_3.Font = New Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Btn_3.ForeColor = Color.White
         Btn_3.HoverState.FillColor = Color.Silver
         Btn_3.HoverState.ForeColor = Color.Black
@@ -1123,7 +1138,7 @@ Partial Class DASHBOARD
         Btn_2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Btn_2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Btn_2.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
-        Btn_2.Font = New Font("Segoe UI Semibold", 15.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Btn_2.Font = New Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Btn_2.ForeColor = Color.White
         Btn_2.HoverState.FillColor = Color.Silver
         Btn_2.HoverState.ForeColor = Color.Black
@@ -1164,7 +1179,7 @@ Partial Class DASHBOARD
         Btn_1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Btn_1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Btn_1.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
-        Btn_1.Font = New Font("Segoe UI Semibold", 15.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Btn_1.Font = New Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Btn_1.ForeColor = Color.White
         Btn_1.HoverState.FillColor = Color.Silver
         Btn_1.HoverState.ForeColor = Color.Black
@@ -1215,61 +1230,49 @@ Partial Class DASHBOARD
         Guna2PictureBox2.TabIndex = 0
         Guna2PictureBox2.TabStop = False
         ' 
-        ' Guna2TextBox3
+        ' Guna2Panel4
         ' 
-        Guna2TextBox3.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        Guna2TextBox3.BorderRadius = 10
-        Guna2TextBox3.BorderThickness = 2
-        Guna2TextBox3.CustomizableEdges = CustomizableEdges19
-        Guna2TextBox3.DefaultText = ""
-        Guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox3.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox3.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Guna2TextBox3.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox3.IconLeft = My.Resources.Resources.icons8_search_50
-        Guna2TextBox3.IconLeftSize = New Size(35, 35)
-        Guna2TextBox3.Location = New Point(14, 26)
-        Guna2TextBox3.Margin = New Padding(4)
-        Guna2TextBox3.Name = "Guna2TextBox3"
-        Guna2TextBox3.PasswordChar = ChrW(0)
-        Guna2TextBox3.PlaceholderText = "Search"
-        Guna2TextBox3.SelectedText = ""
-        Guna2TextBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges20
-        Guna2TextBox3.Size = New Size(230, 36)
-        Guna2TextBox3.TabIndex = 12
+        Guna2Panel4.BorderColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        Guna2Panel4.BorderRadius = 30
+        Guna2Panel4.CustomizableEdges = CustomizableEdges5
+        Guna2Panel4.FillColor = Color.White
+        Guna2Panel4.Location = New Point(63, 146)
+        Guna2Panel4.Name = "Guna2Panel4"
+        Guna2Panel4.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        Guna2Panel4.Size = New Size(315, 140)
+        Guna2Panel4.TabIndex = 5
         ' 
-        ' Guna2TextBox5
+        ' Guna2Panel6
         ' 
-        Guna2TextBox5.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        Guna2TextBox5.BorderRadius = 10
-        Guna2TextBox5.BorderThickness = 2
-        Guna2TextBox5.CustomizableEdges = CustomizableEdges21
-        Guna2TextBox5.DefaultText = ""
-        Guna2TextBox5.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox5.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox5.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox5.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox5.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox5.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Guna2TextBox5.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox5.IconLeft = My.Resources.Resources.icons8_search_50
-        Guna2TextBox5.IconLeftSize = New Size(35, 35)
-        Guna2TextBox5.Location = New Point(14, 26)
-        Guna2TextBox5.Margin = New Padding(4)
-        Guna2TextBox5.Name = "Guna2TextBox5"
-        Guna2TextBox5.PasswordChar = ChrW(0)
-        Guna2TextBox5.PlaceholderText = "Search"
-        Guna2TextBox5.SelectedText = ""
-        Guna2TextBox5.ShadowDecoration.CustomizableEdges = CustomizableEdges22
-        Guna2TextBox5.Size = New Size(230, 36)
-        Guna2TextBox5.TabIndex = 13
+        Guna2Panel6.BorderColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        Guna2Panel6.BorderRadius = 30
+        Guna2Panel6.CustomizableEdges = CustomizableEdges3
+        Guna2Panel6.FillColor = Color.White
+        Guna2Panel6.Location = New Point(63, 342)
+        Guna2Panel6.Name = "Guna2Panel6"
+        Guna2Panel6.ShadowDecoration.CustomizableEdges = CustomizableEdges4
+        Guna2Panel6.Size = New Size(315, 140)
+        Guna2Panel6.TabIndex = 4
+        ' 
+        ' Guna2PictureBox3
+        ' 
+        Guna2PictureBox3.BackColor = Color.Transparent
+        Guna2PictureBox3.BorderRadius = 30
+        Guna2PictureBox3.CustomizableEdges = CustomizableEdges1
+        Guna2PictureBox3.FillColor = Color.Transparent
+        Guna2PictureBox3.Image = My.Resources.Resources._fbcbcb_ffbdbd_ff8080_1920_1080
+        Guna2PictureBox3.ImageRotate = 0F
+        Guna2PictureBox3.Location = New Point(433, 146)
+        Guna2PictureBox3.Name = "Guna2PictureBox3"
+        Guna2PictureBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges2
+        Guna2PictureBox3.Size = New Size(315, 140)
+        Guna2PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
+        Guna2PictureBox3.TabIndex = 11
+        Guna2PictureBox3.TabStop = False
         ' 
         ' DASHBOARD
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(154), CByte(175), CByte(191))
         ClientSize = New Size(1184, 700)
@@ -1299,6 +1302,7 @@ Partial Class DASHBOARD
         Guna2Panel3.ResumeLayout(False)
         Guna2Panel3.PerformLayout()
         CType(Guna2PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        CType(Guna2PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
     Friend WithEvents Guna2ControlBox1 As Guna.UI2.WinForms.Guna2ControlBox
@@ -1326,11 +1330,8 @@ Partial Class DASHBOARD
     Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents admin_key As Label
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Label3 As Label
     Friend WithEvents Guna2Panel7 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel6 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel5 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents lblDisplay As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
@@ -1343,11 +1344,6 @@ Partial Class DASHBOARD
     Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2DataGridView2 As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents case_num As DataGridViewTextBoxColumn
-    Friend WithEvents pdl_name As DataGridViewTextBoxColumn
-    Friend WithEvents stat As DataGridViewTextBoxColumn
-    Friend WithEvents crime As DataGridViewTextBoxColumn
-    Friend WithEvents action1 As DataGridViewTextBoxColumn
     Friend WithEvents log_out As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2DataGridView5 As Guna.UI2.WinForms.Guna2DataGridView
@@ -1364,4 +1360,11 @@ Partial Class DASHBOARD
     Friend WithEvents list_rep As DataGridViewTextBoxColumn
     Friend WithEvents Guna2TextBox3 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2TextBox5 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents case_unique_num As DataGridViewTextBoxColumn
+    Friend WithEvents pdl_name As DataGridViewTextBoxColumn
+    Friend WithEvents stat As DataGridViewTextBoxColumn
+    Friend WithEvents crime As DataGridViewTextBoxColumn
+    Friend WithEvents Guna2Panel6 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2PictureBox3 As Guna.UI2.WinForms.Guna2PictureBox
 End Class
