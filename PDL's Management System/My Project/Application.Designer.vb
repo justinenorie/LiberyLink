@@ -33,7 +33,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.PDL_s_Management_System.LOGINFORM
+            Me.MainForm = Global.PDL_s_Management_System.DASHBOARD
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
