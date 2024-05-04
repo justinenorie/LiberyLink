@@ -29,6 +29,8 @@ Partial Class LOGINFORM
         Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Panel1 = New Panel()
         Guna2ImageCheckBox1 = New Guna.UI2.WinForms.Guna2ImageCheckBox()
         Label5 = New Label()
@@ -39,6 +41,7 @@ Partial Class LOGINFORM
         txtUsername = New Guna.UI2.WinForms.Guna2TextBox()
         btnLogin = New Guna.UI2.WinForms.Guna2Button()
         Label1 = New Label()
+        Guna2ControlBox1 = New Guna.UI2.WinForms.Guna2ControlBox()
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -54,9 +57,10 @@ Partial Class LOGINFORM
         Panel1.Controls.Add(txtUsername)
         Panel1.Controls.Add(btnLogin)
         Panel1.Controls.Add(Label1)
-        Panel1.Location = New Point(12, 28)
+        Panel1.Dock = DockStyle.Left
+        Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(510, 529)
+        Panel1.Size = New Size(510, 569)
         Panel1.TabIndex = 0
         ' 
         ' Guna2ImageCheckBox1
@@ -176,13 +180,14 @@ Partial Class LOGINFORM
         btnLogin.DisabledState.CustomBorderColor = Color.DarkGray
         btnLogin.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         btnLogin.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        btnLogin.FillColor = Color.White
-        btnLogin.Font = New Font("Segoe UI Variable Display", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnLogin.ForeColor = Color.Black
-        btnLogin.Location = New Point(162, 408)
+        btnLogin.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
+        btnLogin.Font = New Font("Segoe UI Variable Display Semib", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnLogin.ForeColor = Color.White
+        btnLogin.HoverState.FillColor = Color.FromArgb(CByte(255), CByte(159), CByte(89))
+        btnLogin.Location = New Point(42, 408)
         btnLogin.Name = "btnLogin"
         btnLogin.ShadowDecoration.CustomizableEdges = CustomizableEdges7
-        btnLogin.Size = New Size(180, 45)
+        btnLogin.Size = New Size(419, 45)
         btnLogin.TabIndex = 2
         btnLogin.Text = "LOGIN"
         ' 
@@ -197,13 +202,30 @@ Partial Class LOGINFORM
         Label1.TabIndex = 0
         Label1.Text = "Login as Administrator"
         ' 
+        ' Guna2ControlBox1
+        ' 
+        Guna2ControlBox1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Guna2ControlBox1.BackColor = Color.Transparent
+        Guna2ControlBox1.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom
+        Guna2ControlBox1.CustomIconSize = 20F
+        Guna2ControlBox1.CustomizableEdges = CustomizableEdges8
+        Guna2ControlBox1.FillColor = Color.Transparent
+        Guna2ControlBox1.IconColor = Color.White
+        Guna2ControlBox1.Location = New Point(822, 3)
+        Guna2ControlBox1.Name = "Guna2ControlBox1"
+        Guna2ControlBox1.PressedColor = Color.White
+        Guna2ControlBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges9
+        Guna2ControlBox1.Size = New Size(50, 50)
+        Guna2ControlBox1.TabIndex = 1
+        ' 
         ' LOGINFORM
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackgroundImage = My.Resources.Resources.pic1
+        BackgroundImage = My.Resources.Resources.image__6_
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(874, 569)
+        Controls.Add(Guna2ControlBox1)
         Controls.Add(Panel1)
         DoubleBuffered = True
         FormBorderStyle = FormBorderStyle.None
@@ -225,4 +247,5 @@ Partial Class LOGINFORM
     Friend WithEvents Label5 As Label
     Friend WithEvents txtPassword As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2ImageCheckBox1 As Guna.UI2.WinForms.Guna2ImageCheckBox
+    Friend WithEvents Guna2ControlBox1 As Guna.UI2.WinForms.Guna2ControlBox
 End Class
