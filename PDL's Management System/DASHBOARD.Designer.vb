@@ -468,6 +468,7 @@ Partial Class DASHBOARD
         cell_block_table.GridColor = Color.Black
         cell_block_table.Location = New Point(14, 50)
         cell_block_table.Name = "cell_block_table"
+        cell_block_table.ReadOnly = True
         cell_block_table.RightToLeft = RightToLeft.No
         cell_block_table.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -502,7 +503,7 @@ Partial Class DASHBOARD
         cell_block_table.ThemeStyle.HeaderStyle.ForeColor = Color.White
         cell_block_table.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         cell_block_table.ThemeStyle.HeaderStyle.Height = 35
-        cell_block_table.ThemeStyle.ReadOnly = False
+        cell_block_table.ThemeStyle.ReadOnly = True
         cell_block_table.ThemeStyle.RowsStyle.BackColor = Color.White
         cell_block_table.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SunkenVertical
         cell_block_table.ThemeStyle.RowsStyle.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
@@ -515,11 +516,13 @@ Partial Class DASHBOARD
         ' 
         cell_num.HeaderText = "Cell Unit"
         cell_num.Name = "cell_num"
+        cell_num.ReadOnly = True
         ' 
         ' gen
         ' 
         gen.HeaderText = "Gender Unit"
         gen.Name = "gen"
+        gen.ReadOnly = True
         ' 
         ' act
         ' 
@@ -527,6 +530,7 @@ Partial Class DASHBOARD
         act.FillWeight = 50F
         act.HeaderText = "Action"
         act.Name = "act"
+        act.ReadOnly = True
         act.Resizable = DataGridViewTriState.True
         act.Text = "View"
         act.UseColumnTextForButtonValue = True
@@ -671,7 +675,6 @@ Partial Class DASHBOARD
         DataGridViewCellStyle7.WrapMode = DataGridViewTriState.True
         pdl_list_information.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         pdl_list_information.ColumnHeadersHeight = 35
-        pdl_list_information.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         pdl_list_information.Columns.AddRange(New DataGridViewColumn() {case_unique_num, pdl_name, stat, crime, acti})
         DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle8.BackColor = Color.White
@@ -684,6 +687,7 @@ Partial Class DASHBOARD
         pdl_list_information.GridColor = Color.Black
         pdl_list_information.Location = New Point(14, 52)
         pdl_list_information.Name = "pdl_list_information"
+        pdl_list_information.ReadOnly = True
         pdl_list_information.RightToLeft = RightToLeft.No
         pdl_list_information.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -716,9 +720,9 @@ Partial Class DASHBOARD
         pdl_list_information.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Sunken
         pdl_list_information.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
         pdl_list_information.ThemeStyle.HeaderStyle.ForeColor = Color.White
-        pdl_list_information.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        pdl_list_information.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         pdl_list_information.ThemeStyle.HeaderStyle.Height = 35
-        pdl_list_information.ThemeStyle.ReadOnly = False
+        pdl_list_information.ThemeStyle.ReadOnly = True
         pdl_list_information.ThemeStyle.RowsStyle.BackColor = Color.White
         pdl_list_information.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SunkenVertical
         pdl_list_information.ThemeStyle.RowsStyle.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
@@ -731,27 +735,32 @@ Partial Class DASHBOARD
         ' 
         case_unique_num.HeaderText = "Case Number "
         case_unique_num.Name = "case_unique_num"
+        case_unique_num.ReadOnly = True
         ' 
         ' pdl_name
         ' 
         pdl_name.HeaderText = "Name"
         pdl_name.Name = "pdl_name"
+        pdl_name.ReadOnly = True
         ' 
         ' stat
         ' 
         stat.HeaderText = "Status"
         stat.Name = "stat"
+        stat.ReadOnly = True
         ' 
         ' crime
         ' 
         crime.HeaderText = "Crime"
         crime.Name = "crime"
+        crime.ReadOnly = True
         ' 
         ' acti
         ' 
         acti.FillWeight = 70F
         acti.HeaderText = "Action"
         acti.Name = "acti"
+        acti.ReadOnly = True
         acti.Text = "View"
         acti.UseColumnTextForButtonValue = True
         ' 
@@ -831,6 +840,7 @@ Partial Class DASHBOARD
         Guna2DataGridView5.GridColor = Color.Black
         Guna2DataGridView5.Location = New Point(14, 50)
         Guna2DataGridView5.Name = "Guna2DataGridView5"
+        Guna2DataGridView5.ReadOnly = True
         Guna2DataGridView5.RightToLeft = RightToLeft.No
         Guna2DataGridView5.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -865,7 +875,7 @@ Partial Class DASHBOARD
         Guna2DataGridView5.ThemeStyle.HeaderStyle.ForeColor = Color.White
         Guna2DataGridView5.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Guna2DataGridView5.ThemeStyle.HeaderStyle.Height = 45
-        Guna2DataGridView5.ThemeStyle.ReadOnly = False
+        Guna2DataGridView5.ThemeStyle.ReadOnly = True
         Guna2DataGridView5.ThemeStyle.RowsStyle.BackColor = Color.White
         Guna2DataGridView5.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SunkenVertical
         Guna2DataGridView5.ThemeStyle.RowsStyle.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
@@ -878,26 +888,31 @@ Partial Class DASHBOARD
         ' 
         visitor.HeaderText = "Name of Visitor"
         visitor.Name = "visitor"
+        visitor.ReadOnly = True
         ' 
         ' contact_num
         ' 
         contact_num.HeaderText = "Contact Number"
         contact_num.Name = "contact_num"
+        contact_num.ReadOnly = True
         ' 
         ' visited
         ' 
         visited.HeaderText = "PDL Visited Name"
         visited.Name = "visited"
+        visited.ReadOnly = True
         ' 
         ' sched_date
         ' 
         sched_date.HeaderText = "Scheduled Date and Time"
         sched_date.Name = "sched_date"
+        sched_date.ReadOnly = True
         ' 
         ' dura
         ' 
         dura.HeaderText = "Duration"
         dura.Name = "dura"
+        dura.ReadOnly = True
         ' 
         ' rep
         ' 
@@ -975,6 +990,7 @@ Partial Class DASHBOARD
         Guna2DataGridView3.GridColor = Color.Black
         Guna2DataGridView3.Location = New Point(14, 50)
         Guna2DataGridView3.Name = "Guna2DataGridView3"
+        Guna2DataGridView3.ReadOnly = True
         Guna2DataGridView3.RightToLeft = RightToLeft.No
         Guna2DataGridView3.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -1009,7 +1025,7 @@ Partial Class DASHBOARD
         Guna2DataGridView3.ThemeStyle.HeaderStyle.ForeColor = Color.White
         Guna2DataGridView3.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Guna2DataGridView3.ThemeStyle.HeaderStyle.Height = 35
-        Guna2DataGridView3.ThemeStyle.ReadOnly = False
+        Guna2DataGridView3.ThemeStyle.ReadOnly = True
         Guna2DataGridView3.ThemeStyle.RowsStyle.BackColor = Color.White
         Guna2DataGridView3.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SunkenVertical
         Guna2DataGridView3.ThemeStyle.RowsStyle.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
@@ -1023,18 +1039,21 @@ Partial Class DASHBOARD
         list_date.FillWeight = 30F
         list_date.HeaderText = "Date"
         list_date.Name = "list_date"
+        list_date.ReadOnly = True
         ' 
         ' list_name
         ' 
         list_name.FillWeight = 35F
         list_name.HeaderText = "PDL Name"
         list_name.Name = "list_name"
+        list_name.ReadOnly = True
         ' 
         ' list_rep
         ' 
         list_rep.FillWeight = 42.78028F
         list_rep.HeaderText = "Reports"
         list_rep.Name = "list_rep"
+        list_rep.ReadOnly = True
         ' 
         ' Guna2Panel4
         ' 

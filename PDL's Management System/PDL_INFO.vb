@@ -1,4 +1,5 @@
-﻿Imports Guna.UI2.WinForms
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports Guna.UI2.WinForms
 Imports MySql.Data.MySqlClient
 
 Public Class PDL_INFO
@@ -7,6 +8,7 @@ Public Class PDL_INFO
         update_btn.Visible = False
         cancel_btn.Visible = False
         delete_btn.Visible = False
+        PopulateCombobox()
     End Sub
 
     Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False)
@@ -40,9 +42,8 @@ Public Class PDL_INFO
                         ' Convert the date_birth value to a .NET DateTime object
                         Dim dateBirth As DateTime = GetDateTimeFromMySQLDate(rowDataItem(6))
                         birth_display.Value = dateBirth
-
                         years_sentence.Text = rowDataItem(7) ' Seventh element is sentence_years
-                        cell_value_loc.Text = rowDataItem(8)
+                        display_cellBlockVal.Text = rowDataItem(8)
                     End If
                 Next
             Catch ex As Exception
@@ -50,9 +51,6 @@ Public Class PDL_INFO
             End Try
         End If
     End Sub
-
-
-
 
     Private Function GetDateTimeFromMySQLDate(mysqlDate As String) As DateTime
         Dim formats() As String = {"yyyy-MM-dd", "dd/MM/yyyy hh:mm:ss tt"}
@@ -66,6 +64,7 @@ Public Class PDL_INFO
 
     Private Sub edit_btn_Click(sender As Object, e As EventArgs) Handles edit_btn.Click
         'Textbox Design
+        PopulateCombobox()
         first_name_pdl.FillColor = Color.White
         first_name_pdl.ForeColor = Color.Black
         first_name_pdl.ReadOnly = False
@@ -78,9 +77,8 @@ Public Class PDL_INFO
         case_unique_val.ForeColor = Color.Black
         case_unique_val.ReadOnly = False
 
-        cell_value_loc.FillColor = Color.White
-        cell_value_loc.ForeColor = Color.Black
-        cell_value_loc.ReadOnly = False
+        cellblock_location.Visible = True
+        display_cellBlockVal.Visible = False
 
         gender_profile.FillColor = Color.White
         gender_profile.ForeColor = Color.Black
@@ -121,9 +119,8 @@ Public Class PDL_INFO
         case_unique_val.ForeColor = Color.White
         case_unique_val.ReadOnly = True
 
-        cell_value_loc.FillColor = Color.FromArgb(41, 73, 98)
-        cell_value_loc.ForeColor = Color.White
-        cell_value_loc.ReadOnly = True
+        cellblock_location.Visible = False
+        display_cellBlockVal.Visible = True
 
         gender_profile.FillColor = Color.FromArgb(41, 73, 98)
         gender_profile.ForeColor = Color.White
@@ -165,9 +162,8 @@ Public Class PDL_INFO
         case_unique_val.ForeColor = Color.White
         case_unique_val.ReadOnly = True
 
-        cell_value_loc.FillColor = Color.FromArgb(41, 73, 98)
-        cell_value_loc.ForeColor = Color.White
-        cell_value_loc.ReadOnly = True
+        cellblock_location.Visible = False
+        display_cellBlockVal.Visible = True
 
         gender_profile.FillColor = Color.FromArgb(41, 73, 98)
         gender_profile.ForeColor = Color.White
@@ -203,7 +199,7 @@ Public Class PDL_INFO
             Dim updatedGender = gender_profile.Text
             Dim updatedDateOfBirth = birth_display.Value.ToString("yyyy-MM-dd")
             Dim updatedYearsSentence = years_sentence.Text
-            Dim updatedCellBLock = cell_value_loc.Text
+            Dim updatedCellBLock = cellblock_location.Text
             OpenConnection()
 
             If conn.State = ConnectionState.Open Then
@@ -364,7 +360,37 @@ Public Class PDL_INFO
             CloseConnection()
         End Try
     End Sub
+
+    Public Sub PopulateCombobox()
+        cellblock_location.Items.Clear()
+        Try
+            ' Open connection to the database
+            OpenConnection()
+
+            ' Check if the connection is open
+            If conn.State = ConnectionState.Open Then
+                ' Define the query to retrieve cellblock_id values
+                Dim query As String = "SELECT cellblock_id FROM cell_block_list"
+
+                ' Create a command object with the query and connection
+                Using cmd As New MySqlCommand(query, conn)
+                    ' Execute the query and get a reader object
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        ' Loop through the results
+                        While reader.Read()
+                            ' Add each cellblock_id to the ComboBox
+                            cellblock_location.Items.Add(reader("cellblock_id").ToString())
+                        End While
+                    End Using
+                End Using
+            End If
+        Catch ex As Exception
+            ' Handle any errors
+            MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Close the database connection
+            CloseConnection()
+        End Try
+    End Sub
+
 End Class
-
-
-
