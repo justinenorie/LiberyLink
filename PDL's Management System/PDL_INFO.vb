@@ -9,32 +9,50 @@ Public Class PDL_INFO
         delete_btn.Visible = False
     End Sub
 
-    Public Sub New(rowData As List(Of String))
-        ' This call is required by the designer.
+    Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False)
         InitializeComponent()
-        ' Display information based on the provided row data
-        Try
 
-            ' Check if row data is available
-            If rowData.Count > 1 Then
-                case_unique_val.Text = rowData(0) ' First element is case_num
-                first_name_pdl.Text = rowData(1) ' Second element is pdl_name
-                last_name_pdl.Text = rowData(2)
-                status_box.Text = rowData(3) ' Third element is status
-                crime_listed.Text = rowData(4)  ' Fourth element is crime
-                gender_profile.Text = rowData(5)  ' Fifth element is gender
-                ' Convert the date_birth value to a .NET DateTime object
-                Dim dateBirth As DateTime = GetDateTimeFromMySQLDate(rowData(6))
-                birth_display.Value = dateBirth
+        If isTabPage3 Then
+            ' Display the selected values in TabPage3
+            For Each rowDataItem As List(Of String) In rowData
+                cellblock_display.Text = rowDataItem(0)
+                gender_unit_display.Text = rowDataItem(1)
+                ' Display first_name and last_name if available
+                If rowDataItem.Count >= 4 Then
+                    ' Assuming cell_member_list is the third column in the DataGridView
+                    cell_block_table.Rows.Add(rowDataItem(2) & " " & rowDataItem(3))
+                Else
+                    ' No PDL assigned
+                    cell_block_table.Rows.Add("No PDL assigned")
+                End If
+            Next
+        Else
+            ' Display other information based on the provided row data
+            Try
+                For Each rowDataItem As List(Of String) In rowData
+                    If rowDataItem.Count > 1 Then
+                        case_unique_val.Text = rowDataItem(0) ' First element is case_num
+                        first_name_pdl.Text = rowDataItem(1) ' Second element is pdl_name
+                        last_name_pdl.Text = rowDataItem(2)
+                        status_box.Text = rowDataItem(3) ' Third element is status
+                        crime_listed.Text = rowDataItem(4)  ' Fourth element is crime
+                        gender_profile.Text = rowDataItem(5)  ' Fifth element is gender
+                        ' Convert the date_birth value to a .NET DateTime object
+                        Dim dateBirth As DateTime = GetDateTimeFromMySQLDate(rowDataItem(6))
+                        birth_display.Value = dateBirth
 
-                years_sentence.Text = rowData(7) ' Seventh element is sentence_years
-                cell_value_loc.Text = rowData(8)
-
-            End If
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+                        years_sentence.Text = rowDataItem(7) ' Seventh element is sentence_years
+                        cell_value_loc.Text = rowDataItem(8)
+                    End If
+                Next
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
     End Sub
+
+
+
 
     Private Function GetDateTimeFromMySQLDate(mysqlDate As String) As DateTime
         Dim formats() As String = {"yyyy-MM-dd", "dd/MM/yyyy hh:mm:ss tt"}
@@ -230,19 +248,19 @@ Public Class PDL_INFO
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         Try
             ' Get the values from the textboxes
-            Dim caseNum As String = input_caseNum.Text
-            Dim firstName As String = input_fname.Text
-            Dim lastName As String = input_Lname.Text
-            Dim status As String = input_status.Text
-            Dim crime As String = input_crime.Text
-            Dim gender As String = input_gender.Text
-            Dim dateOfBirth As String = input_birth_picker.Value.ToString("yyyy-MM-dd")
-            Dim sentenceYears As String = input_sentence.Text
-            Dim cellBlock As String = input_cellblock.Text
+            Dim caseNum = input_caseNum.Text
+            Dim firstName = input_fname.Text
+            Dim lastName = input_Lname.Text
+            Dim status = input_status.Text
+            Dim crime = input_crime.Text
+            Dim gender = input_gender.Text
+            Dim dateOfBirth = input_birth_picker.Value.ToString("yyyy-MM-dd")
+            Dim sentenceYears = input_sentence.Text
+            Dim cellBlock = input_cellblock.Text
 
             ' Open the database connection
             OpenConnection()
-            Dim query As String = "INSERT INTO pdl_list (case_num, first_name, last_name, status, crime, gender, date_birth, sentence_years, cellblock_id) VALUES (@caseNum, @firstName, @lastName, @status, @crime, @gender, @dateOfBirth, @sentenceYears, @cellblockid)"
+            Dim query = "INSERT INTO pdl_list (case_num, first_name, last_name, status, crime, gender, date_birth, sentence_years, cellblock_id) VALUES (@caseNum, @firstName, @lastName, @status, @crime, @gender, @dateOfBirth, @sentenceYears, @cellblockid)"
 
             Using cmd As New MySqlCommand(query, conn)
                 ' Add parameters to the command
@@ -269,7 +287,7 @@ Public Class PDL_INFO
             ' Close the database connection
             CloseConnection()
         End Try
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles delete_btn.Click
@@ -312,6 +330,39 @@ Public Class PDL_INFO
 
     Private Sub cancel_back_btn_Click(sender As Object, e As EventArgs) Handles cancel_back_btn.Click
         Me.Close()
+    End Sub
+
+    Private Sub cell_save_btn_Click(sender As Object, e As EventArgs) Handles cell_save_btn.Click
+        Try
+            Dim cellblockId As String = cell_blocknum.Text
+            Dim cellCapacity As Integer = CInt(cell_block_capacity.Value)
+            Dim genderUnit As String = cell_gender_units.SelectedItem.ToString()
+
+            ' Open the database connection
+            OpenConnection()
+
+            ' Construct the SQL insert query
+            Dim query As String = "INSERT INTO cell_block_list (cellblock_id, cell_capacity, gender_unit) VALUES (@cellblockId, @cellCapacity, @genderUnit)"
+
+            Using cmd As New MySqlCommand(query, conn)
+                ' Add parameters to the command
+                cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
+                cmd.Parameters.AddWithValue("@cellCapacity", cellCapacity)
+                cmd.Parameters.AddWithValue("@genderUnit", genderUnit)
+
+                ' Execute the insert query
+                cmd.ExecuteNonQuery()
+
+                ' Display a success message
+                MessageBox.Show("New cell block added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Using
+        Catch ex As Exception
+            ' Display an error message if an exception occurs
+            MessageBox.Show("Error adding new cell block: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Close the database connection
+            CloseConnection()
+        End Try
     End Sub
 End Class
 

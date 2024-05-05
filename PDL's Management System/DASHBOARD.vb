@@ -87,14 +87,18 @@ Public Class DASHBOARD
 
     Public Sub pdl_list_information_ContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles pdl_list_information.CellContentClick
         ' Check if the clicked cell is in the "acti" column and not in the header row
-
         If e.ColumnIndex = pdl_list_information.Columns("acti").Index AndAlso e.RowIndex >= 0 Then
             Try
                 ' Get all information for the selected row
                 Dim rowData As List(Of String) = GetRowDataFromDatabase(e.RowIndex)
 
                 ' Open the PDL_INFO form and pass the row data
-                Dim pdlInfoForm As New PDL_INFO(rowData)
+                ' Assuming rowData is a List(Of String) representing a single row of data
+                Dim rowDataList As New List(Of List(Of String))()
+                rowDataList.Add(rowData)
+
+                ' Now you can pass rowDataList to the constructor
+                Dim pdlInfoForm As New PDL_INFO(rowDataList)
                 pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage1
                 pdlInfoForm.ShowDialog()
             Catch ex As Exception
@@ -161,18 +165,37 @@ Public Class DASHBOARD
         End Using
     End Sub
 
-    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
+    Private Sub create_pdl_list_Click(sender As Object, e As EventArgs) Handles create_pdl_list.Click
         Dim rowData As New List(Of String)()
-        Dim pdl_info As New PDL_INFO(rowData)
-        pdl_info.Guna2TabControl1.SelectedTab = pdl_info.TabPage2
-        pdl_info.ShowDialog()
+        Dim rowDataList As New List(Of List(Of String))()
+        rowDataList.Add(rowData)
+
+        ' Now you can pass rowDataList to the constructor
+        Dim pdlInfoForm As New PDL_INFO(rowDataList)
+        pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage2
+        pdlInfoForm.ShowDialog()
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         Try
             OpenConnection()
+
             If Connection.conn.State = ConnectionState.Open Then
                 RefreshDataGridView()
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        Try
+            OpenConnection()
+
+            If Connection.conn.State = ConnectionState.Open Then
+                RefreshCellBlockDataGrid()
             End If
         Catch ex As Exception
             Throw New Exception("Error updating data in database: " & ex.Message)
@@ -199,16 +222,63 @@ Public Class DASHBOARD
         End Using
     End Sub
 
+    Private Function GetFromCellBlockList(cellblockId As String) As List(Of List(Of String))
+        Dim rowDataList As New List(Of List(Of String))()
+        Try
+            OpenConnection()
+            If conn.State = ConnectionState.Open Then
+                ' Fetch cellblock_id, gender_unit, and corresponding PDL names from pdl_list
+                Dim query As String = "SELECT cb.cellblock_id, cb.gender_unit, pl.first_name, pl.last_name " &
+                                  "FROM cell_block_list cb " &
+                                  "LEFT JOIN pdl_list pl ON cb.cellblock_id = pl.cellblock_id " &
+                                  "WHERE cb.cellblock_id = @cellblockId"
+                Using cmd As New MySqlCommand(query, Connection.conn)
+                    cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
+                    Dim reader As MySqlDataReader = cmd.ExecuteReader()
+                    While reader.Read()
+                        Dim rowData As New List(Of String)()
+                        ' Add cellblock_id, gender_unit, first_name, and last_name to the rowData list
+                        rowData.Add(reader("cellblock_id").ToString())
+                        rowData.Add(reader("gender_unit").ToString())
+                        ' Add first_name and last_name if they are not null
+                        If Not IsDBNull(reader("first_name")) Then
+                            rowData.Add(reader("first_name").ToString())
+                        End If
+                        If Not IsDBNull(reader("last_name")) Then
+                            rowData.Add(reader("last_name").ToString())
+                        End If
+                        ' Add the rowData to the rowDataList
+                        rowDataList.Add(rowData)
+                    End While
+                    reader.Close()
+                End Using
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error fetching row data from database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+        Return rowDataList
+    End Function
+
     Public Sub cell_block_table_ContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles cell_block_table.CellContentClick
         If e.ColumnIndex = cell_block_table.Columns("act").Index AndAlso e.RowIndex >= 0 Then
             Try
-                ' Get all information for the selected row
-                Dim rowData As List(Of String) = GetRowDataFromDatabase(e.RowIndex) ' Assuming you have a similar method to fetch row data
+                ' Get the selected cellblock_id from the cell_block_table DataGridView
+                Dim cellblockId As String = cell_block_table.Rows(e.RowIndex).Cells("cell_num").Value.ToString()
 
-                ' Open the PDL_INFO form and pass the row data
-                Dim pdlInfoForm As New PDL_INFO(rowData)
-                pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage3
-                pdlInfoForm.ShowDialog()
+                ' Call the function to retrieve data from cell_block_list table based on cellblock_id
+                Dim rowDataList As List(Of List(Of String)) = GetFromCellBlockList(cellblockId)
+
+                ' Check if data is retrieved successfully
+                If rowDataList.Count > 0 Then
+                    ' Open the PDL_INFO form and pass the retrieved data
+                    Dim pdlInfoForm As New PDL_INFO(rowDataList, True) ' Pass True for TabPage3
+                    pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage3
+                    pdlInfoForm.ShowDialog()
+                Else
+                    MessageBox.Show("Error: Unable to retrieve data for the selected cellblock.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
             Catch ex As Exception
                 MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -216,5 +286,15 @@ Public Class DASHBOARD
     End Sub
 
 
+    Private Sub create_new_cellblock_Click(sender As Object, e As EventArgs) Handles create_new_cellblock.Click
+        Dim rowData As New List(Of String)()
+        Dim rowDataList As New List(Of List(Of String))()
+        rowDataList.Add(rowData)
+
+        ' Now you can pass rowDataList to the constructor
+        Dim pdlInfoForm As New PDL_INFO(rowDataList)
+        pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage2
+        pdlInfoForm.ShowDialog()
+    End Sub
 End Class
 
