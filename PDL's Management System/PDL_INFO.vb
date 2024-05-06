@@ -8,7 +8,7 @@ Public Class PDL_INFO
         update_btn.Visible = False
         cancel_btn.Visible = False
         delete_btn.Visible = False
-        PopulateCombobox()
+        PopulateComboBox(cellblock_location)
     End Sub
 
     Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False)
@@ -27,6 +27,10 @@ Public Class PDL_INFO
                     ' No PDL assigned
                     cell_block_table.Rows.Add("No PDL assigned")
                 End If
+                ' Display display_capacity if available
+                If rowDataItem.Count >= 5 Then
+                    display_capacity.Text = rowDataItem(4)
+                End If
             Next
         Else
             ' Display other information based on the provided row data
@@ -44,6 +48,10 @@ Public Class PDL_INFO
                         birth_display.Value = dateBirth
                         years_sentence.Text = rowDataItem(7) ' Seventh element is sentence_years
                         display_cellBlockVal.Text = rowDataItem(8)
+                        ' Display display_capacity if available
+                        If rowDataItem.Count >= 10 Then
+                            display_capacity.Text = rowDataItem(9)
+                        End If
                     End If
                 Next
             Catch ex As Exception
@@ -64,7 +72,7 @@ Public Class PDL_INFO
 
     Private Sub edit_btn_Click(sender As Object, e As EventArgs) Handles edit_btn.Click
         'Textbox Design
-        PopulateCombobox()
+        PopulateComboBox(cellblock_location)
         first_name_pdl.FillColor = Color.White
         first_name_pdl.ForeColor = Color.Black
         first_name_pdl.ReadOnly = False
@@ -252,7 +260,7 @@ Public Class PDL_INFO
             Dim gender = input_gender.Text
             Dim dateOfBirth = input_birth_picker.Value.ToString("yyyy-MM-dd")
             Dim sentenceYears = input_sentence.Text
-            Dim cellBlock = input_cellblock.Text
+            Dim cellBlock = assign_cellblock.Text
 
             ' Open the database connection
             OpenConnection()
@@ -361,26 +369,78 @@ Public Class PDL_INFO
         End Try
     End Sub
 
-    Public Sub PopulateCombobox()
-        cellblock_location.Items.Clear()
+    Public Sub PopulateComboBox(comboBox As Guna.UI2.WinForms.Guna2ComboBox)
+        comboBox.Items.Clear()
+        Try
+            OpenConnection()
+            If conn.State = ConnectionState.Open Then
+                Dim gender As String = If(String.IsNullOrWhiteSpace(input_gender.Text), gender_profile.Text, input_gender.Text)
+                Dim query As String = "SELECT DISTINCT cb.cellblock_id " &
+                                  "FROM cell_block_list cb " &
+                                  "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl " &
+                                  "ON cb.cellblock_id = pl.cellblock_id " &
+                                  "INNER JOIN pdl_list AS pdl ON cb.gender_unit = pdl.gender " &
+                                  "WHERE (pl.num_occupants IS NULL OR pl.num_occupants < cb.cell_capacity)" &
+                                  If(Not String.IsNullOrWhiteSpace(gender), " AND pdl.gender = @gender", "")
+
+                Using cmd As New MySqlCommand(query, conn)
+                    If Not String.IsNullOrWhiteSpace(gender) Then cmd.Parameters.AddWithValue("@gender", gender)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            comboBox.Items.Add(reader("cellblock_id").ToString())
+                        End While
+                    End Using
+                End Using
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub gender_profile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gender_profile.SelectedIndexChanged
+        PopulateComboBox(cellblock_location)
+    End Sub
+
+    Private Sub input_gender_SelectedIndexChanged(sender As Object, e As EventArgs) Handles input_gender.SelectedIndexChanged
+        PopulateComboBox(assign_cellblock)
+    End Sub
+
+    Public Sub DisplayCapacity(cellblockId As String)
         Try
             ' Open connection to the database
             OpenConnection()
 
             ' Check if the connection is open
             If conn.State = ConnectionState.Open Then
-                ' Define the query to retrieve cellblock_id values
-                Dim query As String = "SELECT cellblock_id FROM cell_block_list"
+                ' Define the test query
+                Dim query As String = "SELECT IFNULL(pl.num_occupants, 0) AS num_occupants, cb.cell_capacity " &
+                                   "FROM cell_block_list cb " &
+                                   "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl " &
+                                   "ON cb.cellblock_id = pl.cellblock_id " &
+                                   "WHERE cb.cellblock_id = @cellblockId"
 
                 ' Create a command object with the query and connection
                 Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
                     ' Execute the query and get a reader object
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        ' Loop through the results
-                        While reader.Read()
-                            ' Add each cellblock_id to the ComboBox
-                            cellblock_location.Items.Add(reader("cellblock_id").ToString())
-                        End While
+                        ' Check if there are any results
+                        If reader.HasRows Then
+                            ' Read the first row
+                            reader.Read()
+
+                            ' Extract values from the reader
+                            Dim numOccupants As Integer = Convert.ToInt32(reader("num_occupants"))
+                            Dim cellCapacity As Integer = Convert.ToInt32(reader("cell_capacity"))
+
+                            ' Format the display capacity
+                            Dim displayCapacity As String = $"{numOccupants}/{cellCapacity}"
+
+                            ' Set the display capacity text
+                            display_capacity.Text = displayCapacity
+                        End If
                     End Using
                 End Using
             End If
@@ -392,5 +452,6 @@ Public Class PDL_INFO
             CloseConnection()
         End Try
     End Sub
+
 
 End Class

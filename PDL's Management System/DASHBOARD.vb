@@ -169,7 +169,6 @@ Public Class DASHBOARD
         Dim rowData As New List(Of String)()
         Dim rowDataList As New List(Of List(Of String))()
         rowDataList.Add(rowData)
-
         ' Now you can pass rowDataList to the constructor
         Dim pdlInfoForm As New PDL_INFO(rowDataList)
         pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage2
@@ -227,17 +226,18 @@ Public Class DASHBOARD
         Try
             OpenConnection()
             If conn.State = ConnectionState.Open Then
-                ' Fetch cellblock_id, gender_unit, and corresponding PDL names from pdl_list
-                Dim query As String = "SELECT cb.cellblock_id, cb.gender_unit, pl.first_name, pl.last_name " &
+                ' Define the SQL query to retrieve data
+                Dim query As String = "SELECT cb.cellblock_id, cb.gender_unit, pdl.first_name, pdl.last_name, cb.cell_capacity, IFNULL(pl.num_occupants, 0) AS num_occupants, CONCAT(IFNULL(pl.num_occupants, 0), '/', cb.cell_capacity) AS display_capacity " &
                                   "FROM cell_block_list cb " &
-                                  "LEFT JOIN pdl_list pl ON cb.cellblock_id = pl.cellblock_id " &
+                                  "LEFT JOIN pdl_list pdl ON cb.cellblock_id = pdl.cellblock_id " &
+                                  "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl ON cb.cellblock_id = pl.cellblock_id " &
                                   "WHERE cb.cellblock_id = @cellblockId"
                 Using cmd As New MySqlCommand(query, Connection.conn)
                     cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
                     While reader.Read()
                         Dim rowData As New List(Of String)()
-                        ' Add cellblock_id, gender_unit, first_name, and last_name to the rowData list
+                        ' Add cellblock_id, gender_unit, first_name, last_name, display_capacity to the rowData list
                         rowData.Add(reader("cellblock_id").ToString())
                         rowData.Add(reader("gender_unit").ToString())
                         ' Add first_name and last_name if they are not null
@@ -247,6 +247,8 @@ Public Class DASHBOARD
                         If Not IsDBNull(reader("last_name")) Then
                             rowData.Add(reader("last_name").ToString())
                         End If
+                        ' Add display_capacity
+                        rowData.Add(reader("display_capacity").ToString())
                         ' Add the rowData to the rowDataList
                         rowDataList.Add(rowData)
                     End While
