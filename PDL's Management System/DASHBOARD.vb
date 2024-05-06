@@ -237,7 +237,7 @@ Public Class DASHBOARD
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
                     While reader.Read()
                         Dim rowData As New List(Of String)()
-                        ' Add cellblock_id, gender_unit, first_name, last_name, display_capacity to the rowData list
+                        ' Add cellblock_id, gender_unit, first_name, last_name, display_capacity to the rowData l
                         rowData.Add(reader("cellblock_id").ToString())
                         rowData.Add(reader("gender_unit").ToString())
                         ' Add first_name and last_name if they are not null
