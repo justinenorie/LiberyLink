@@ -5,7 +5,6 @@ Public Class DASHBOARD
         Try
             OpenConnection()
             If conn.State = ConnectionState.Open Then
-                ' Retrieve the admin key
                 Dim adminQuery As String = "SELECT admin_key FROM admin WHERE username = @username AND password = @password;"
                 Using adminCmd As New MySqlCommand(adminQuery, Connection.conn)
                     adminCmd.Parameters.AddWithValue("@username", LOGINFORM.txtUsername.Text.Trim())
@@ -17,9 +16,8 @@ Public Class DASHBOARD
                         MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End Using
-                ' Populate the DataGridView
+                DisplayStatusCounts()
                 RefreshDataGridView()
-
                 RefreshCellBlockDataGrid()
             Else
                 MessageBox.Show("Database connection is not open.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -29,6 +27,43 @@ Public Class DASHBOARD
         Finally
             CloseConnection()
         End Try
+    End Sub
+
+    Public Sub DisplayStatusCounts()
+        ' Check if the connection is open
+        If conn.State = ConnectionState.Open Then
+            ' Query to count rows for each status
+            Dim query As String = "SELECT status, COUNT(*) AS num_rows FROM pdl_list GROUP BY status;"
+
+            ' Create a command object with the query and connection
+            Using cmd As New MySqlCommand(query, conn)
+                ' Execute the query and get a reader object
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    ' Initialize counts for both statuses to 0
+                    Dim activeCount As Integer = 0
+                    Dim releasedCount As Integer = 0
+
+                    ' Loop through the results
+                    While reader.Read()
+                        ' Extract status and count values from the reader
+                        Dim status As String = reader("status").ToString()
+                        Dim count As Integer = Convert.ToInt32(reader("num_rows"))
+
+                        ' Update the count for the respective status
+                        If status = "Active" Then
+                            activeCount = count
+                        ElseIf status = "Released" Then
+                            releasedCount = count
+                        End If
+                    End While
+
+                    ' Update the label texts
+                    active_pdl_dis.Text = activeCount.ToString()
+                    released_pdl_dis.Text = releasedCount.ToString()
+                End Using
+            End Using
+        End If
+
     End Sub
 
     Private Sub TabButton_Click(sender As Object, e As EventArgs) Handles Btn_1.Click, Btn_2.Click, Btn_3.Click, Btn_4.Click, Btn_5.Click, log_out.Click
@@ -109,6 +144,7 @@ Public Class DASHBOARD
         Try
             OpenConnection()
             If Connection.conn.State = ConnectionState.Open Then
+                DisplayStatusCounts()
                 RefreshDataGridView()
             End If
         Catch ex As Exception
@@ -289,6 +325,7 @@ Public Class DASHBOARD
 
 
     Private Sub create_new_cellblock_Click(sender As Object, e As EventArgs) Handles create_new_cellblock.Click
+        DisplayStatusCounts()
         Dim rowData As New List(Of String)()
         Dim rowDataList As New List(Of List(Of String))()
         rowDataList.Add(rowData)

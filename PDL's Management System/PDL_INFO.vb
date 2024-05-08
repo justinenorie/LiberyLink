@@ -13,42 +13,33 @@ Public Class PDL_INFO
 
     Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False)
         InitializeComponent()
-
         If isTabPage3 Then
-            ' Display the selected values in TabPage3
             For Each rowDataItem As List(Of String) In rowData
                 cellblock_display.Text = rowDataItem(0)
                 gender_unit_display.Text = rowDataItem(1)
-                ' Display first_name and last_name if available
                 If rowDataItem.Count >= 4 Then
-                    ' Assuming cell_member_list is the third column in the DataGridView
                     cell_block_table.Rows.Add(rowDataItem(2) & " " & rowDataItem(3))
                 Else
-                    ' No PDL assigned
                     cell_block_table.Rows.Add("No PDL assigned")
                 End If
-                ' Display display_capacity if available
                 If rowDataItem.Count >= 5 Then
                     display_capacity.Text = rowDataItem(4)
                 End If
             Next
         Else
-            ' Display other information based on the provided row data
             Try
                 For Each rowDataItem As List(Of String) In rowData
                     If rowDataItem.Count > 1 Then
-                        case_unique_val.Text = rowDataItem(0) ' First element is case_num
-                        first_name_pdl.Text = rowDataItem(1) ' Second element is pdl_name
+                        case_unique_val.Text = rowDataItem(0)
+                        first_name_pdl.Text = rowDataItem(1)
                         last_name_pdl.Text = rowDataItem(2)
-                        status_box.Text = rowDataItem(3) ' Third element is status
-                        crime_listed.Text = rowDataItem(4)  ' Fourth element is crime
-                        gender_profile.Text = rowDataItem(5)  ' Fifth element is gender
-                        ' Convert the date_birth value to a .NET DateTime object
+                        status_box.Text = rowDataItem(3)
+                        crime_listed.Text = rowDataItem(4)
+                        gender_profile.Text = rowDataItem(5)
                         Dim dateBirth As DateTime = GetDateTimeFromMySQLDate(rowDataItem(6))
                         birth_display.Value = dateBirth
-                        years_sentence.Text = rowDataItem(7) ' Seventh element is sentence_years
+                        years_sentence.Text = rowDataItem(7)
                         display_cellBlockVal.Text = rowDataItem(8)
-                        ' Display display_capacity if available
                         If rowDataItem.Count >= 10 Then
                             display_capacity.Text = rowDataItem(9)
                         End If
@@ -71,8 +62,14 @@ Public Class PDL_INFO
     End Function
 
     Private Sub edit_btn_Click(sender As Object, e As EventArgs) Handles edit_btn.Click
-        'Textbox Design
-        PopulateComboBox(cellblock_location)
+        ' Check if the display_cellBlockVal textbox has a value
+        If Not String.IsNullOrEmpty(display_cellBlockVal.Text) Then
+            ' Add the value from the textbox as an item to the combobox
+            cellblock_location.Items.Add(display_cellBlockVal.Text)
+            ' Set the SelectedIndex property to the index of the added item
+            cellblock_location.SelectedIndex = cellblock_location.Items.Count - 1
+        End If
+
         first_name_pdl.FillColor = Color.White
         first_name_pdl.ForeColor = Color.Black
         first_name_pdl.ReadOnly = False
@@ -215,6 +212,7 @@ Public Class PDL_INFO
                 UpdateDataInDatabase(updatedCaseNum, updatedFirstName, updatedLastName, updatedStatus, updatedCrime, updatedGender, updatedDateOfBirth, updatedYearsSentence, updatedCellBLock)
                 MessageBox.Show("Information updated successfully!")
                 dashboardForm.RefreshDataGridView()
+                dashboardForm.DisplayStatusCounts()
                 ' Clear the DataGridView rows and refresh it
             End If
         Catch ex As Exception
@@ -376,12 +374,12 @@ Public Class PDL_INFO
             If conn.State = ConnectionState.Open Then
                 Dim gender As String = If(String.IsNullOrWhiteSpace(input_gender.Text), gender_profile.Text, input_gender.Text)
                 Dim query As String = "SELECT DISTINCT cb.cellblock_id " &
-                                  "FROM cell_block_list cb " &
-                                  "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl " &
-                                  "ON cb.cellblock_id = pl.cellblock_id " &
-                                  "INNER JOIN pdl_list AS pdl ON cb.gender_unit = pdl.gender " &
-                                  "WHERE (pl.num_occupants IS NULL OR pl.num_occupants < cb.cell_capacity)" &
-                                  If(Not String.IsNullOrWhiteSpace(gender), " AND pdl.gender = @gender", "")
+                              "FROM cell_block_list cb " &
+                              "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl " &
+                              "ON cb.cellblock_id = pl.cellblock_id " &
+                              "INNER JOIN pdl_list AS pdl ON cb.gender_unit = pdl.gender " &
+                              "WHERE (pl.num_occupants IS NULL OR pl.num_occupants < cb.cell_capacity)" &
+                              If(Not String.IsNullOrWhiteSpace(gender), " AND pdl.gender = @gender", "")
 
                 Using cmd As New MySqlCommand(query, conn)
                     If Not String.IsNullOrWhiteSpace(gender) Then cmd.Parameters.AddWithValue("@gender", gender)
@@ -407,51 +405,7 @@ Public Class PDL_INFO
         PopulateComboBox(assign_cellblock)
     End Sub
 
-    Public Sub DisplayCapacity(cellblockId As String)
-        Try
-            ' Open connection to the database
-            OpenConnection()
-
-            ' Check if the connection is open
-            If conn.State = ConnectionState.Open Then
-                ' Define the test query
-                Dim query As String = "SELECT IFNULL(pl.num_occupants, 0) AS num_occupants, cb.cell_capacity " &
-                                   "FROM cell_block_list cb " &
-                                   "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl " &
-                                   "ON cb.cellblock_id = pl.cellblock_id " &
-                                   "WHERE cb.cellblock_id = @cellblockId"
-
-                ' Create a command object with the query and connection
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
-                    ' Execute the query and get a reader object
-                    Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        ' Check if there are any results
-                        If reader.HasRows Then
-                            ' Read the first row
-                            reader.Read()
-
-                            ' Extract values from the reader
-                            Dim numOccupants As Integer = Convert.ToInt32(reader("num_occupants"))
-                            Dim cellCapacity As Integer = Convert.ToInt32(reader("cell_capacity"))
-
-                            ' Format the display capacity
-                            Dim displayCapacity As String = $"{numOccupants}/{cellCapacity}"
-
-                            ' Set the display capacity text
-                            display_capacity.Text = displayCapacity
-                        End If
-                    End Using
-                End Using
-            End If
-        Catch ex As Exception
-            ' Handle any errors
-            MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            ' Close the database connection
-            CloseConnection()
-        End Try
+    Private Sub createCell_cancelBtn_Click(sender As Object, e As EventArgs) Handles createCell_cancelBtn.Click
+        Me.Close()
     End Sub
-
-
 End Class
