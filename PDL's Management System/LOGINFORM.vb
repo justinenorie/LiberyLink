@@ -4,7 +4,6 @@ Public Class LOGINFORM
     Private Sub LOGINFORM_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtUsername.Text = ""
         txtPassword.PasswordChar = "*"
-        Me.StartPosition = FormStartPosition.CenterScreen
     End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click

@@ -9,6 +9,8 @@ Public Class PDL_INFO
         cancel_btn.Visible = False
         delete_btn.Visible = False
         PopulateComboBox(cellblock_location)
+        DisplayPDLsForCellBlock()
+
     End Sub
 
     Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False)
@@ -61,13 +63,18 @@ Public Class PDL_INFO
         End If
     End Function
 
+    Private editButtonClicked As Boolean = False
     Private Sub edit_btn_Click(sender As Object, e As EventArgs) Handles edit_btn.Click
-        ' Check if the display_cellBlockVal textbox has a value
         If Not String.IsNullOrEmpty(display_cellBlockVal.Text) Then
-            ' Add the value from the textbox as an item to the combobox
-            cellblock_location.Items.Add(display_cellBlockVal.Text)
-            ' Set the SelectedIndex property to the index of the added item
-            cellblock_location.SelectedIndex = cellblock_location.Items.Count - 1
+            If Not editButtonClicked Then
+                cellblock_location.Items.Add(display_cellBlockVal.Text)
+                cellblock_location.SelectedIndex = cellblock_location.Items.Count - 1
+                editButtonClicked = True
+            Else
+                cellblock_location.Items.Clear()
+                PopulateComboBox(cellblock_location)
+                editButtonClicked = False
+            End If
         End If
 
         first_name_pdl.FillColor = Color.White
@@ -220,7 +227,6 @@ Public Class PDL_INFO
         Finally
             CloseConnection()
         End Try
-        ' Display a success message
         Close()
     End Sub
 
@@ -331,31 +337,30 @@ Public Class PDL_INFO
     End Sub
 
     Private Sub cancel_back_btn_Click(sender As Object, e As EventArgs) Handles cancel_back_btn.Click
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub cell_save_btn_Click(sender As Object, e As EventArgs) Handles cell_save_btn.Click
+        Dim dashboardForm As New DASHBOARD
         Try
-            Dim cellblockId As String = cell_blocknum.Text
-            Dim cellCapacity As Integer = CInt(cell_block_capacity.Value)
-            Dim genderUnit As String = cell_gender_units.SelectedItem.ToString()
+            If String.IsNullOrEmpty(cell_blocknum.Text) Then
+                MessageBox.Show("Please enter a cell block number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
 
-            ' Open the database connection
+            Dim cellblockId = cell_blocknum.Text
+            Dim cellCapacity As Integer = cell_block_capacity.Value
+            Dim genderUnit = cell_gender_units.SelectedItem.ToString
+
             OpenConnection()
-
-            ' Construct the SQL insert query
-            Dim query As String = "INSERT INTO cell_block_list (cellblock_id, cell_capacity, gender_unit) VALUES (@cellblockId, @cellCapacity, @genderUnit)"
-
+            dashboardForm.RefreshDataGridView()
+            dashboardForm.DisplayStatusCounts()
+            Dim query = "INSERT INTO cell_block_list (cellblock_id, cell_capacity, gender_unit) VALUES (@cellblockId, @cellCapacity, @genderUnit)"
             Using cmd As New MySqlCommand(query, conn)
-                ' Add parameters to the command
                 cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
                 cmd.Parameters.AddWithValue("@cellCapacity", cellCapacity)
                 cmd.Parameters.AddWithValue("@genderUnit", genderUnit)
-
-                ' Execute the insert query
                 cmd.ExecuteNonQuery()
-
-                ' Display a success message
                 MessageBox.Show("New cell block added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End Using
         Catch ex As Exception
@@ -365,6 +370,7 @@ Public Class PDL_INFO
             ' Close the database connection
             CloseConnection()
         End Try
+        Close()
     End Sub
 
     Public Sub PopulateComboBox(comboBox As Guna.UI2.WinForms.Guna2ComboBox)
@@ -374,15 +380,14 @@ Public Class PDL_INFO
             If conn.State = ConnectionState.Open Then
                 Dim gender As String = If(String.IsNullOrWhiteSpace(input_gender.Text), gender_profile.Text, input_gender.Text)
                 Dim query As String = "SELECT DISTINCT cb.cellblock_id " &
-                              "FROM cell_block_list cb " &
-                              "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl " &
-                              "ON cb.cellblock_id = pl.cellblock_id " &
-                              "INNER JOIN pdl_list AS pdl ON cb.gender_unit = pdl.gender " &
-                              "WHERE (pl.num_occupants IS NULL OR pl.num_occupants < cb.cell_capacity)" &
-                              If(Not String.IsNullOrWhiteSpace(gender), " AND pdl.gender = @gender", "")
+                                  "FROM cell_block_list cb " &
+                                  "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl " &
+                                  "ON cb.cellblock_id = pl.cellblock_id " &
+                                  "LEFT JOIN pdl_list AS pdl ON cb.cellblock_id = pdl.cellblock_id " &
+                                  "WHERE cb.gender_unit = @gender AND (pl.num_occupants IS NULL OR pl.num_occupants < cb.cell_capacity)"
 
                 Using cmd As New MySqlCommand(query, conn)
-                    If Not String.IsNullOrWhiteSpace(gender) Then cmd.Parameters.AddWithValue("@gender", gender)
+                    cmd.Parameters.AddWithValue("@gender", gender)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         While reader.Read()
                             comboBox.Items.Add(reader("cellblock_id").ToString())
@@ -407,5 +412,90 @@ Public Class PDL_INFO
 
     Private Sub createCell_cancelBtn_Click(sender As Object, e As EventArgs) Handles createCell_cancelBtn.Click
         Me.Close()
+    End Sub
+
+    Private Sub cell_modify_btn_Click(sender As Object, e As EventArgs) Handles cell_modify_btn.Click
+        cell_modify_btn.Visible = False
+        cell_delete_btn.Visible = True
+        save_btn_cell.Visible = True
+        cell_cancel_btn.Visible = True
+        cellval_display_capacity.Visible = True
+        display_capacity.Visible = False
+    End Sub
+
+    Private Sub save_btn_cell_Click(sender As Object, e As EventArgs) Handles save_btn_cell.Click
+        Dim dashboardForm As New DASHBOARD
+        Try
+            If cellval_display_capacity.Value <= 0 Then
+                MessageBox.Show("Please enter a valid capacity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            Dim cellblockId As String = cellblock_display.Text
+            Dim cellCapacity As Integer = CInt(cellval_display_capacity.Value)
+
+            OpenConnection()
+            dashboardForm.RefreshDataGridView()
+            dashboardForm.DisplayStatusCounts()
+            If Not cellval_display_capacity.Value <= 0 Then
+                Dim updateQuery As String = "UPDATE cell_block_list SET cell_capacity = @cellCapacity WHERE cellblock_id = @cellblockId"
+
+                Using updateCmd As New MySqlCommand(updateQuery, conn)
+                    updateCmd.Parameters.AddWithValue("@cellCapacity", cellCapacity)
+                    updateCmd.Parameters.AddWithValue("@cellblockId", cellblockId)
+                    updateCmd.ExecuteNonQuery()
+                    MessageBox.Show("Cell Capacity update successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Using
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            CloseConnection()
+        End Try
+        cell_modify_btn.Visible = True
+        cell_delete_btn.Visible = False
+        save_btn_cell.Visible = False
+        cell_cancel_btn.Visible = False
+        cellval_display_capacity.Visible = False
+        display_capacity.Visible = True
+        Me.Close()
+    End Sub
+
+    Private Sub DisplayPDLsForCellBlock()
+        Try
+            OpenConnection()
+            Dim cellblockId As String = cellblock_display.Text
+            Dim query As String = "SELECT cb.cellblock_id, cb.gender_unit, pdl.first_name, pdl.last_name, cb.cell_capacity, IFNULL(pl.num_occupants, 0) AS num_occupants " &
+                                "FROM cell_block_list cb " &
+                                "LEFT JOIN pdl_list pdl ON cb.cellblock_id = pdl.cellblock_id " &
+                                "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl ON cb.cellblock_id = pl.cellblock_id " &
+                                "WHERE cb.cellblock_id = @cellblockId"
+            Using cmd As New MySqlCommand(query, Connection.conn)
+                cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
+                Dim reader As MySqlDataReader = cmd.ExecuteReader()
+                If reader.Read() Then
+                    cellblock_display.Text = reader("cellblock_id").ToString()
+                    gender_unit_display.Text = reader("gender_unit").ToString()
+                    Dim numOccupants As Integer = Convert.ToInt32(reader("num_occupants"))
+                    Dim cellCapacity As Integer = Convert.ToInt32(reader("cell_capacity"))
+                    Dim displayCapacity As String = $"{numOccupants}/{cellCapacity}"
+                    display_capacity.Text = displayCapacity
+                End If
+                reader.Close()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub cell_cancel_btn_Click(sender As Object, e As EventArgs) Handles cell_cancel_btn.Click
+        cell_modify_btn.Visible = True
+        cell_delete_btn.Visible = False
+        save_btn_cell.Visible = False
+        cell_cancel_btn.Visible = False
+        cellval_display_capacity.Visible = False
+        display_capacity.Visible = True
     End Sub
 End Class

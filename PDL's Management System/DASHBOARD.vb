@@ -30,42 +30,36 @@ Public Class DASHBOARD
     End Sub
 
     Public Sub DisplayStatusCounts()
-        ' Check if the connection is open
         If conn.State = ConnectionState.Open Then
-            ' Query to count rows for each status
-            Dim query As String = "SELECT status, COUNT(*) AS num_rows FROM pdl_list GROUP BY status;"
-
-            ' Create a command object with the query and connection
+            Dim query As String = "SELECT 'Active' AS status, COUNT(*) AS num_rows FROM pdl_list WHERE status = 'Active' " &
+                              "UNION " &
+                              "SELECT 'Released' AS status, COUNT(*) AS num_rows FROM pdl_list WHERE status = 'Released' " &
+                              "UNION " &
+                              "SELECT 'Cell Blocks' AS status, COUNT(*) AS num_rows FROM cell_block_list;"
             Using cmd As New MySqlCommand(query, conn)
-                ' Execute the query and get a reader object
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
-                    ' Initialize counts for both statuses to 0
                     Dim activeCount As Integer = 0
                     Dim releasedCount As Integer = 0
+                    Dim cellBlockCount As Integer = 0
 
-                    ' Loop through the results
                     While reader.Read()
-                        ' Extract status and count values from the reader
                         Dim status As String = reader("status").ToString()
                         Dim count As Integer = Convert.ToInt32(reader("num_rows"))
-
-                        ' Update the count for the respective status
                         If status = "Active" Then
                             activeCount = count
                         ElseIf status = "Released" Then
                             releasedCount = count
+                        ElseIf status = "Cell Blocks" Then
+                            cellBlockCount = count
                         End If
                     End While
-
-                    ' Update the label texts
                     active_pdl_dis.Text = activeCount.ToString()
                     released_pdl_dis.Text = releasedCount.ToString()
+                    total_cell_block.Text = cellBlockCount.ToString()
                 End Using
             End Using
         End If
-
     End Sub
-
     Private Sub TabButton_Click(sender As Object, e As EventArgs) Handles Btn_1.Click, Btn_2.Click, Btn_3.Click, Btn_4.Click, Btn_5.Click, log_out.Click
         ' Cast the sender object back to a Button to identify which button was clicked
         Dim clickedButton = DirectCast(sender, Guna2Button)
@@ -108,6 +102,7 @@ Public Class DASHBOARD
         End Select
     End Sub
 
+    'SEARCH BARS FUNCTION'
     Private Sub pdl_searchbar_TextChanged(sender As Object, e As EventArgs) Handles pdl_searchbar.TextChanged
         Dim searchTerm As String = pdl_searchbar.Text.Trim()
         For Each row As DataGridViewRow In pdl_list_information.Rows
@@ -115,6 +110,31 @@ Public Class DASHBOARD
                 Dim matchFound As Boolean = False
                 ' Check if any cell in the specified columns contains the search term
                 matchFound = row.Cells.Cast(Of DataGridViewCell)().Where(Function(cell) cell.ColumnIndex >= 0 AndAlso cell.ColumnIndex <= 4 AndAlso cell.Value IsNot Nothing AndAlso cell.Value.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0).Any()
+                row.Visible = If(String.IsNullOrEmpty(searchTerm), True, matchFound)
+            End If
+        Next
+    End Sub
+
+    Private Sub cell_search_bar_TextChanged(sender As Object, e As EventArgs) Handles cell_search_bar.TextChanged
+        Dim searchTerm As String = cell_search_bar.Text.Trim()
+        For Each row As DataGridViewRow In cell_block_table.Rows
+            If Not row.IsNewRow Then
+                Dim matchFound As Boolean = False
+                For Each cell As DataGridViewCell In row.Cells
+                    If cell.ColumnIndex >= 0 AndAlso cell.ColumnIndex <= 4 AndAlso cell.Value IsNot Nothing Then
+                        If searchTerm.Equals("Male", StringComparison.OrdinalIgnoreCase) Then
+                            If cell.Value.ToString().Equals("Male", StringComparison.OrdinalIgnoreCase) Then
+                                matchFound = True
+                                Exit For
+                            End If
+                        Else
+                            If cell.Value.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 Then
+                                matchFound = True
+                                Exit For
+                            End If
+                        End If
+                    End If
+                Next
                 row.Visible = If(String.IsNullOrEmpty(searchTerm), True, matchFound)
             End If
         Next
@@ -230,6 +250,7 @@ Public Class DASHBOARD
             OpenConnection()
 
             If Connection.conn.State = ConnectionState.Open Then
+                DisplayStatusCounts()
                 RefreshCellBlockDataGrid()
             End If
         Catch ex As Exception
@@ -263,17 +284,16 @@ Public Class DASHBOARD
             OpenConnection()
             If conn.State = ConnectionState.Open Then
                 ' Define the SQL query to retrieve data
-                Dim query As String = "SELECT cb.cellblock_id, cb.gender_unit, pdl.first_name, pdl.last_name, cb.cell_capacity, IFNULL(pl.num_occupants, 0) AS num_occupants, CONCAT(IFNULL(pl.num_occupants, 0), '/', cb.cell_capacity) AS display_capacity " &
-                                  "FROM cell_block_list cb " &
-                                  "LEFT JOIN pdl_list pdl ON cb.cellblock_id = pdl.cellblock_id " &
-                                  "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl ON cb.cellblock_id = pl.cellblock_id " &
-                                  "WHERE cb.cellblock_id = @cellblockId"
+                Dim query As String = "SELECT cb.cellblock_id, cb.gender_unit, pdl.first_name, pdl.last_name, cb.cell_capacity, IFNULL(pl.num_occupants, 0) AS num_occupants " &
+                            "FROM cell_block_list cb " &
+                            "LEFT JOIN pdl_list pdl ON cb.cellblock_id = pdl.cellblock_id " &
+                            "LEFT JOIN (SELECT cellblock_id, COUNT(*) AS num_occupants FROM pdl_list GROUP BY cellblock_id) AS pl ON cb.cellblock_id = pl.cellblock_id " &
+                            "WHERE cb.cellblock_id = @cellblockId"
                 Using cmd As New MySqlCommand(query, Connection.conn)
                     cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
                     While reader.Read()
                         Dim rowData As New List(Of String)()
-                        ' Add cellblock_id, gender_unit, first_name, last_name, display_capacity to the rowData l
                         rowData.Add(reader("cellblock_id").ToString())
                         rowData.Add(reader("gender_unit").ToString())
                         ' Add first_name and last_name if they are not null
@@ -283,9 +303,10 @@ Public Class DASHBOARD
                         If Not IsDBNull(reader("last_name")) Then
                             rowData.Add(reader("last_name").ToString())
                         End If
-                        ' Add display_capacity
-                        rowData.Add(reader("display_capacity").ToString())
-                        ' Add the rowData to the rowDataList
+                        Dim cellCapacity As Integer = Convert.ToInt32(reader("cell_capacity"))
+                        Dim numOccupants As Integer = Convert.ToInt32(reader("num_occupants"))
+                        Dim displayCapacity As String = $"{numOccupants}/{cellCapacity}"
+                        rowData.Add(displayCapacity)
                         rowDataList.Add(rowData)
                     End While
                     reader.Close()
@@ -310,8 +331,7 @@ Public Class DASHBOARD
 
                 ' Check if data is retrieved successfully
                 If rowDataList.Count > 0 Then
-                    ' Open the PDL_INFO form and pass the retrieved data
-                    Dim pdlInfoForm As New PDL_INFO(rowDataList, True) ' Pass True for TabPage3
+                    Dim pdlInfoForm As New PDL_INFO(rowDataList, True)
                     pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage3
                     pdlInfoForm.ShowDialog()
                 Else
@@ -323,7 +343,6 @@ Public Class DASHBOARD
         End If
     End Sub
 
-
     Private Sub create_new_cellblock_Click(sender As Object, e As EventArgs) Handles create_new_cellblock.Click
         DisplayStatusCounts()
         Dim rowData As New List(Of String)()
@@ -332,7 +351,7 @@ Public Class DASHBOARD
 
         ' Now you can pass rowDataList to the constructor
         Dim pdlInfoForm As New PDL_INFO(rowDataList)
-        pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage2
+        pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage4
         pdlInfoForm.ShowDialog()
     End Sub
 End Class
