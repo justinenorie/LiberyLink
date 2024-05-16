@@ -132,6 +132,10 @@ Partial Class PDL_INFO
         Dim CustomizableEdges102 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges103 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges104 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges105 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges106 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges107 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges108 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges117 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges118 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges109 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -144,10 +148,6 @@ Partial Class PDL_INFO
         Dim CustomizableEdges116 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges119 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges120 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges107 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges108 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges105 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges106 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(components)
         Guna2TabControl1 = New Guna.UI2.WinForms.Guna2TabControl()
         TabPage1 = New TabPage()
@@ -239,6 +239,13 @@ Partial Class PDL_INFO
         Label29 = New Label()
         cell_save_btn = New Guna.UI2.WinForms.Guna2Button()
         TabPage5 = New TabPage()
+        contact_num = New Label()
+        schedule_time = New Label()
+        schedule_date = New Label()
+        visit_confirm = New Guna.UI2.WinForms.Guna2Button()
+        visit_decline = New Guna.UI2.WinForms.Guna2Button()
+        visited_pdl_name = New Label()
+        visitor_name = New Label()
         Guna2Panel6 = New Guna.UI2.WinForms.Guna2Panel()
         Guna2ControlBox12 = New Guna.UI2.WinForms.Guna2ControlBox()
         Guna2ControlBox9 = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -247,10 +254,6 @@ Partial Class PDL_INFO
         Label31 = New Label()
         mesahebox = New Guna.UI2.WinForms.Guna2MessageDialog()
         Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
-        Label32 = New Label()
-        Label33 = New Label()
-        Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
-        Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
         Guna2TabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         CType(Guna2PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -2050,10 +2053,13 @@ Partial Class PDL_INFO
         ' TabPage5
         ' 
         TabPage5.BackColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
-        TabPage5.Controls.Add(Guna2Button4)
-        TabPage5.Controls.Add(Guna2Button3)
-        TabPage5.Controls.Add(Label33)
-        TabPage5.Controls.Add(Label32)
+        TabPage5.Controls.Add(contact_num)
+        TabPage5.Controls.Add(schedule_time)
+        TabPage5.Controls.Add(schedule_date)
+        TabPage5.Controls.Add(visit_confirm)
+        TabPage5.Controls.Add(visit_decline)
+        TabPage5.Controls.Add(visited_pdl_name)
+        TabPage5.Controls.Add(visitor_name)
         TabPage5.Controls.Add(Guna2Panel6)
         TabPage5.Location = New Point(4, 44)
         TabPage5.Name = "TabPage5"
@@ -2061,6 +2067,122 @@ Partial Class PDL_INFO
         TabPage5.Size = New Size(892, 552)
         TabPage5.TabIndex = 4
         TabPage5.Text = "TabPage5"
+        ' 
+        ' contact_num
+        ' 
+        contact_num.AutoSize = True
+        contact_num.BackColor = Color.Transparent
+        contact_num.Font = New Font("Segoe UI Variable Display Semib", 12F, FontStyle.Bold)
+        contact_num.ForeColor = Color.White
+        contact_num.Location = New Point(94, 128)
+        contact_num.Name = "contact_num"
+        contact_num.Size = New Size(132, 21)
+        contact_num.TabIndex = 69
+        contact_num.Text = "Contact Number"
+        ' 
+        ' schedule_time
+        ' 
+        schedule_time.AutoSize = True
+        schedule_time.BackColor = Color.Transparent
+        schedule_time.Font = New Font("Segoe UI Variable Display Semib", 12F, FontStyle.Bold)
+        schedule_time.ForeColor = Color.White
+        schedule_time.Location = New Point(94, 221)
+        schedule_time.Name = "schedule_time"
+        schedule_time.Size = New Size(127, 21)
+        schedule_time.TabIndex = 68
+        schedule_time.Text = "Scheduled Time"
+        ' 
+        ' schedule_date
+        ' 
+        schedule_date.AutoSize = True
+        schedule_date.BackColor = Color.Transparent
+        schedule_date.Font = New Font("Segoe UI Variable Display Semib", 12F, FontStyle.Bold)
+        schedule_date.ForeColor = Color.White
+        schedule_date.Location = New Point(94, 278)
+        schedule_date.Name = "schedule_date"
+        schedule_date.Size = New Size(125, 21)
+        schedule_date.TabIndex = 67
+        schedule_date.Text = "Scheduled Date"
+        ' 
+        ' visit_confirm
+        ' 
+        visit_confirm.BorderRadius = 15
+        visit_confirm.CheckedState.FillColor = Color.White
+        visit_confirm.CheckedState.ForeColor = Color.Black
+        visit_confirm.CustomImages.ImageAlign = HorizontalAlignment.Left
+        visit_confirm.CustomizableEdges = CustomizableEdges105
+        visit_confirm.DisabledState.BorderColor = Color.DarkGray
+        visit_confirm.DisabledState.CustomBorderColor = Color.DarkGray
+        visit_confirm.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        visit_confirm.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        visit_confirm.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
+        visit_confirm.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        visit_confirm.ForeColor = Color.Black
+        visit_confirm.HoverState.FillColor = Color.Silver
+        visit_confirm.HoverState.ForeColor = Color.Black
+        visit_confirm.Image = My.Resources.Resources.icons8_save_50
+        visit_confirm.ImageAlign = HorizontalAlignment.Left
+        visit_confirm.ImageSize = New Size(25, 25)
+        visit_confirm.Location = New Point(510, 398)
+        visit_confirm.Margin = New Padding(0)
+        visit_confirm.Name = "visit_confirm"
+        visit_confirm.ShadowDecoration.CustomizableEdges = CustomizableEdges106
+        visit_confirm.Size = New Size(211, 36)
+        visit_confirm.TabIndex = 66
+        visit_confirm.Text = "Confirm Appointment"
+        visit_confirm.TextAlign = HorizontalAlignment.Left
+        ' 
+        ' visit_decline
+        ' 
+        visit_decline.BorderRadius = 15
+        visit_decline.CheckedState.FillColor = Color.White
+        visit_decline.CheckedState.ForeColor = Color.Black
+        visit_decline.CustomImages.ImageAlign = HorizontalAlignment.Left
+        visit_decline.CustomizableEdges = CustomizableEdges107
+        visit_decline.DisabledState.BorderColor = Color.DarkGray
+        visit_decline.DisabledState.CustomBorderColor = Color.DarkGray
+        visit_decline.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        visit_decline.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        visit_decline.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
+        visit_decline.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        visit_decline.ForeColor = Color.Black
+        visit_decline.HoverState.FillColor = Color.Silver
+        visit_decline.HoverState.ForeColor = Color.Black
+        visit_decline.Image = My.Resources.Resources.icons8_save_50
+        visit_decline.ImageAlign = HorizontalAlignment.Left
+        visit_decline.ImageSize = New Size(25, 25)
+        visit_decline.Location = New Point(210, 398)
+        visit_decline.Margin = New Padding(0)
+        visit_decline.Name = "visit_decline"
+        visit_decline.ShadowDecoration.CustomizableEdges = CustomizableEdges108
+        visit_decline.Size = New Size(206, 36)
+        visit_decline.TabIndex = 65
+        visit_decline.Text = "Decline Appointment"
+        visit_decline.TextAlign = HorizontalAlignment.Left
+        ' 
+        ' visited_pdl_name
+        ' 
+        visited_pdl_name.AutoSize = True
+        visited_pdl_name.BackColor = Color.Transparent
+        visited_pdl_name.Font = New Font("Segoe UI Variable Display Semib", 12F, FontStyle.Bold)
+        visited_pdl_name.ForeColor = Color.White
+        visited_pdl_name.Location = New Point(94, 168)
+        visited_pdl_name.Name = "visited_pdl_name"
+        visited_pdl_name.Size = New Size(210, 21)
+        visited_pdl_name.TabIndex = 64
+        visited_pdl_name.Text = "Name of the PDL to be Visit"
+        ' 
+        ' visitor_name
+        ' 
+        visitor_name.AutoSize = True
+        visitor_name.BackColor = Color.Transparent
+        visitor_name.Font = New Font("Segoe UI Variable Display Semib", 12F, FontStyle.Bold)
+        visitor_name.ForeColor = Color.White
+        visitor_name.Location = New Point(94, 87)
+        visitor_name.Name = "visitor_name"
+        visitor_name.Size = New Size(151, 21)
+        visitor_name.TabIndex = 57
+        visitor_name.Text = "Name of the Visitor"
         ' 
         ' Guna2Panel6
         ' 
@@ -2164,86 +2286,6 @@ Partial Class PDL_INFO
         Guna2Panel2.ShadowDecoration.CustomizableEdges = CustomizableEdges120
         Guna2Panel2.Size = New Size(1184, 700)
         Guna2Panel2.TabIndex = 1
-        ' 
-        ' Label32
-        ' 
-        Label32.AutoSize = True
-        Label32.BackColor = Color.Transparent
-        Label32.Font = New Font("Segoe UI Variable Display Semib", 12F, FontStyle.Bold)
-        Label32.ForeColor = Color.White
-        Label32.Location = New Point(361, 84)
-        Label32.Name = "Label32"
-        Label32.Size = New Size(151, 21)
-        Label32.TabIndex = 57
-        Label32.Text = "Name of the Visitor"
-        ' 
-        ' Label33
-        ' 
-        Label33.AutoSize = True
-        Label33.BackColor = Color.Transparent
-        Label33.Font = New Font("Segoe UI Variable Display Semib", 12F, FontStyle.Bold)
-        Label33.ForeColor = Color.White
-        Label33.Location = New Point(94, 135)
-        Label33.Name = "Label33"
-        Label33.Size = New Size(210, 21)
-        Label33.TabIndex = 64
-        Label33.Text = "Name of the PDL to be Visit"
-        ' 
-        ' Guna2Button3
-        ' 
-        Guna2Button3.BorderRadius = 15
-        Guna2Button3.CheckedState.FillColor = Color.White
-        Guna2Button3.CheckedState.ForeColor = Color.Black
-        Guna2Button3.CustomImages.ImageAlign = HorizontalAlignment.Left
-        Guna2Button3.CustomizableEdges = CustomizableEdges107
-        Guna2Button3.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button3.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button3.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button3.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
-        Guna2Button3.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
-        Guna2Button3.ForeColor = Color.Black
-        Guna2Button3.HoverState.FillColor = Color.Silver
-        Guna2Button3.HoverState.ForeColor = Color.Black
-        Guna2Button3.Image = My.Resources.Resources.icons8_save_50
-        Guna2Button3.ImageAlign = HorizontalAlignment.Left
-        Guna2Button3.ImageSize = New Size(25, 25)
-        Guna2Button3.Location = New Point(210, 398)
-        Guna2Button3.Margin = New Padding(0)
-        Guna2Button3.Name = "Guna2Button3"
-        Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges108
-        Guna2Button3.Size = New Size(206, 36)
-        Guna2Button3.TabIndex = 65
-        Guna2Button3.Text = "Decline Appointment"
-        Guna2Button3.TextAlign = HorizontalAlignment.Left
-        ' 
-        ' Guna2Button4
-        ' 
-        Guna2Button4.BorderRadius = 15
-        Guna2Button4.CheckedState.FillColor = Color.White
-        Guna2Button4.CheckedState.ForeColor = Color.Black
-        Guna2Button4.CustomImages.ImageAlign = HorizontalAlignment.Left
-        Guna2Button4.CustomizableEdges = CustomizableEdges105
-        Guna2Button4.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button4.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button4.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button4.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
-        Guna2Button4.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
-        Guna2Button4.ForeColor = Color.Black
-        Guna2Button4.HoverState.FillColor = Color.Silver
-        Guna2Button4.HoverState.ForeColor = Color.Black
-        Guna2Button4.Image = My.Resources.Resources.icons8_save_50
-        Guna2Button4.ImageAlign = HorizontalAlignment.Left
-        Guna2Button4.ImageSize = New Size(25, 25)
-        Guna2Button4.Location = New Point(510, 398)
-        Guna2Button4.Margin = New Padding(0)
-        Guna2Button4.Name = "Guna2Button4"
-        Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges106
-        Guna2Button4.Size = New Size(211, 36)
-        Guna2Button4.TabIndex = 66
-        Guna2Button4.Text = "Confirm Appointment"
-        Guna2Button4.TextAlign = HorizontalAlignment.Left
         ' 
         ' PDL_INFO
         ' 
@@ -2386,8 +2428,11 @@ Partial Class PDL_INFO
     Friend WithEvents Guna2ControlBox10 As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents Guna2ControlBox11 As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents Label31 As Label
-    Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Label33 As Label
-    Friend WithEvents Label32 As Label
+    Friend WithEvents visit_confirm As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents visit_decline As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents visited_pdl_name As Label
+    Friend WithEvents visitor_name As Label
+    Friend WithEvents schedule_time As Label
+    Friend WithEvents schedule_date As Label
+    Friend WithEvents contact_num As Label
 End Class

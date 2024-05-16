@@ -13,7 +13,7 @@ Public Class PDL_INFO
 
     End Sub
 
-    Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False)
+    Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False, Optional isTabPage1 As Boolean = False, Optional isTabPage5 As Boolean = False)
         InitializeComponent()
         If isTabPage3 Then
             For Each rowDataItem As List(Of String) In rowData
@@ -28,28 +28,35 @@ Public Class PDL_INFO
                     display_capacity.Text = rowDataItem(4)
                 End If
             Next
-        Else
-            Try
-                For Each rowDataItem As List(Of String) In rowData
-                    If rowDataItem.Count > 1 Then
-                        case_unique_val.Text = rowDataItem(0)
-                        first_name_pdl.Text = rowDataItem(1)
-                        last_name_pdl.Text = rowDataItem(2)
-                        status_box.Text = rowDataItem(3)
-                        crime_listed.Text = rowDataItem(4)
-                        gender_profile.Text = rowDataItem(5)
-                        Dim dateBirth As DateTime = GetDateTimeFromMySQLDate(rowDataItem(6))
-                        birth_display.Value = dateBirth
-                        years_sentence.Text = rowDataItem(7)
-                        display_cellBlockVal.Text = rowDataItem(8)
-                        If rowDataItem.Count >= 10 Then
-                            display_capacity.Text = rowDataItem(9)
-                        End If
+        ElseIf isTabPage1 Then
+            For Each rowDataItem As List(Of String) In rowData
+                If rowDataItem.Count > 1 Then
+                    case_unique_val.Text = rowDataItem(0)
+                    first_name_pdl.Text = rowDataItem(1)
+                    last_name_pdl.Text = rowDataItem(2)
+                    status_box.Text = rowDataItem(3)
+                    crime_listed.Text = rowDataItem(4)
+                    gender_profile.Text = rowDataItem(5)
+                    Dim dateBirth As DateTime = GetDateTimeFromMySQLDate(rowDataItem(6))
+                    birth_display.Value = dateBirth
+                    years_sentence.Text = rowDataItem(7)
+                    display_cellBlockVal.Text = rowDataItem(8)
+                    If rowDataItem.Count >= 10 Then
+                        display_capacity.Text = rowDataItem(9)
                     End If
-                Next
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+                End If
+            Next
+        ElseIf isTabPage5 Then
+            For Each rowDataItem As List(Of String) In rowData
+                If rowDataItem.Count >= 4 Then
+                    visitor_name.Text = rowDataItem(0)
+                    visited_pdl_name.Text = rowDataItem(1)
+                    schedule_date.Text = rowDataItem(2)
+                    schedule_time.Text = rowDataItem(3)
+                End If
+            Next
+        Else
+
         End If
     End Sub
 
@@ -497,5 +504,45 @@ Public Class PDL_INFO
         cell_cancel_btn.Visible = False
         cellval_display_capacity.Visible = False
         display_capacity.Visible = True
+    End Sub
+
+    Public Sub New(visitorName As String, pdlName As String, scheduleDate As String, scheduleTime As String)
+        InitializeComponent()
+        Guna2TabControl1.SelectedTab = TabPage5
+        visitor_name.Text = visitorName
+        visited_pdl_name.Text = pdlName
+        schedule_date.Text = scheduleDate
+        schedule_time.Text = scheduleTime
+    End Sub
+
+    'NEED TO FIX'
+    Private Sub visit_decline_Click(sender As Object, e As EventArgs) Handles visit_decline.Click
+        Dim visitorUsername As String = visitor_name.Text
+        Dim connectionString As String = "your_connection_string"
+        Dim query As String = "UPDATE appointment_requests SET status_id = 3 WHERE visitor_username = @visitor_username"
+
+        Using conn As New MySqlConnection(connectionString)
+            Dim cmd As New MySqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@visitor_username", visitorUsername)
+            conn.Open()
+            cmd.ExecuteNonQuery()
+            MessageBox.Show("Appointment Declined.")
+            Me.Close()
+        End Using
+    End Sub
+
+    Private Sub visit_confirm_Click(sender As Object, e As EventArgs) Handles visit_confirm.Click
+        Dim visitorUsername As String = visitor_name.Text
+        Dim connectionString As String = "your_connection_string"
+        Dim query As String = "UPDATE appointment_requests SET status_id = 2 WHERE visitor_username = @visitor_username"
+
+        Using conn As New MySqlConnection(connectionString)
+            Dim cmd As New MySqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@visitor_username", visitorUsername)
+            conn.Open()
+            cmd.ExecuteNonQuery()
+            MessageBox.Show("Appointment Confirmed.")
+            Me.Close()
+        End Using
     End Sub
 End Class

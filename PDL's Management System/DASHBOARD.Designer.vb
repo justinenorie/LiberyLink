@@ -146,12 +146,6 @@ Partial Class DASHBOARD
         vis = New TabPage()
         Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
         visitors_sched = New Guna.UI2.WinForms.Guna2DataGridView()
-        visitor = New DataGridViewTextBoxColumn()
-        contact_num = New DataGridViewTextBoxColumn()
-        visited = New DataGridViewTextBoxColumn()
-        sched_date = New DataGridViewTextBoxColumn()
-        dura = New DataGridViewTextBoxColumn()
-        sched_act = New DataGridViewButtonColumn()
         rep = New TabPage()
         Guna2TextBox5 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2DataGridView3 = New Guna.UI2.WinForms.Guna2DataGridView()
@@ -177,6 +171,11 @@ Partial Class DASHBOARD
         Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         lblDisplay = New Label()
         Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
+        visitor = New DataGridViewTextBoxColumn()
+        pdl_visited_name = New DataGridViewTextBoxColumn()
+        request_time = New DataGridViewTextBoxColumn()
+        request_date = New DataGridViewTextBoxColumn()
+        sched_act = New DataGridViewButtonColumn()
         TabControl.SuspendLayout()
         dash.SuspendLayout()
         Guna2CustomGradientPanel3.SuspendLayout()
@@ -949,7 +948,7 @@ Partial Class DASHBOARD
         visitors_sched.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         visitors_sched.ColumnHeadersHeight = 45
         visitors_sched.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        visitors_sched.Columns.AddRange(New DataGridViewColumn() {visitor, contact_num, visited, sched_date, dura, sched_act})
+        visitors_sched.Columns.AddRange(New DataGridViewColumn() {visitor, pdl_visited_name, request_time, request_date, sched_act})
         DataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle13.BackColor = Color.White
         DataGridViewCellStyle13.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
@@ -1004,52 +1003,6 @@ Partial Class DASHBOARD
         visitors_sched.ThemeStyle.RowsStyle.Height = 35
         visitors_sched.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         visitors_sched.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black
-        ' 
-        ' visitor
-        ' 
-        visitor.FillWeight = 43.9723434F
-        visitor.HeaderText = "Name of Visitor"
-        visitor.Name = "visitor"
-        visitor.ReadOnly = True
-        ' 
-        ' contact_num
-        ' 
-        contact_num.FillWeight = 43.9723434F
-        contact_num.HeaderText = "Contact Number"
-        contact_num.Name = "contact_num"
-        contact_num.ReadOnly = True
-        ' 
-        ' visited
-        ' 
-        visited.FillWeight = 43.9723434F
-        visited.HeaderText = "PDL Visited Name"
-        visited.Name = "visited"
-        visited.ReadOnly = True
-        ' 
-        ' sched_date
-        ' 
-        sched_date.FillWeight = 43.9723434F
-        sched_date.HeaderText = "Scheduled Date and Time"
-        sched_date.Name = "sched_date"
-        sched_date.ReadOnly = True
-        ' 
-        ' dura
-        ' 
-        dura.FillWeight = 43.9723434F
-        dura.HeaderText = "Duration"
-        dura.Name = "dura"
-        dura.ReadOnly = True
-        ' 
-        ' sched_act
-        ' 
-        sched_act.FillWeight = 24.84313F
-        sched_act.HeaderText = "Action"
-        sched_act.Name = "sched_act"
-        sched_act.ReadOnly = True
-        sched_act.Resizable = DataGridViewTriState.True
-        sched_act.SortMode = DataGridViewColumnSortMode.Automatic
-        sched_act.Text = "View"
-        sched_act.UseColumnTextForButtonValue = True
         ' 
         ' rep
         ' 
@@ -1532,6 +1485,45 @@ Partial Class DASHBOARD
         Guna2PictureBox2.TabIndex = 0
         Guna2PictureBox2.TabStop = False
         ' 
+        ' visitor
+        ' 
+        visitor.FillWeight = 43.9723434F
+        visitor.HeaderText = "Name of Visitor"
+        visitor.Name = "visitor"
+        visitor.ReadOnly = True
+        ' 
+        ' pdl_visited_name
+        ' 
+        pdl_visited_name.FillWeight = 43.9723434F
+        pdl_visited_name.HeaderText = "Visited PDL Name"
+        pdl_visited_name.Name = "pdl_visited_name"
+        pdl_visited_name.ReadOnly = True
+        ' 
+        ' request_time
+        ' 
+        request_time.FillWeight = 43.9723434F
+        request_time.HeaderText = "Requested Time"
+        request_time.Name = "request_time"
+        request_time.ReadOnly = True
+        ' 
+        ' request_date
+        ' 
+        request_date.FillWeight = 43.9723434F
+        request_date.HeaderText = "Requested Date"
+        request_date.Name = "request_date"
+        request_date.ReadOnly = True
+        ' 
+        ' sched_act
+        ' 
+        sched_act.FillWeight = 24.84313F
+        sched_act.HeaderText = "Action"
+        sched_act.Name = "sched_act"
+        sched_act.ReadOnly = True
+        sched_act.Resizable = DataGridViewTriState.True
+        sched_act.SortMode = DataGridViewColumnSortMode.Automatic
+        sched_act.Text = "View"
+        sched_act.UseColumnTextForButtonValue = True
+        ' 
         ' DASHBOARD
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -1644,9 +1636,8 @@ Partial Class DASHBOARD
     Friend WithEvents total_cell_block As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents visitor As DataGridViewTextBoxColumn
-    Friend WithEvents contact_num As DataGridViewTextBoxColumn
-    Friend WithEvents visited As DataGridViewTextBoxColumn
-    Friend WithEvents sched_date As DataGridViewTextBoxColumn
-    Friend WithEvents dura As DataGridViewTextBoxColumn
+    Friend WithEvents pdl_visited_name As DataGridViewTextBoxColumn
+    Friend WithEvents request_time As DataGridViewTextBoxColumn
+    Friend WithEvents request_date As DataGridViewTextBoxColumn
     Friend WithEvents sched_act As DataGridViewButtonColumn
 End Class

@@ -19,6 +19,7 @@ Public Class DASHBOARD
                 DisplayStatusCounts()
                 RefreshDataGridView()
                 RefreshCellBlockDataGrid()
+                LoadAppointments()
             Else
                 MessageBox.Show("Database connection is not open.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -102,6 +103,37 @@ Public Class DASHBOARD
         End Select
     End Sub
 
+    'REFRESH BUTTON'
+    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        Try
+            OpenConnection()
+
+            If Connection.conn.State = ConnectionState.Open Then
+                RefreshDataGridView()
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        Try
+            OpenConnection()
+
+            If Connection.conn.State = ConnectionState.Open Then
+                DisplayStatusCounts()
+                RefreshCellBlockDataGrid()
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+
     'SEARCH BARS FUNCTION'
     Private Sub pdl_searchbar_TextChanged(sender As Object, e As EventArgs) Handles pdl_searchbar.TextChanged
         Dim searchTerm As String = pdl_searchbar.Text.Trim()
@@ -153,7 +185,7 @@ Public Class DASHBOARD
                 rowDataList.Add(rowData)
 
                 ' Now you can pass rowDataList to the constructor
-                Dim pdlInfoForm As New PDL_INFO(rowDataList)
+                Dim pdlInfoForm As New PDL_INFO(rowDataList, True)
                 pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage1
                 pdlInfoForm.ShowDialog()
             Catch ex As Exception
@@ -229,35 +261,6 @@ Public Class DASHBOARD
         Dim pdlInfoForm As New PDL_INFO(rowDataList)
         pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage2
         pdlInfoForm.ShowDialog()
-    End Sub
-
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        Try
-            OpenConnection()
-
-            If Connection.conn.State = ConnectionState.Open Then
-                RefreshDataGridView()
-            End If
-        Catch ex As Exception
-            Throw New Exception("Error updating data in database: " & ex.Message)
-        Finally
-            CloseConnection()
-        End Try
-    End Sub
-
-    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
-        Try
-            OpenConnection()
-
-            If Connection.conn.State = ConnectionState.Open Then
-                DisplayStatusCounts()
-                RefreshCellBlockDataGrid()
-            End If
-        Catch ex As Exception
-            Throw New Exception("Error updating data in database: " & ex.Message)
-        Finally
-            CloseConnection()
-        End Try
     End Sub
 
     Public Sub RefreshCellBlockDataGrid()
@@ -347,11 +350,84 @@ Public Class DASHBOARD
         DisplayStatusCounts()
         Dim rowData As New List(Of String)()
         Dim rowDataList As New List(Of List(Of String))()
-        rowDataList.Add(rowData)
 
         ' Now you can pass rowDataList to the constructor
         Dim pdlInfoForm As New PDL_INFO(rowDataList)
         pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage4
         pdlInfoForm.ShowDialog()
     End Sub
+
+    'APPOINTMENT LIST'
+    Public Sub LoadAppointments()
+        visitors_sched.Rows.Clear()
+        Dim query As String = "SELECT visitor_username, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, requested_date, requested_time FROM appointment_requests"
+        Try
+            If conn.State = ConnectionState.Open Then
+                Using cmd As New MySqlCommand(query, conn)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        If reader.HasRows Then
+                            While reader.Read()
+                                Dim visitorUsern As String = reader.GetString("visitor_username")
+                                Dim pdlFullName As String = reader.GetString("pdl_full_name")
+                                Dim requestDate As String = reader.GetDateTime("requested_date").ToString("yyyy-MM-dd")
+                                Dim requestTime As String = reader.GetTimeSpan("requested_time").ToString()
+                                visitors_sched.Rows.Add(visitorUsern, pdlFullName, requestDate, requestTime)
+                            End While
+                        Else
+                            MessageBox.Show("No data found in the table.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End If
+                    End Using
+                End Using
+            Else
+                MessageBox.Show("Database connection is not open.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error loading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub visitors_sched_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles visitors_sched.CellContentClick
+        If e.ColumnIndex = visitors_sched.Columns("sched_act").Index AndAlso e.RowIndex >= 0 Then
+            Try
+                Dim visitorName As String = visitors_sched.Rows(e.RowIndex).Cells("visitor").Value.ToString()
+                Dim rowDataList As List(Of List(Of String)) = GetFromVisitorDatabase(visitorName)
+
+                ' Pass the data to the PDL_INFO form
+                Dim pdlInfoForm As New PDL_INFO(rowDataList, isTabPage5:=True)
+                pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage5
+                pdlInfoForm.ShowDialog()
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Function GetFromVisitorDatabase(visitorUsername As String) As List(Of List(Of String))
+        Dim rowDataList As New List(Of List(Of String))()
+        Try
+            OpenConnection()
+            If conn.State = ConnectionState.Open Then
+                ' Fetch all information for the given visitor username
+                Dim query As String = "SELECT * FROM appointment_requests WHERE visitor_username = @visitorUsername"
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@visitorUsername", visitorUsername)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            ' Add all fields to the rowData list
+                            Dim rowData As New List(Of String)
+                            For i As Integer = 0 To reader.FieldCount - 1
+                                rowData.Add(reader(i).ToString())
+                            Next
+                            rowDataList.Add(rowData)
+                        End While
+                    End Using
+                End Using
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error fetching row data from database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+        Return rowDataList
+    End Function
 End Class
