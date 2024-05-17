@@ -171,6 +171,7 @@ Partial Class DASHBOARD
         Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         lblDisplay = New Label()
         Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
+        visitor_reqID = New DataGridViewTextBoxColumn()
         visitor = New DataGridViewTextBoxColumn()
         pdl_visited_name = New DataGridViewTextBoxColumn()
         request_time = New DataGridViewTextBoxColumn()
@@ -948,7 +949,7 @@ Partial Class DASHBOARD
         visitors_sched.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         visitors_sched.ColumnHeadersHeight = 45
         visitors_sched.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        visitors_sched.Columns.AddRange(New DataGridViewColumn() {visitor, pdl_visited_name, request_time, request_date, sched_act})
+        visitors_sched.Columns.AddRange(New DataGridViewColumn() {visitor_reqID, visitor, pdl_visited_name, request_time, request_date, sched_act})
         DataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle13.BackColor = Color.White
         DataGridViewCellStyle13.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
@@ -1485,37 +1486,44 @@ Partial Class DASHBOARD
         Guna2PictureBox2.TabIndex = 0
         Guna2PictureBox2.TabStop = False
         ' 
+        ' visitor_reqID
+        ' 
+        visitor_reqID.FillWeight = 15.2656069F
+        visitor_reqID.HeaderText = "ID#"
+        visitor_reqID.Name = "visitor_reqID"
+        visitor_reqID.ReadOnly = True
+        ' 
         ' visitor
         ' 
-        visitor.FillWeight = 43.9723434F
+        visitor.FillWeight = 62.5342026F
         visitor.HeaderText = "Name of Visitor"
         visitor.Name = "visitor"
         visitor.ReadOnly = True
         ' 
         ' pdl_visited_name
         ' 
-        pdl_visited_name.FillWeight = 43.9723434F
+        pdl_visited_name.FillWeight = 62.5342026F
         pdl_visited_name.HeaderText = "Visited PDL Name"
         pdl_visited_name.Name = "pdl_visited_name"
         pdl_visited_name.ReadOnly = True
         ' 
         ' request_time
         ' 
-        request_time.FillWeight = 43.9723434F
+        request_time.FillWeight = 62.5342026F
         request_time.HeaderText = "Requested Time"
         request_time.Name = "request_time"
         request_time.ReadOnly = True
         ' 
         ' request_date
         ' 
-        request_date.FillWeight = 43.9723434F
+        request_date.FillWeight = 62.5342026F
         request_date.HeaderText = "Requested Date"
         request_date.Name = "request_date"
         request_date.ReadOnly = True
         ' 
         ' sched_act
         ' 
-        sched_act.FillWeight = 24.84313F
+        sched_act.FillWeight = 35.3300629F
         sched_act.HeaderText = "Action"
         sched_act.Name = "sched_act"
         sched_act.ReadOnly = True
@@ -1635,6 +1643,7 @@ Partial Class DASHBOARD
     Friend WithEvents Guna2Panel7 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents total_cell_block As Label
     Friend WithEvents Label12 As Label
+    Friend WithEvents visitor_reqID As DataGridViewTextBoxColumn
     Friend WithEvents visitor As DataGridViewTextBoxColumn
     Friend WithEvents pdl_visited_name As DataGridViewTextBoxColumn
     Friend WithEvents request_time As DataGridViewTextBoxColumn

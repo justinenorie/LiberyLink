@@ -360,18 +360,19 @@ Public Class DASHBOARD
     'APPOINTMENT LIST'
     Public Sub LoadAppointments()
         visitors_sched.Rows.Clear()
-        Dim query As String = "SELECT visitor_username, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, requested_date, requested_time FROM appointment_requests"
+        Dim query As String = "SELECT request_id, visitor_username, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, requested_date, requested_time FROM appointment_requests"
         Try
             If conn.State = ConnectionState.Open Then
                 Using cmd As New MySqlCommand(query, conn)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.HasRows Then
                             While reader.Read()
+                                Dim reqID As String = reader.GetInt32("request_id").ToString()
                                 Dim visitorUsern As String = reader.GetString("visitor_username")
                                 Dim pdlFullName As String = reader.GetString("pdl_full_name")
                                 Dim requestDate As String = reader.GetDateTime("requested_date").ToString("yyyy-MM-dd")
                                 Dim requestTime As String = reader.GetTimeSpan("requested_time").ToString()
-                                visitors_sched.Rows.Add(visitorUsern, pdlFullName, requestDate, requestTime)
+                                visitors_sched.Rows.Add(reqID, visitorUsern, pdlFullName, requestDate, requestTime)
                             End While
                         Else
                             MessageBox.Show("No data found in the table.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -389,7 +390,7 @@ Public Class DASHBOARD
     Private Sub visitors_sched_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles visitors_sched.CellContentClick
         If e.ColumnIndex = visitors_sched.Columns("sched_act").Index AndAlso e.RowIndex >= 0 Then
             Try
-                Dim visitorName As String = visitors_sched.Rows(e.RowIndex).Cells("visitor").Value.ToString()
+                Dim visitorName As String = visitors_sched.Rows(e.RowIndex).Cells("visitor_reqID").Value.ToString()
                 Dim rowDataList As List(Of List(Of String)) = GetFromVisitorDatabase(visitorName)
 
                 ' Pass the data to the PDL_INFO form
@@ -408,9 +409,9 @@ Public Class DASHBOARD
             OpenConnection()
             If conn.State = ConnectionState.Open Then
                 ' Fetch all information for the given visitor username
-                Dim query As String = "SELECT * FROM appointment_requests WHERE visitor_username = @visitorUsername"
+                Dim query As String = "SELECT * FROM appointment_requests WHERE request_id = @requestID"
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@visitorUsername", visitorUsername)
+                    cmd.Parameters.AddWithValue("@requestID", visitorUsername)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         While reader.Read()
                             ' Add all fields to the rowData list
