@@ -30,6 +30,8 @@ Public Class DASHBOARD
         End Try
     End Sub
 
+    'DASHBOARD DISPLAY'
+    'NEEDED TO ADD REPORTS INFORMATION'
     Public Sub DisplayStatusCounts()
         If conn.State = ConnectionState.Open Then
             Dim query As String = "SELECT 'Active' AS status, COUNT(*) AS num_rows FROM pdl_list WHERE status = 'Active' " &
@@ -61,8 +63,8 @@ Public Class DASHBOARD
             End Using
         End If
     End Sub
+
     Private Sub TabButton_Click(sender As Object, e As EventArgs) Handles Btn_1.Click, Btn_2.Click, Btn_3.Click, Btn_4.Click, Btn_5.Click, log_out.Click
-        ' Cast the sender object back to a Button to identify which button was clicked
         Dim clickedButton = DirectCast(sender, Guna2Button)
         Select Case clickedButton.Name
             Case "Btn_1"
@@ -103,7 +105,7 @@ Public Class DASHBOARD
         End Select
     End Sub
 
-    'REFRESH BUTTON'
+    'REFRESH BUTTONS'
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         Try
             OpenConnection()
@@ -139,35 +141,23 @@ Public Class DASHBOARD
         Dim searchTerm As String = pdl_searchbar.Text.Trim()
         For Each row As DataGridViewRow In pdl_list_information.Rows
             If Not row.IsNewRow Then
-                Dim matchFound As Boolean = False
-                ' Check if any cell in the specified columns contains the search term
-                matchFound = row.Cells.Cast(Of DataGridViewCell)().Where(Function(cell) cell.ColumnIndex >= 0 AndAlso cell.ColumnIndex <= 4 AndAlso cell.Value IsNot Nothing AndAlso cell.Value.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0).Any()
-                row.Visible = If(String.IsNullOrEmpty(searchTerm), True, matchFound)
+                row.Visible = row.Cells.Cast(Of DataGridViewCell)() _
+                .Take(5) _
+                .Any(Function(cell) cell.Value IsNot Nothing AndAlso cell.Value.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0)
             End If
         Next
     End Sub
 
     Private Sub cell_search_bar_TextChanged(sender As Object, e As EventArgs) Handles cell_search_bar.TextChanged
         Dim searchTerm As String = cell_search_bar.Text.Trim()
+        Dim isMaleSearch As Boolean = searchTerm.Equals("Male", StringComparison.OrdinalIgnoreCase)
         For Each row As DataGridViewRow In cell_block_table.Rows
             If Not row.IsNewRow Then
-                Dim matchFound As Boolean = False
-                For Each cell As DataGridViewCell In row.Cells
-                    If cell.ColumnIndex >= 0 AndAlso cell.ColumnIndex <= 4 AndAlso cell.Value IsNot Nothing Then
-                        If searchTerm.Equals("Male", StringComparison.OrdinalIgnoreCase) Then
-                            If cell.Value.ToString().Equals("Male", StringComparison.OrdinalIgnoreCase) Then
-                                matchFound = True
-                                Exit For
-                            End If
-                        Else
-                            If cell.Value.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 Then
-                                matchFound = True
-                                Exit For
-                            End If
-                        End If
-                    End If
-                Next
-                row.Visible = If(String.IsNullOrEmpty(searchTerm), True, matchFound)
+                row.Visible = row.Cells.Cast(Of DataGridViewCell) _
+                .Take(3) _
+                .Any(Function(cell) cell.Value IsNot Nothing AndAlso (If(isMaleSearch,
+                cell.Value.ToString().Equals("Male", StringComparison.OrdinalIgnoreCase),
+                cell.Value.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0)))
             End If
         Next
     End Sub
@@ -176,16 +166,10 @@ Public Class DASHBOARD
         ' Check if the clicked cell is in the "acti" column and not in the header row
         If e.ColumnIndex = pdl_list_information.Columns("acti").Index AndAlso e.RowIndex >= 0 Then
             Try
-                ' Get all information for the selected row
                 Dim rowData As List(Of String) = GetRowDataFromDatabase(e.RowIndex)
-
-                ' Open the PDL_INFO form and pass the row data
-                ' Assuming rowData is a List(Of String) representing a single row of data
                 Dim rowDataList As New List(Of List(Of String))()
                 rowDataList.Add(rowData)
-
-                ' Now you can pass rowDataList to the constructor
-                Dim pdlInfoForm As New PDL_INFO(rowDataList, True)
+                Dim pdlInfoForm As New PDL_INFO(rowDataList, isTabPage1:=True)
                 pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage1
                 pdlInfoForm.ShowDialog()
             Catch ex As Exception
@@ -213,7 +197,7 @@ Public Class DASHBOARD
             If conn.State = ConnectionState.Open Then
                 ' Fetch all information for the selected row
                 Dim query As String = "SELECT * FROM pdl_list LIMIT @rowIndex, 1"
-                Using cmd As New MySqlCommand(query, Connection.conn)
+                Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@rowIndex", rowIndex)
                     Dim reader As MySqlDataReader = cmd.ExecuteReader()
                     If reader.Read() Then
@@ -357,7 +341,6 @@ Public Class DASHBOARD
         pdlInfoForm.ShowDialog()
     End Sub
 
-    'APPOINTMENT LIST'
     Public Sub LoadAppointments()
         visitors_sched.Rows.Clear()
         Dim query As String = "SELECT request_id, visitor_username, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, requested_date, requested_time FROM appointment_requests"

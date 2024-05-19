@@ -1492,6 +1492,7 @@ Partial Class DASHBOARD
         visitor_reqID.HeaderText = "ID#"
         visitor_reqID.Name = "visitor_reqID"
         visitor_reqID.ReadOnly = True
+        visitor_reqID.Visible = False
         ' 
         ' visitor
         ' 

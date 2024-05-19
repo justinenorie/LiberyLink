@@ -13,6 +13,7 @@ Public Class PDL_INFO
 
     End Sub
 
+    'DISPLAY OF SELECTED INFORMATIONS'
     Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False, Optional isTabPage1 As Boolean = False, Optional isTabPage5 As Boolean = False)
         InitializeComponent()
         If isTabPage3 Then
@@ -53,7 +54,15 @@ Public Class PDL_INFO
                     visitor_name.Text = rowDataItem(1)
                     schedule_date.Text = rowDataItem(2)
                     schedule_time.Text = rowDataItem(3)
-                    visit_status_id.Text = rowDataItem(4)
+                    If rowDataItem.Count >= 5 Then
+                        visit_status_id.Text = rowDataItem(4)
+                        If visit_status_id.Text = "1" Then
+                            visit_status_id.Text = "Pending"
+                        ElseIf visit_status_id.Text = "2" Then
+                            visit_status_id.Text = "Approved"
+                        Else visit_status_id.Text = "Declined"
+                        End If
+                    End If
                     visited_pdl_name.Text = rowDataItem(5) & " " & rowDataItem(6)
                 End If
             Next
@@ -70,6 +79,7 @@ Public Class PDL_INFO
         End If
     End Function
 
+    'PDL LIST INFORMATION FUNCTIONALITIES'
     Private editButtonClicked As Boolean = False
     Private Sub edit_btn_Click(sender As Object, e As EventArgs) Handles edit_btn.Click
         If Not String.IsNullOrEmpty(display_cellBlockVal.Text) Then
@@ -421,6 +431,18 @@ Public Class PDL_INFO
         Me.Close()
     End Sub
 
+    Private Sub status_box_SelectedIndexChanged(sender As Object, e As EventArgs) Handles status_box.SelectedIndexChanged
+        If status_box.SelectedItem IsNot Nothing AndAlso status_box.SelectedItem.ToString() = "Released" Then
+            If Not cellblock_location.Items.Contains("!RELEASED") Then
+                cellblock_location.Items.Add("!RELEASED")
+            End If
+            cellblock_location.SelectedItem = "!RELEASED"
+        Else
+            cellblock_location.Items.Remove("!RELEASED")
+        End If
+    End Sub
+
+    'CELL BLOCK INFORMATION FUNCTIONALITIES'
     Private Sub cell_modify_btn_Click(sender As Object, e As EventArgs) Handles cell_modify_btn.Click
         cell_modify_btn.Visible = False
         cell_delete_btn.Visible = True
@@ -455,7 +477,7 @@ Public Class PDL_INFO
                 End Using
             End If
         Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error:  " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             CloseConnection()
         End Try
@@ -515,7 +537,7 @@ Public Class PDL_INFO
         schedule_time.Text = scheduleTime
     End Sub
 
-    'NEED TO FIX'
+    'VISITATION LIST FUNCTIONALITIES'
     Private Sub visit_decline_Click(sender As Object, e As EventArgs) Handles visit_decline.Click
         Try
             OpenConnection()
@@ -554,7 +576,6 @@ Public Class PDL_INFO
         End Try
     End Sub
 
-    'visit_requestID
     Private Sub ApproveAppointmentRequest(requestId As Integer)
         Using connection As New MySqlConnection(connectionString)
             connection.Open()
@@ -598,11 +619,12 @@ Public Class PDL_INFO
 
                     MessageBox.Show("Appointment approved successfully.")
                 Else
-                    MessageBox.Show("The selected PDL has reached the maximum number of visits for this month.")
+                    MessageBox.Show("The selected PDL Name has reached the maximum number of visits for this month.")
                 End If
             Else
                 MessageBox.Show("PDL details not found for the given request ID.")
             End If
         End Using
     End Sub
+
 End Class
