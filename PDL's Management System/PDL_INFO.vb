@@ -10,7 +10,6 @@ Public Class PDL_INFO
         delete_btn.Visible = False
         PopulateComboBox(cellblock_location)
         DisplayPDLsForCellBlock()
-
     End Sub
 
     'DISPLAY OF SELECTED INFORMATIONS'
@@ -51,19 +50,19 @@ Public Class PDL_INFO
             For Each rowDataItem As List(Of String) In rowData
                 If rowDataItem.Count >= 7 Then
                     visit_requestID.Text = rowDataItem(0)
-                    visitor_name.Text = rowDataItem(1)
-                    schedule_date.Text = rowDataItem(2)
-                    schedule_time.Text = rowDataItem(3)
+                    user_visitorName.Text = rowDataItem(1)
+                    date_schedule.Text = GetDateTimeFromMySQLDate(rowDataItem(2))
+                    time_schedule.Text = rowDataItem(3)
                     If rowDataItem.Count >= 5 Then
-                        visit_status_id.Text = rowDataItem(4)
-                        If visit_status_id.Text = "1" Then
-                            visit_status_id.Text = "Pending"
-                        ElseIf visit_status_id.Text = "2" Then
-                            visit_status_id.Text = "Approved"
-                        Else visit_status_id.Text = "Declined"
+                        visitation_status.Text = rowDataItem(4)
+                        If visitation_status.Text = "1" Then
+                            visitation_status.Text = "Pending"
+                        ElseIf visitation_status.Text = "2" Then
+                            visitation_status.Text = "Approved"
+                        Else visitation_status.Text = "Declined"
                         End If
                     End If
-                    visited_pdl_name.Text = rowDataItem(5) & " " & rowDataItem(6)
+                    visit_pdl_name.Text = rowDataItem(5) & " " & rowDataItem(6)
                 End If
             Next
         End If
@@ -261,7 +260,6 @@ Public Class PDL_INFO
             cmd.Parameters.AddWithValue("@yearsSentence", yearsSentence)
             cmd.Parameters.AddWithValue("@caseNum", caseNum)
             cmd.Parameters.AddWithValue("@cellblockid", cellBLock)
-            ' Execute the update query
             cmd.ExecuteNonQuery()
         End Using
     End Sub
@@ -270,7 +268,7 @@ Public Class PDL_INFO
         Guna2Panel2.BackColor = Color.FromArgb(90, 0, 0, 0)
     End Sub
 
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+    Private Sub insertNew_btn_Click(sender As Object, e As EventArgs) Handles insertNew_btn.Click
         Try
             ' Get the values from the textboxes
             Dim caseNum = input_caseNum.Text
@@ -283,12 +281,10 @@ Public Class PDL_INFO
             Dim sentenceYears = input_sentence.Text
             Dim cellBlock = assign_cellblock.Text
 
-            ' Open the database connection
             OpenConnection()
             Dim query = "INSERT INTO pdl_list (case_num, first_name, last_name, status, crime, gender, date_birth, sentence_years, cellblock_id) VALUES (@caseNum, @firstName, @lastName, @status, @crime, @gender, @dateOfBirth, @sentenceYears, @cellblockid)"
 
             Using cmd As New MySqlCommand(query, conn)
-                ' Add parameters to the command
                 cmd.Parameters.AddWithValue("@caseNum", caseNum)
                 cmd.Parameters.AddWithValue("@firstName", firstName)
                 cmd.Parameters.AddWithValue("@lastName", lastName)
@@ -316,17 +312,13 @@ Public Class PDL_INFO
     End Sub
 
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles delete_btn.Click
-        Dim caseNum = case_unique_val.Text ' Assuming input_caseNum contains the case number to be deleted
-
-        ' Display a confirmation message
+        Dim caseNum = case_unique_val.Text
         Dim result = MessageBox.Show("Are you sure you want to delete this data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        ' Check the user's response
         If result = DialogResult.Yes Then
             DeleteDataFromDatabase(caseNum)
             Close()
         Else
-            ' User chose not to delete, do nothing
+
         End If
     End Sub
 
@@ -528,34 +520,34 @@ Public Class PDL_INFO
         display_capacity.Visible = True
     End Sub
 
-    Public Sub New(visitorName As String, pdlName As String, scheduleDate As String, scheduleTime As String)
-        InitializeComponent()
-        Guna2TabControl1.SelectedTab = TabPage5
-        visitor_name.Text = visitorName
-        visited_pdl_name.Text = pdlName
-        schedule_date.Text = scheduleDate
-        schedule_time.Text = scheduleTime
-    End Sub
-
     'VISITATION LIST FUNCTIONALITIES'
     Private Sub visit_decline_Click(sender As Object, e As EventArgs) Handles visit_decline.Click
         Try
             OpenConnection()
             If Connection.conn.State = ConnectionState.Open Then
                 Dim requestId As Integer = Convert.ToInt32(visit_requestID.Text)
-                Dim query As String = "UPDATE appointment_requests SET status_id = (SELECT status_id FROM appointment_status WHERE status_name = 'Declined') WHERE request_id = @requestId"
 
-                Using conn As New MySqlConnection(connectionString)
-                    Dim cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@requestId", requestId)
-                    conn.Open()
-                    cmd.ExecuteNonQuery()
-                    MessageBox.Show("Appointment Declined.")
-                    Me.Close()
-                End Using
+                ' Check if the request_id exists in the appointment table
+                Dim checkRequestIdCommand As New MySqlCommand("SELECT COUNT(*) FROM appointment WHERE request_id = @requestId", Connection.conn)
+                checkRequestIdCommand.Parameters.AddWithValue("@requestId", requestId)
+                Dim requestIdCount As Integer = Convert.ToInt32(checkRequestIdCommand.ExecuteScalar())
+
+                If requestIdCount > 0 Then
+                    MessageBox.Show("This appointment has already been approved and cannot be declined.")
+                    Return
+                End If
+
+                ' Decline the request
+                Dim query As String = "UPDATE appointment_requests SET status_id = (SELECT status_id FROM appointment_status WHERE status_name = 'Declined') WHERE request_id = @requestId"
+                Dim cmd As New MySqlCommand(query, Connection.conn)
+                cmd.Parameters.AddWithValue("@requestId", requestId)
+                cmd.ExecuteNonQuery()
+
+                MessageBox.Show("Appointment Declined.")
+                Me.Close()
             End If
         Catch ex As Exception
-            Throw New Exception("Error updating data in database: " & ex.Message)
+            MessageBox.Show("Error updating data in database: " & ex.Message)
         Finally
             CloseConnection()
         End Try
@@ -566,65 +558,76 @@ Public Class PDL_INFO
             OpenConnection()
             If Connection.conn.State = ConnectionState.Open Then
                 Dim requestId As Integer = Convert.ToInt32(visit_requestID.Text)
-                ApproveAppointmentRequest(requestId)
+
+                ' Check if the request_id already exists in the appointment table
+                Dim checkRequestIdCommand As New MySqlCommand("SELECT COUNT(*) FROM appointment WHERE request_id = @requestId", Connection.conn)
+                checkRequestIdCommand.Parameters.AddWithValue("@requestId", requestId)
+                Dim requestIdCount As Integer = Convert.ToInt32(checkRequestIdCommand.ExecuteScalar())
+
+                If requestIdCount > 0 Then
+                    MessageBox.Show("This request ID has already been approved.")
+                    Return
+                End If
+
+                ' Check if the request has been declined
+                Dim checkDeclinedCommand As New MySqlCommand("SELECT COUNT(*) FROM appointment_requests WHERE request_id = @requestId AND status_id = (SELECT status_id FROM appointment_status WHERE status_name = 'Declined')", Connection.conn)
+                checkDeclinedCommand.Parameters.AddWithValue("@requestId", requestId)
+                Dim isDeclined As Integer = Convert.ToInt32(checkDeclinedCommand.ExecuteScalar())
+
+                If isDeclined > 0 Then
+                    MessageBox.Show("This request has been declined and cannot be approved.")
+                    Return
+                End If
+
+                ' Get PDL details from the request
+                Dim getPdlDetailsCommand As New MySqlCommand("SELECT pdl_first_name, pdl_last_name FROM appointment_requests WHERE request_id = @requestId", Connection.conn)
+                getPdlDetailsCommand.Parameters.AddWithValue("@requestId", requestId)
+                Dim reader As MySqlDataReader = getPdlDetailsCommand.ExecuteReader()
+
+                If reader.Read() Then
+                    Dim pdlFirstName As String = reader("pdl_first_name").ToString()
+                    Dim pdlLastName As String = reader("pdl_last_name").ToString()
+                    reader.Close()
+
+                    ' Check the number of visits for the selected PDL in the current month
+                    Dim checkVisitsCommand As New MySqlCommand(
+                    "SELECT COUNT(*) AS visit_count
+                     FROM appointment
+                     WHERE pdl_first_name = @pdlFirstName
+                     AND pdl_last_name = @pdlLastName
+                     AND MONTH(appointment_date) = MONTH(CURDATE())
+                     AND YEAR(appointment_date) = YEAR(CURDATE())", Connection.conn)
+                    checkVisitsCommand.Parameters.AddWithValue("@pdlFirstName", pdlFirstName)
+                    checkVisitsCommand.Parameters.AddWithValue("@pdlLastName", pdlLastName)
+                    Dim visitCount As Integer = CInt(checkVisitsCommand.ExecuteScalar())
+
+                    If visitCount < 3 Then
+                        ' Approve the request and insert the appointment
+                        Dim approveRequestCommand As New MySqlCommand(
+                        "UPDATE appointment_requests SET status_id = (SELECT status_id FROM appointment_status WHERE status_name = 'Approved') WHERE request_id = @requestId", Connection.conn)
+                        approveRequestCommand.Parameters.AddWithValue("@requestId", requestId)
+                        approveRequestCommand.ExecuteNonQuery()
+
+                        Dim insertAppointmentCommand As New MySqlCommand(
+                        "INSERT INTO appointment (username, appointment_date, appointment_time, pdl_first_name, pdl_last_name, request_id)
+                         SELECT visitor_username, requested_date, requested_time, pdl_first_name, pdl_last_name, request_id
+                         FROM appointment_requests WHERE request_id = @requestId", Connection.conn)
+                        insertAppointmentCommand.Parameters.AddWithValue("@requestId", requestId)
+                        insertAppointmentCommand.ExecuteNonQuery()
+
+                        MessageBox.Show("Appointment approved successfully.")
+                    Else
+                        MessageBox.Show("The selected PDL Name has reached the maximum number of visits for this month.")
+                    End If
+                Else
+                    MessageBox.Show("PDL details not found for the given request ID.")
+                End If
                 Me.Close()
             End If
         Catch ex As Exception
-            Throw New Exception("Error updating data in database: " & ex.Message)
+            MessageBox.Show("Error updating data in database: " & ex.Message)
         Finally
             CloseConnection()
         End Try
     End Sub
-
-    Private Sub ApproveAppointmentRequest(requestId As Integer)
-        Using connection As New MySqlConnection(connectionString)
-            connection.Open()
-
-            ' Get PDL details from the request
-            Dim getPdlDetailsCommand As New MySqlCommand("SELECT pdl_first_name, pdl_last_name FROM appointment_requests WHERE request_id = @requestId", connection)
-            getPdlDetailsCommand.Parameters.AddWithValue("@requestId", requestId)
-            Dim reader As MySqlDataReader = getPdlDetailsCommand.ExecuteReader()
-
-            If reader.Read() Then
-                Dim pdlFirstName As String = reader("pdl_first_name").ToString()
-                Dim pdlLastName As String = reader("pdl_last_name").ToString()
-                reader.Close()
-
-                ' Check the number of visits for the selected PDL in the current month
-                ' It should have a Display Text for Visit Limits Current Month
-                Dim checkVisitsCommand As New MySqlCommand(
-                "SELECT COUNT(*) AS visit_count
-                 FROM appointment
-                 WHERE pdl_first_name = @pdlFirstName
-                 AND pdl_last_name = @pdlLastName
-                 AND MONTH(appointment_date) = MONTH(CURDATE())
-                 AND YEAR(appointment_date) = YEAR(CURDATE())", connection)
-                checkVisitsCommand.Parameters.AddWithValue("@pdlFirstName", pdlFirstName)
-                checkVisitsCommand.Parameters.AddWithValue("@pdlLastName", pdlLastName)
-                Dim visitCount As Integer = CInt(checkVisitsCommand.ExecuteScalar())
-
-                If visitCount < 3 Then
-                    ' Approve the request and insert the appointment
-                    Dim approveRequestCommand As New MySqlCommand(
-                    "UPDATE appointment_requests SET status_id = (SELECT status_id FROM appointment_status WHERE status_name = 'Approved') WHERE request_id = @requestId", connection)
-                    approveRequestCommand.Parameters.AddWithValue("@requestId", requestId)
-                    approveRequestCommand.ExecuteNonQuery()
-
-                    Dim insertAppointmentCommand As New MySqlCommand(
-                    "INSERT INTO appointment (username, appointment_date, appointment_time, pdl_first_name, pdl_last_name)
-                     SELECT visitor_username, requested_date, requested_time, pdl_first_name, pdl_last_name
-                     FROM appointment_requests WHERE request_id = @requestId", connection)
-                    insertAppointmentCommand.Parameters.AddWithValue("@requestId", requestId)
-                    insertAppointmentCommand.ExecuteNonQuery()
-
-                    MessageBox.Show("Appointment approved successfully.")
-                Else
-                    MessageBox.Show("The selected PDL Name has reached the maximum number of visits for this month.")
-                End If
-            Else
-                MessageBox.Show("PDL details not found for the given request ID.")
-            End If
-        End Using
-    End Sub
-
 End Class

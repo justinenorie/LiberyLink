@@ -31,7 +31,7 @@ Public Class DASHBOARD
     End Sub
 
     'DASHBOARD DISPLAY'
-    'NEEDED TO ADD REPORTS INFORMATION'
+    'NEEDED TO ADD VISITATION INFORMATION'
     Public Sub DisplayStatusCounts()
         If conn.State = ConnectionState.Open Then
             Dim query As String = "SELECT 'Active' AS status, COUNT(*) AS num_rows FROM pdl_list WHERE status = 'Active' " &
