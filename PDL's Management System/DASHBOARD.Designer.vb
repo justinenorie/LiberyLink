@@ -104,6 +104,7 @@ Partial Class DASHBOARD
         Dim CustomizableEdges62 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges59 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges60 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DASHBOARD))
         TabControl = New Guna.UI2.WinForms.Guna2TabControl()
         dash = New TabPage()
         Guna2CustomGradientPanel3 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
@@ -126,7 +127,7 @@ Partial Class DASHBOARD
         Label2 = New Label()
         TextBox1 = New TextBox()
         cell = New TabPage()
-        Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
+        cellblock_refresh_btn = New Guna.UI2.WinForms.Guna2Button()
         create_new_cellblock = New Guna.UI2.WinForms.Guna2Button()
         cell_block_table = New Guna.UI2.WinForms.Guna2DataGridView()
         cell_num = New DataGridViewTextBoxColumn()
@@ -134,7 +135,7 @@ Partial Class DASHBOARD
         act = New DataGridViewButtonColumn()
         cell_search_bar = New Guna.UI2.WinForms.Guna2TextBox()
         pdl = New TabPage()
-        Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
+        pdllist_refresh_btn = New Guna.UI2.WinForms.Guna2Button()
         pdl_searchbar = New Guna.UI2.WinForms.Guna2TextBox()
         create_pdl_list = New Guna.UI2.WinForms.Guna2Button()
         pdl_list_information = New Guna.UI2.WinForms.Guna2DataGridView()
@@ -146,6 +147,12 @@ Partial Class DASHBOARD
         vis = New TabPage()
         Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
         visitors_sched = New Guna.UI2.WinForms.Guna2DataGridView()
+        visitor_reqID = New DataGridViewTextBoxColumn()
+        visitor = New DataGridViewTextBoxColumn()
+        pdl_visited_name = New DataGridViewTextBoxColumn()
+        request_time = New DataGridViewTextBoxColumn()
+        request_date = New DataGridViewTextBoxColumn()
+        sched_act = New DataGridViewButtonColumn()
         rep = New TabPage()
         Guna2TextBox5 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2DataGridView3 = New Guna.UI2.WinForms.Guna2DataGridView()
@@ -171,12 +178,6 @@ Partial Class DASHBOARD
         Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         lblDisplay = New Label()
         Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
-        visitor_reqID = New DataGridViewTextBoxColumn()
-        visitor = New DataGridViewTextBoxColumn()
-        pdl_visited_name = New DataGridViewTextBoxColumn()
-        request_time = New DataGridViewTextBoxColumn()
-        request_date = New DataGridViewTextBoxColumn()
-        sched_act = New DataGridViewButtonColumn()
         TabControl.SuspendLayout()
         dash.SuspendLayout()
         Guna2CustomGradientPanel3.SuspendLayout()
@@ -493,7 +494,7 @@ Partial Class DASHBOARD
         ' cell
         ' 
         cell.BackColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
-        cell.Controls.Add(Guna2Button2)
+        cell.Controls.Add(cellblock_refresh_btn)
         cell.Controls.Add(create_new_cellblock)
         cell.Controls.Add(cell_block_table)
         cell.Controls.Add(cell_search_bar)
@@ -504,23 +505,23 @@ Partial Class DASHBOARD
         cell.TabIndex = 3
         cell.Text = "Cell Block List"
         ' 
-        ' Guna2Button2
+        ' cellblock_refresh_btn
         ' 
-        Guna2Button2.CustomizableEdges = CustomizableEdges17
-        Guna2Button2.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button2.FillColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
-        Guna2Button2.Font = New Font("Segoe UI", 9F)
-        Guna2Button2.ForeColor = Color.White
-        Guna2Button2.Image = My.Resources.Resources.icons8_refresh_90
-        Guna2Button2.ImageSize = New Size(50, 50)
-        Guna2Button2.Location = New Point(562, 4)
-        Guna2Button2.Name = "Guna2Button2"
-        Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges18
-        Guna2Button2.Size = New Size(45, 43)
-        Guna2Button2.TabIndex = 14
+        cellblock_refresh_btn.CustomizableEdges = CustomizableEdges17
+        cellblock_refresh_btn.DisabledState.BorderColor = Color.DarkGray
+        cellblock_refresh_btn.DisabledState.CustomBorderColor = Color.DarkGray
+        cellblock_refresh_btn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        cellblock_refresh_btn.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        cellblock_refresh_btn.FillColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
+        cellblock_refresh_btn.Font = New Font("Segoe UI", 9F)
+        cellblock_refresh_btn.ForeColor = Color.White
+        cellblock_refresh_btn.Image = My.Resources.Resources.icons8_refresh_90
+        cellblock_refresh_btn.ImageSize = New Size(50, 50)
+        cellblock_refresh_btn.Location = New Point(562, 4)
+        cellblock_refresh_btn.Name = "cellblock_refresh_btn"
+        cellblock_refresh_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges18
+        cellblock_refresh_btn.Size = New Size(45, 43)
+        cellblock_refresh_btn.TabIndex = 14
         ' 
         ' create_new_cellblock
         ' 
@@ -686,7 +687,7 @@ Partial Class DASHBOARD
         ' pdl
         ' 
         pdl.BackColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
-        pdl.Controls.Add(Guna2Button1)
+        pdl.Controls.Add(pdllist_refresh_btn)
         pdl.Controls.Add(pdl_searchbar)
         pdl.Controls.Add(create_pdl_list)
         pdl.Controls.Add(pdl_list_information)
@@ -697,23 +698,23 @@ Partial Class DASHBOARD
         pdl.TabIndex = 4
         pdl.Text = "PDL's List"
         ' 
-        ' Guna2Button1
+        ' pdllist_refresh_btn
         ' 
-        Guna2Button1.CustomizableEdges = CustomizableEdges23
-        Guna2Button1.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button1.FillColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
-        Guna2Button1.Font = New Font("Segoe UI", 9F)
-        Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Image = My.Resources.Resources.icons8_refresh_90
-        Guna2Button1.ImageSize = New Size(50, 50)
-        Guna2Button1.Location = New Point(575, 4)
-        Guna2Button1.Name = "Guna2Button1"
-        Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges24
-        Guna2Button1.Size = New Size(45, 43)
-        Guna2Button1.TabIndex = 13
+        pdllist_refresh_btn.CustomizableEdges = CustomizableEdges23
+        pdllist_refresh_btn.DisabledState.BorderColor = Color.DarkGray
+        pdllist_refresh_btn.DisabledState.CustomBorderColor = Color.DarkGray
+        pdllist_refresh_btn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        pdllist_refresh_btn.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        pdllist_refresh_btn.FillColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
+        pdllist_refresh_btn.Font = New Font("Segoe UI", 9F)
+        pdllist_refresh_btn.ForeColor = Color.White
+        pdllist_refresh_btn.Image = My.Resources.Resources.icons8_refresh_90
+        pdllist_refresh_btn.ImageSize = New Size(50, 50)
+        pdllist_refresh_btn.Location = New Point(575, 4)
+        pdllist_refresh_btn.Name = "pdllist_refresh_btn"
+        pdllist_refresh_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges24
+        pdllist_refresh_btn.Size = New Size(45, 43)
+        pdllist_refresh_btn.TabIndex = 13
         ' 
         ' pdl_searchbar
         ' 
@@ -1004,6 +1005,53 @@ Partial Class DASHBOARD
         visitors_sched.ThemeStyle.RowsStyle.Height = 35
         visitors_sched.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         visitors_sched.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black
+        ' 
+        ' visitor_reqID
+        ' 
+        visitor_reqID.FillWeight = 15.2656069F
+        visitor_reqID.HeaderText = "ID#"
+        visitor_reqID.Name = "visitor_reqID"
+        visitor_reqID.ReadOnly = True
+        visitor_reqID.Visible = False
+        ' 
+        ' visitor
+        ' 
+        visitor.FillWeight = 62.5342026F
+        visitor.HeaderText = "Name of Visitor"
+        visitor.Name = "visitor"
+        visitor.ReadOnly = True
+        ' 
+        ' pdl_visited_name
+        ' 
+        pdl_visited_name.FillWeight = 62.5342026F
+        pdl_visited_name.HeaderText = "Visited PDL Name"
+        pdl_visited_name.Name = "pdl_visited_name"
+        pdl_visited_name.ReadOnly = True
+        ' 
+        ' request_time
+        ' 
+        request_time.FillWeight = 62.5342026F
+        request_time.HeaderText = "Requested Time"
+        request_time.Name = "request_time"
+        request_time.ReadOnly = True
+        ' 
+        ' request_date
+        ' 
+        request_date.FillWeight = 62.5342026F
+        request_date.HeaderText = "Requested Date"
+        request_date.Name = "request_date"
+        request_date.ReadOnly = True
+        ' 
+        ' sched_act
+        ' 
+        sched_act.FillWeight = 35.3300629F
+        sched_act.HeaderText = "Action"
+        sched_act.Name = "sched_act"
+        sched_act.ReadOnly = True
+        sched_act.Resizable = DataGridViewTriState.True
+        sched_act.SortMode = DataGridViewColumnSortMode.Automatic
+        sched_act.Text = "View"
+        sched_act.UseColumnTextForButtonValue = True
         ' 
         ' rep
         ' 
@@ -1486,53 +1534,6 @@ Partial Class DASHBOARD
         Guna2PictureBox2.TabIndex = 0
         Guna2PictureBox2.TabStop = False
         ' 
-        ' visitor_reqID
-        ' 
-        visitor_reqID.FillWeight = 15.2656069F
-        visitor_reqID.HeaderText = "ID#"
-        visitor_reqID.Name = "visitor_reqID"
-        visitor_reqID.ReadOnly = True
-        visitor_reqID.Visible = False
-        ' 
-        ' visitor
-        ' 
-        visitor.FillWeight = 62.5342026F
-        visitor.HeaderText = "Name of Visitor"
-        visitor.Name = "visitor"
-        visitor.ReadOnly = True
-        ' 
-        ' pdl_visited_name
-        ' 
-        pdl_visited_name.FillWeight = 62.5342026F
-        pdl_visited_name.HeaderText = "Visited PDL Name"
-        pdl_visited_name.Name = "pdl_visited_name"
-        pdl_visited_name.ReadOnly = True
-        ' 
-        ' request_time
-        ' 
-        request_time.FillWeight = 62.5342026F
-        request_time.HeaderText = "Requested Time"
-        request_time.Name = "request_time"
-        request_time.ReadOnly = True
-        ' 
-        ' request_date
-        ' 
-        request_date.FillWeight = 62.5342026F
-        request_date.HeaderText = "Requested Date"
-        request_date.Name = "request_date"
-        request_date.ReadOnly = True
-        ' 
-        ' sched_act
-        ' 
-        sched_act.FillWeight = 35.3300629F
-        sched_act.HeaderText = "Action"
-        sched_act.Name = "sched_act"
-        sched_act.ReadOnly = True
-        sched_act.Resizable = DataGridViewTriState.True
-        sched_act.SortMode = DataGridViewColumnSortMode.Automatic
-        sched_act.Text = "View"
-        sched_act.UseColumnTextForButtonValue = True
-        ' 
         ' DASHBOARD
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -1544,6 +1545,7 @@ Partial Class DASHBOARD
         Controls.Add(TabControl)
         Controls.Add(Guna2Panel3)
         FormBorderStyle = FormBorderStyle.None
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "DASHBOARD"
         StartPosition = FormStartPosition.CenterScreen
         TabControl.ResumeLayout(False)
@@ -1625,11 +1627,11 @@ Partial Class DASHBOARD
     Friend WithEvents stat As DataGridViewTextBoxColumn
     Friend WithEvents crime As DataGridViewTextBoxColumn
     Friend WithEvents acti As DataGridViewButtonColumn
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents pdllist_refresh_btn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents cell_num As DataGridViewTextBoxColumn
     Friend WithEvents gen As DataGridViewTextBoxColumn
     Friend WithEvents act As DataGridViewButtonColumn
-    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents cellblock_refresh_btn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents active_pdl_dis As Label
     Friend WithEvents Guna2CustomGradientPanel5 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents Guna2Panel6 As Guna.UI2.WinForms.Guna2Panel
