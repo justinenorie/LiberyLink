@@ -69,29 +69,29 @@ Partial Class DASHBOARD
         Dim DataGridViewCellStyle15 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim CustomizableEdges31 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges32 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges33 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges34 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim DataGridViewCellStyle16 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle17 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle18 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle19 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle20 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim CustomizableEdges33 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges34 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges41 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges42 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges35 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges36 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges43 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges44 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges37 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges38 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges39 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges40 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges57 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges58 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges45 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges46 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges43 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges44 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges41 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges42 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges59 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges60 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges47 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges48 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges45 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges46 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges49 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges50 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges51 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -100,10 +100,12 @@ Partial Class DASHBOARD
         Dim CustomizableEdges54 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges55 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges56 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges57 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges58 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges63 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges64 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges61 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges62 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges59 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges60 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DASHBOARD))
         TabControl = New Guna.UI2.WinForms.Guna2TabControl()
         dash = New TabPage()
@@ -154,11 +156,14 @@ Partial Class DASHBOARD
         request_date = New DataGridViewTextBoxColumn()
         sched_act = New DataGridViewButtonColumn()
         rep = New TabPage()
+        add_reports = New Guna.UI2.WinForms.Guna2Button()
         Guna2TextBox5 = New Guna.UI2.WinForms.Guna2TextBox()
-        Guna2DataGridView3 = New Guna.UI2.WinForms.Guna2DataGridView()
+        reports_data = New Guna.UI2.WinForms.Guna2DataGridView()
+        reports_keyID = New DataGridViewTextBoxColumn()
         list_date = New DataGridViewTextBoxColumn()
         list_name = New DataGridViewTextBoxColumn()
         list_rep = New DataGridViewTextBoxColumn()
+        report_action = New DataGridViewButtonColumn()
         Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
         admin_key = New Label()
         label1 = New Label()
@@ -191,7 +196,7 @@ Partial Class DASHBOARD
         vis.SuspendLayout()
         CType(visitors_sched, ComponentModel.ISupportInitialize).BeginInit()
         rep.SuspendLayout()
-        CType(Guna2DataGridView3, ComponentModel.ISupportInitialize).BeginInit()
+        CType(reports_data, ComponentModel.ISupportInitialize).BeginInit()
         Guna2Panel1.SuspendLayout()
         Guna2Panel2.SuspendLayout()
         Guna2Panel8.SuspendLayout()
@@ -1056,8 +1061,9 @@ Partial Class DASHBOARD
         ' rep
         ' 
         rep.BackColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
+        rep.Controls.Add(add_reports)
         rep.Controls.Add(Guna2TextBox5)
-        rep.Controls.Add(Guna2DataGridView3)
+        rep.Controls.Add(reports_data)
         rep.Location = New Point(4, 44)
         rep.Name = "rep"
         rep.Padding = New Padding(3)
@@ -1065,12 +1071,42 @@ Partial Class DASHBOARD
         rep.TabIndex = 7
         rep.Text = "Reports"
         ' 
+        ' add_reports
+        ' 
+        add_reports.BorderRadius = 15
+        add_reports.CheckedState.FillColor = Color.White
+        add_reports.CheckedState.ForeColor = Color.Black
+        add_reports.CustomImages.ImageAlign = HorizontalAlignment.Left
+        add_reports.CustomizableEdges = CustomizableEdges31
+        add_reports.DisabledState.BorderColor = Color.DarkGray
+        add_reports.DisabledState.CustomBorderColor = Color.DarkGray
+        add_reports.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        add_reports.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        add_reports.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
+        add_reports.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        add_reports.ForeColor = Color.Black
+        add_reports.HoverState.FillColor = Color.Silver
+        add_reports.HoverState.ForeColor = Color.Black
+        add_reports.Image = My.Resources.Resources.icons8_plus_50__2_
+        add_reports.ImageAlign = HorizontalAlignment.Left
+        add_reports.ImageOffset = New Point(0, -1)
+        add_reports.ImageSize = New Size(25, 25)
+        add_reports.Location = New Point(625, 7)
+        add_reports.Margin = New Padding(0)
+        add_reports.Name = "add_reports"
+        add_reports.Padding = New Padding(0, 0, 0, 3)
+        add_reports.ShadowDecoration.CustomizableEdges = CustomizableEdges32
+        add_reports.Size = New Size(168, 36)
+        add_reports.TabIndex = 14
+        add_reports.Text = "Add Reports"
+        add_reports.TextAlign = HorizontalAlignment.Left
+        ' 
         ' Guna2TextBox5
         ' 
         Guna2TextBox5.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         Guna2TextBox5.BorderRadius = 10
         Guna2TextBox5.BorderThickness = 2
-        Guna2TextBox5.CustomizableEdges = CustomizableEdges31
+        Guna2TextBox5.CustomizableEdges = CustomizableEdges33
         Guna2TextBox5.DefaultText = ""
         Guna2TextBox5.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox5.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -1088,25 +1124,25 @@ Partial Class DASHBOARD
         Guna2TextBox5.PasswordChar = ChrW(0)
         Guna2TextBox5.PlaceholderText = "Search"
         Guna2TextBox5.SelectedText = ""
-        Guna2TextBox5.ShadowDecoration.CustomizableEdges = CustomizableEdges32
-        Guna2TextBox5.Size = New Size(778, 36)
+        Guna2TextBox5.ShadowDecoration.CustomizableEdges = CustomizableEdges34
+        Guna2TextBox5.Size = New Size(607, 36)
         Guna2TextBox5.TabIndex = 13
         ' 
-        ' Guna2DataGridView3
+        ' reports_data
         ' 
-        Guna2DataGridView3.AllowUserToAddRows = False
-        Guna2DataGridView3.AllowUserToDeleteRows = False
-        Guna2DataGridView3.AllowUserToResizeColumns = False
-        Guna2DataGridView3.AllowUserToResizeRows = False
+        reports_data.AllowUserToAddRows = False
+        reports_data.AllowUserToDeleteRows = False
+        reports_data.AllowUserToResizeColumns = False
+        reports_data.AllowUserToResizeRows = False
         DataGridViewCellStyle16.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
         DataGridViewCellStyle16.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle16.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle16.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         DataGridViewCellStyle16.SelectionForeColor = Color.Black
-        Guna2DataGridView3.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
-        Guna2DataGridView3.BorderStyle = BorderStyle.FixedSingle
-        Guna2DataGridView3.CellBorderStyle = DataGridViewCellBorderStyle.SunkenVertical
-        Guna2DataGridView3.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken
+        reports_data.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
+        reports_data.BorderStyle = BorderStyle.FixedSingle
+        reports_data.CellBorderStyle = DataGridViewCellBorderStyle.SunkenVertical
+        reports_data.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken
         DataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle17.BackColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
         DataGridViewCellStyle17.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
@@ -1114,10 +1150,10 @@ Partial Class DASHBOARD
         DataGridViewCellStyle17.SelectionBackColor = Color.FromArgb(CByte(53), CByte(143), CByte(198))
         DataGridViewCellStyle17.SelectionForeColor = Color.Black
         DataGridViewCellStyle17.WrapMode = DataGridViewTriState.True
-        Guna2DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
-        Guna2DataGridView3.ColumnHeadersHeight = 35
-        Guna2DataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Guna2DataGridView3.Columns.AddRange(New DataGridViewColumn() {list_date, list_name, list_rep})
+        reports_data.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
+        reports_data.ColumnHeadersHeight = 35
+        reports_data.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        reports_data.Columns.AddRange(New DataGridViewColumn() {reports_keyID, list_date, list_name, list_rep, report_action})
         DataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle18.BackColor = Color.White
         DataGridViewCellStyle18.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
@@ -1125,13 +1161,13 @@ Partial Class DASHBOARD
         DataGridViewCellStyle18.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
         DataGridViewCellStyle18.SelectionForeColor = Color.Black
         DataGridViewCellStyle18.WrapMode = DataGridViewTriState.False
-        Guna2DataGridView3.DefaultCellStyle = DataGridViewCellStyle18
-        Guna2DataGridView3.GridColor = Color.Black
-        Guna2DataGridView3.Location = New Point(14, 50)
-        Guna2DataGridView3.Name = "Guna2DataGridView3"
-        Guna2DataGridView3.ReadOnly = True
-        Guna2DataGridView3.RightToLeft = RightToLeft.No
-        Guna2DataGridView3.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        reports_data.DefaultCellStyle = DataGridViewCellStyle18
+        reports_data.GridColor = Color.Black
+        reports_data.Location = New Point(14, 50)
+        reports_data.Name = "reports_data"
+        reports_data.ReadOnly = True
+        reports_data.RightToLeft = RightToLeft.No
+        reports_data.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle19.BackColor = Color.White
         DataGridViewCellStyle19.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -1140,68 +1176,87 @@ Partial Class DASHBOARD
         DataGridViewCellStyle19.SelectionBackColor = Color.White
         DataGridViewCellStyle19.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle19.WrapMode = DataGridViewTriState.True
-        Guna2DataGridView3.RowHeadersDefaultCellStyle = DataGridViewCellStyle19
-        Guna2DataGridView3.RowHeadersVisible = False
+        reports_data.RowHeadersDefaultCellStyle = DataGridViewCellStyle19
+        reports_data.RowHeadersVisible = False
         DataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle20.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         DataGridViewCellStyle20.Padding = New Padding(5)
         DataGridViewCellStyle20.WrapMode = DataGridViewTriState.True
-        Guna2DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle20
-        Guna2DataGridView3.RowTemplate.Height = 35
-        Guna2DataGridView3.Size = New Size(779, 516)
-        Guna2DataGridView3.TabIndex = 6
-        Guna2DataGridView3.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.WetAsphalt
-        Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
-        Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9F)
-        Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.ForeColor = SystemColors.ControlText
-        Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
-        Guna2DataGridView3.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Black
-        Guna2DataGridView3.ThemeStyle.BackColor = Color.White
-        Guna2DataGridView3.ThemeStyle.GridColor = Color.Black
-        Guna2DataGridView3.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
-        Guna2DataGridView3.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Sunken
-        Guna2DataGridView3.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
-        Guna2DataGridView3.ThemeStyle.HeaderStyle.ForeColor = Color.White
-        Guna2DataGridView3.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Guna2DataGridView3.ThemeStyle.HeaderStyle.Height = 35
-        Guna2DataGridView3.ThemeStyle.ReadOnly = True
-        Guna2DataGridView3.ThemeStyle.RowsStyle.BackColor = Color.White
-        Guna2DataGridView3.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SunkenVertical
-        Guna2DataGridView3.ThemeStyle.RowsStyle.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
-        Guna2DataGridView3.ThemeStyle.RowsStyle.ForeColor = Color.Black
-        Guna2DataGridView3.ThemeStyle.RowsStyle.Height = 35
-        Guna2DataGridView3.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
-        Guna2DataGridView3.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black
+        reports_data.RowsDefaultCellStyle = DataGridViewCellStyle20
+        reports_data.RowTemplate.Height = 35
+        reports_data.Size = New Size(779, 516)
+        reports_data.TabIndex = 6
+        reports_data.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.WetAsphalt
+        reports_data.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(CByte(191), CByte(191), CByte(191))
+        reports_data.ThemeStyle.AlternatingRowsStyle.Font = New Font("Segoe UI", 9F)
+        reports_data.ThemeStyle.AlternatingRowsStyle.ForeColor = SystemColors.ControlText
+        reports_data.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
+        reports_data.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Black
+        reports_data.ThemeStyle.BackColor = Color.White
+        reports_data.ThemeStyle.GridColor = Color.Black
+        reports_data.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
+        reports_data.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Sunken
+        reports_data.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI Semibold", 10F, FontStyle.Bold)
+        reports_data.ThemeStyle.HeaderStyle.ForeColor = Color.White
+        reports_data.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        reports_data.ThemeStyle.HeaderStyle.Height = 35
+        reports_data.ThemeStyle.ReadOnly = True
+        reports_data.ThemeStyle.RowsStyle.BackColor = Color.White
+        reports_data.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SunkenVertical
+        reports_data.ThemeStyle.RowsStyle.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
+        reports_data.ThemeStyle.RowsStyle.ForeColor = Color.Black
+        reports_data.ThemeStyle.RowsStyle.Height = 35
+        reports_data.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(229), CByte(229), CByte(229))
+        reports_data.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black
+        ' 
+        ' reports_keyID
+        ' 
+        reports_keyID.FillWeight = 10.5472221F
+        reports_keyID.HeaderText = "reportt_ID"
+        reports_keyID.Name = "reports_keyID"
+        reports_keyID.ReadOnly = True
+        reports_keyID.Visible = False
         ' 
         ' list_date
         ' 
-        list_date.FillWeight = 30F
+        list_date.FillWeight = 70.13411F
         list_date.HeaderText = "Date"
         list_date.Name = "list_date"
         list_date.ReadOnly = True
         ' 
         ' list_name
         ' 
-        list_name.FillWeight = 35F
+        list_name.FillWeight = 81.82313F
         list_name.HeaderText = "PDL Name"
         list_name.Name = "list_name"
         list_name.ReadOnly = True
         ' 
         ' list_rep
         ' 
-        list_rep.FillWeight = 42.78028F
+        list_rep.FillWeight = 100.0119F
         list_rep.HeaderText = "Reports"
         list_rep.Name = "list_rep"
         list_rep.ReadOnly = True
+        ' 
+        ' report_action
+        ' 
+        report_action.FillWeight = 45.26392F
+        report_action.HeaderText = "Action"
+        report_action.Name = "report_action"
+        report_action.ReadOnly = True
+        report_action.Resizable = DataGridViewTriState.False
+        report_action.SortMode = DataGridViewColumnSortMode.Automatic
+        report_action.Text = "View"
+        report_action.UseColumnTextForButtonValue = True
         ' 
         ' Guna2Panel4
         ' 
         Guna2Panel4.BackgroundImage = My.Resources.Resources.image_2024_04_29_224538409_removebg_preview
         Guna2Panel4.BackgroundImageLayout = ImageLayout.Stretch
-        Guna2Panel4.CustomizableEdges = CustomizableEdges33
+        Guna2Panel4.CustomizableEdges = CustomizableEdges35
         Guna2Panel4.Location = New Point(22, 18)
         Guna2Panel4.Name = "Guna2Panel4"
-        Guna2Panel4.ShadowDecoration.CustomizableEdges = CustomizableEdges34
+        Guna2Panel4.ShadowDecoration.CustomizableEdges = CustomizableEdges36
         Guna2Panel4.Size = New Size(77, 75)
         Guna2Panel4.TabIndex = 17
         ' 
@@ -1234,11 +1289,11 @@ Partial Class DASHBOARD
         Guna2Panel1.Controls.Add(Guna2ControlBox6)
         Guna2Panel1.Controls.Add(Guna2ControlBox5)
         Guna2Panel1.Controls.Add(Guna2ControlBox4)
-        Guna2Panel1.CustomizableEdges = CustomizableEdges41
+        Guna2Panel1.CustomizableEdges = CustomizableEdges43
         Guna2Panel1.Dock = DockStyle.Top
         Guna2Panel1.Location = New Point(0, 0)
         Guna2Panel1.Name = "Guna2Panel1"
-        Guna2Panel1.ShadowDecoration.CustomizableEdges = CustomizableEdges42
+        Guna2Panel1.ShadowDecoration.CustomizableEdges = CustomizableEdges44
         Guna2Panel1.Size = New Size(1184, 28)
         Guna2Panel1.TabIndex = 2
         ' 
@@ -1246,13 +1301,13 @@ Partial Class DASHBOARD
         ' 
         Guna2ControlBox6.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Guna2ControlBox6.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
-        Guna2ControlBox6.CustomizableEdges = CustomizableEdges35
+        Guna2ControlBox6.CustomizableEdges = CustomizableEdges37
         Guna2ControlBox6.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
         Guna2ControlBox6.IconColor = Color.White
         Guna2ControlBox6.Location = New Point(1046, 1)
         Guna2ControlBox6.Name = "Guna2ControlBox6"
         Guna2ControlBox6.PressedColor = Color.White
-        Guna2ControlBox6.ShadowDecoration.CustomizableEdges = CustomizableEdges36
+        Guna2ControlBox6.ShadowDecoration.CustomizableEdges = CustomizableEdges38
         Guna2ControlBox6.Size = New Size(46, 28)
         Guna2ControlBox6.TabIndex = 9
         ' 
@@ -1260,27 +1315,27 @@ Partial Class DASHBOARD
         ' 
         Guna2ControlBox5.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Guna2ControlBox5.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox
-        Guna2ControlBox5.CustomizableEdges = CustomizableEdges37
+        Guna2ControlBox5.CustomizableEdges = CustomizableEdges39
         Guna2ControlBox5.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
         Guna2ControlBox5.IconColor = Color.White
         Guna2ControlBox5.Location = New Point(1092, 1)
         Guna2ControlBox5.Name = "Guna2ControlBox5"
         Guna2ControlBox5.PressedColor = Color.White
-        Guna2ControlBox5.ShadowDecoration.CustomizableEdges = CustomizableEdges38
+        Guna2ControlBox5.ShadowDecoration.CustomizableEdges = CustomizableEdges40
         Guna2ControlBox5.Size = New Size(46, 28)
         Guna2ControlBox5.TabIndex = 8
         ' 
         ' Guna2ControlBox4
         ' 
         Guna2ControlBox4.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Guna2ControlBox4.CustomizableEdges = CustomizableEdges39
+        Guna2ControlBox4.CustomizableEdges = CustomizableEdges41
         Guna2ControlBox4.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
         Guna2ControlBox4.HoverState.FillColor = Color.Red
         Guna2ControlBox4.IconColor = Color.White
         Guna2ControlBox4.Location = New Point(1138, 1)
         Guna2ControlBox4.Name = "Guna2ControlBox4"
         Guna2ControlBox4.PressedColor = Color.White
-        Guna2ControlBox4.ShadowDecoration.CustomizableEdges = CustomizableEdges40
+        Guna2ControlBox4.ShadowDecoration.CustomizableEdges = CustomizableEdges42
         Guna2ControlBox4.Size = New Size(46, 28)
         Guna2ControlBox4.TabIndex = 7
         ' 
@@ -1296,11 +1351,11 @@ Partial Class DASHBOARD
         Guna2Panel2.Controls.Add(Btn_2)
         Guna2Panel2.Controls.Add(label1)
         Guna2Panel2.Controls.Add(Btn_1)
-        Guna2Panel2.CustomizableEdges = CustomizableEdges57
+        Guna2Panel2.CustomizableEdges = CustomizableEdges59
         Guna2Panel2.Dock = DockStyle.Left
         Guna2Panel2.Location = New Point(0, 28)
         Guna2Panel2.Name = "Guna2Panel2"
-        Guna2Panel2.ShadowDecoration.CustomizableEdges = CustomizableEdges58
+        Guna2Panel2.ShadowDecoration.CustomizableEdges = CustomizableEdges60
         Guna2Panel2.Size = New Size(380, 672)
         Guna2Panel2.TabIndex = 7
         ' 
@@ -1309,10 +1364,10 @@ Partial Class DASHBOARD
         Guna2Panel8.BorderColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
         Guna2Panel8.BorderThickness = 2
         Guna2Panel8.Controls.Add(log_out)
-        Guna2Panel8.CustomizableEdges = CustomizableEdges45
+        Guna2Panel8.CustomizableEdges = CustomizableEdges47
         Guna2Panel8.Location = New Point(-10, 516)
         Guna2Panel8.Name = "Guna2Panel8"
-        Guna2Panel8.ShadowDecoration.CustomizableEdges = CustomizableEdges46
+        Guna2Panel8.ShadowDecoration.CustomizableEdges = CustomizableEdges48
         Guna2Panel8.Size = New Size(395, 177)
         Guna2Panel8.TabIndex = 10
         ' 
@@ -1322,7 +1377,7 @@ Partial Class DASHBOARD
         log_out.CheckedState.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
         log_out.CheckedState.ForeColor = Color.Black
         log_out.CustomImages.ImageAlign = HorizontalAlignment.Left
-        log_out.CustomizableEdges = CustomizableEdges43
+        log_out.CustomizableEdges = CustomizableEdges45
         log_out.DisabledState.BorderColor = Color.DarkGray
         log_out.DisabledState.CustomBorderColor = Color.DarkGray
         log_out.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -1338,7 +1393,7 @@ Partial Class DASHBOARD
         log_out.Location = New Point(32, 54)
         log_out.Margin = New Padding(0)
         log_out.Name = "log_out"
-        log_out.ShadowDecoration.CustomizableEdges = CustomizableEdges44
+        log_out.ShadowDecoration.CustomizableEdges = CustomizableEdges46
         log_out.Size = New Size(320, 50)
         log_out.TabIndex = 9
         log_out.Text = "Logout"
@@ -1361,7 +1416,7 @@ Partial Class DASHBOARD
         Btn_5.CheckedState.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
         Btn_5.CheckedState.ForeColor = Color.Black
         Btn_5.CustomImages.ImageAlign = HorizontalAlignment.Left
-        Btn_5.CustomizableEdges = CustomizableEdges47
+        Btn_5.CustomizableEdges = CustomizableEdges49
         Btn_5.DisabledState.BorderColor = Color.DarkGray
         Btn_5.DisabledState.CustomBorderColor = Color.DarkGray
         Btn_5.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -1377,7 +1432,7 @@ Partial Class DASHBOARD
         Btn_5.Location = New Point(22, 400)
         Btn_5.Margin = New Padding(0)
         Btn_5.Name = "Btn_5"
-        Btn_5.ShadowDecoration.CustomizableEdges = CustomizableEdges48
+        Btn_5.ShadowDecoration.CustomizableEdges = CustomizableEdges50
         Btn_5.Size = New Size(320, 50)
         Btn_5.TabIndex = 6
         Btn_5.Text = "Reports"
@@ -1389,7 +1444,7 @@ Partial Class DASHBOARD
         Btn_4.CheckedState.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
         Btn_4.CheckedState.ForeColor = Color.Black
         Btn_4.CustomImages.ImageAlign = HorizontalAlignment.Left
-        Btn_4.CustomizableEdges = CustomizableEdges49
+        Btn_4.CustomizableEdges = CustomizableEdges51
         Btn_4.DisabledState.BorderColor = Color.DarkGray
         Btn_4.DisabledState.CustomBorderColor = Color.DarkGray
         Btn_4.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -1405,7 +1460,7 @@ Partial Class DASHBOARD
         Btn_4.Location = New Point(22, 330)
         Btn_4.Margin = New Padding(0)
         Btn_4.Name = "Btn_4"
-        Btn_4.ShadowDecoration.CustomizableEdges = CustomizableEdges50
+        Btn_4.ShadowDecoration.CustomizableEdges = CustomizableEdges52
         Btn_4.Size = New Size(320, 50)
         Btn_4.TabIndex = 4
         Btn_4.Text = "Visitor List"
@@ -1417,7 +1472,7 @@ Partial Class DASHBOARD
         Btn_3.CheckedState.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
         Btn_3.CheckedState.ForeColor = Color.Black
         Btn_3.CustomImages.ImageAlign = HorizontalAlignment.Left
-        Btn_3.CustomizableEdges = CustomizableEdges51
+        Btn_3.CustomizableEdges = CustomizableEdges53
         Btn_3.DisabledState.BorderColor = Color.DarkGray
         Btn_3.DisabledState.CustomBorderColor = Color.DarkGray
         Btn_3.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -1433,7 +1488,7 @@ Partial Class DASHBOARD
         Btn_3.Location = New Point(22, 260)
         Btn_3.Margin = New Padding(0)
         Btn_3.Name = "Btn_3"
-        Btn_3.ShadowDecoration.CustomizableEdges = CustomizableEdges52
+        Btn_3.ShadowDecoration.CustomizableEdges = CustomizableEdges54
         Btn_3.Size = New Size(320, 50)
         Btn_3.TabIndex = 3
         Btn_3.Text = "PDL's List"
@@ -1445,7 +1500,7 @@ Partial Class DASHBOARD
         Btn_2.CheckedState.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
         Btn_2.CheckedState.ForeColor = Color.Black
         Btn_2.CustomImages.ImageAlign = HorizontalAlignment.Left
-        Btn_2.CustomizableEdges = CustomizableEdges53
+        Btn_2.CustomizableEdges = CustomizableEdges55
         Btn_2.DisabledState.BorderColor = Color.DarkGray
         Btn_2.DisabledState.CustomBorderColor = Color.DarkGray
         Btn_2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -1461,7 +1516,7 @@ Partial Class DASHBOARD
         Btn_2.Location = New Point(22, 190)
         Btn_2.Margin = New Padding(0)
         Btn_2.Name = "Btn_2"
-        Btn_2.ShadowDecoration.CustomizableEdges = CustomizableEdges54
+        Btn_2.ShadowDecoration.CustomizableEdges = CustomizableEdges56
         Btn_2.Size = New Size(320, 50)
         Btn_2.TabIndex = 2
         Btn_2.Text = "Cell Block List"
@@ -1474,7 +1529,7 @@ Partial Class DASHBOARD
         Btn_1.CheckedState.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
         Btn_1.CheckedState.ForeColor = Color.Black
         Btn_1.CustomImages.ImageAlign = HorizontalAlignment.Left
-        Btn_1.CustomizableEdges = CustomizableEdges55
+        Btn_1.CustomizableEdges = CustomizableEdges57
         Btn_1.DisabledState.BorderColor = Color.DarkGray
         Btn_1.DisabledState.CustomBorderColor = Color.DarkGray
         Btn_1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -1490,7 +1545,7 @@ Partial Class DASHBOARD
         Btn_1.Location = New Point(22, 120)
         Btn_1.Margin = New Padding(0)
         Btn_1.Name = "Btn_1"
-        Btn_1.ShadowDecoration.CustomizableEdges = CustomizableEdges56
+        Btn_1.ShadowDecoration.CustomizableEdges = CustomizableEdges58
         Btn_1.Size = New Size(320, 50)
         Btn_1.TabIndex = 0
         Btn_1.Text = "Dashboard"
@@ -1502,10 +1557,10 @@ Partial Class DASHBOARD
         Guna2Panel3.Controls.Add(lblDisplay)
         Guna2Panel3.Controls.Add(Guna2PictureBox2)
         Guna2Panel3.Controls.Add(admin_key)
-        Guna2Panel3.CustomizableEdges = CustomizableEdges61
+        Guna2Panel3.CustomizableEdges = CustomizableEdges63
         Guna2Panel3.Location = New Point(375, 28)
         Guna2Panel3.Name = "Guna2Panel3"
-        Guna2Panel3.ShadowDecoration.CustomizableEdges = CustomizableEdges62
+        Guna2Panel3.ShadowDecoration.CustomizableEdges = CustomizableEdges64
         Guna2Panel3.Size = New Size(816, 54)
         Guna2Panel3.TabIndex = 8
         ' 
@@ -1522,13 +1577,13 @@ Partial Class DASHBOARD
         ' 
         ' Guna2PictureBox2
         ' 
-        Guna2PictureBox2.CustomizableEdges = CustomizableEdges59
+        Guna2PictureBox2.CustomizableEdges = CustomizableEdges61
         Guna2PictureBox2.FillColor = Color.Transparent
         Guna2PictureBox2.Image = My.Resources.Resources.icons8_administrator_male_48
         Guna2PictureBox2.ImageRotate = 0F
         Guna2PictureBox2.Location = New Point(586, 9)
         Guna2PictureBox2.Name = "Guna2PictureBox2"
-        Guna2PictureBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges60
+        Guna2PictureBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges62
         Guna2PictureBox2.Size = New Size(35, 35)
         Guna2PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         Guna2PictureBox2.TabIndex = 0
@@ -1566,7 +1621,7 @@ Partial Class DASHBOARD
         vis.ResumeLayout(False)
         CType(visitors_sched, ComponentModel.ISupportInitialize).EndInit()
         rep.ResumeLayout(False)
-        CType(Guna2DataGridView3, ComponentModel.ISupportInitialize).EndInit()
+        CType(reports_data, ComponentModel.ISupportInitialize).EndInit()
         Guna2Panel1.ResumeLayout(False)
         Guna2Panel2.ResumeLayout(False)
         Guna2Panel2.PerformLayout()
@@ -1612,11 +1667,8 @@ Partial Class DASHBOARD
     Friend WithEvents create_pdl_list As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents visitors_sched As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents Guna2Panel8 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2DataGridView3 As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents reports_data As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents pdl_searchbar As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents list_date As DataGridViewTextBoxColumn
-    Friend WithEvents list_name As DataGridViewTextBoxColumn
-    Friend WithEvents list_rep As DataGridViewTextBoxColumn
     Friend WithEvents Guna2TextBox3 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2TextBox5 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2CustomGradientPanel2 As Guna.UI2.WinForms.Guna2CustomGradientPanel
@@ -1652,4 +1704,10 @@ Partial Class DASHBOARD
     Friend WithEvents request_time As DataGridViewTextBoxColumn
     Friend WithEvents request_date As DataGridViewTextBoxColumn
     Friend WithEvents sched_act As DataGridViewButtonColumn
+    Friend WithEvents add_reports As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents reports_keyID As DataGridViewTextBoxColumn
+    Friend WithEvents list_date As DataGridViewTextBoxColumn
+    Friend WithEvents list_name As DataGridViewTextBoxColumn
+    Friend WithEvents list_rep As DataGridViewTextBoxColumn
+    Friend WithEvents report_action As DataGridViewButtonColumn
 End Class

@@ -18,6 +18,7 @@ Public Class DASHBOARD
                 RefreshDataGridView()
                 RefreshCellBlockDataGrid()
                 LoadAppointments()
+                PopulatingReports()
             Else
                 MessageBox.Show("Database connection is not open.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -195,6 +196,7 @@ Public Class DASHBOARD
         Return rowData
     End Function
 
+    'Populate pdl information in DataGrid
     Public Sub RefreshDataGridView()
         pdl_list_information.Rows.Clear()
         Dim pdlList_Query As New MySqlCommand("SELECT case_num, CONCAT(first_name, ' ', last_name) AS pdlName, status, crime FROM pdl_list", conn)
@@ -214,13 +216,14 @@ Public Class DASHBOARD
     End Sub
 
     Private Sub create_pdl_list_Click(sender As Object, e As EventArgs) Handles create_pdl_list.Click
-        Dim rowDataList As New List(Of List(Of String))()
+        Dim rowDataList As New List(Of List(Of String))
         ' Now you can pass rowDataList to the constructor
         Dim pdlInfoForm As New PDL_INFO(rowDataList)
         pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage2
         pdlInfoForm.ShowDialog()
     End Sub
 
+    'Populate cellblock information in DataGrid
     Public Sub RefreshCellBlockDataGrid()
         cell_block_table.Rows.Clear()
         Dim cellblock_Query As New MySqlCommand("SELECT cellblock_id, gender_unit FROM cell_block_list", conn)
@@ -266,7 +269,7 @@ Public Class DASHBOARD
                     Dim displayCapacity As String = $"{numOccupants}/{cellCapacity}"
                     rowData.Add(displayCapacity)
                     rowDataList.Add(rowData)
-                    End While
+                End While
                 reader.Close()
             End If
         Catch ex As Exception
@@ -303,6 +306,7 @@ Public Class DASHBOARD
         pdlInfoForm.ShowDialog()
     End Sub
 
+    'Populate appointment information in DataGrid
     Public Sub LoadAppointments()
         visitors_sched.Rows.Clear()
         Dim appointment_Query As New MySqlCommand("SELECT request_id, visitor_username, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, requested_date, requested_time FROM appointment_requests", conn)
@@ -368,4 +372,81 @@ Public Class DASHBOARD
         End Try
         Return rowDataList
     End Function
+
+    'REPORTS FUNCTIONALITY'
+    Public Sub PopulatingReports()
+        reports_data.Rows.Clear()
+        Dim reports_Query As New MySqlCommand("SELECT report_id, creation_date, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, report_details, case_num FROM reports", conn)
+        Try
+            If conn.State = ConnectionState.Open Then
+                Using reader As MySqlDataReader = reports_Query.ExecuteReader()
+                    If reader.HasRows Then
+                        While reader.Read()
+                            Dim reportsID As String = reader.GetInt32("report_id").ToString()
+                            Dim creationDate As String = reader.GetDateTime("creation_date").ToString("yyyy-MM-dd")
+                            Dim pdlFullName As String = reader.GetString("pdl_full_name")
+                            Dim reportDetails As String = reader.GetString("report_details")
+                            reports_data.Rows.Add(reportsID, creationDate, pdlFullName, reportDetails)
+                        End While
+                    Else
+                        MessageBox.Show("No data found in the table.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+                End Using
+            Else
+                MessageBox.Show("Database connection is not open.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error loading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub reports_data_ContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles reports_data.CellContentClick
+        If e.ColumnIndex = reports_data.Columns("report_action").Index AndAlso e.RowIndex >= 0 Then
+            Try
+                Dim reports_ID As String = reports_data.Rows(e.RowIndex).Cells("reports_keyID").Value.ToString()
+                Dim rowDataList As List(Of List(Of String)) = ReportsDatabase(reports_ID)
+                Dim pdlInfoForm As New PDL_INFO(rowDataList, isTabPage6:=True)
+                pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage6
+                pdlInfoForm.ShowDialog()
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Function ReportsDatabase(reports_ID As String) As List(Of List(Of String))
+        Dim rowDataList As New List(Of List(Of String))()
+        Try
+            OpenConnection()
+            If conn.State = ConnectionState.Open Then
+                Dim getReports_query As New MySqlCommand("SELECT * FROM reports WHERE report_id = @reportID", conn)
+                getReports_query.Parameters.AddWithValue("@reportID", reports_ID)
+                Using reader As MySqlDataReader = getReports_query.ExecuteReader()
+                    While reader.Read()
+                        Dim rowData As New List(Of String)
+                        For i As Integer = 0 To reader.FieldCount - 1
+                            rowData.Add(reader(i).ToString())
+                        Next
+                        rowDataList.Add(rowData)
+                    End While
+                End Using
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error fetching row data from database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+        Return rowDataList
+    End Function
+
+    Private Sub add_reports_Click(sender As Object, e As EventArgs) Handles add_reports.Click
+        DisplayStatusCounts()
+        Dim rowDataList As New List(Of List(Of String))()
+        Dim pdlInfoForm As New PDL_INFO(rowDataList)
+        pdlInfoForm.rep_date.ReadOnly = False
+        pdlInfoForm.rep_pdlName.ReadOnly = False
+        pdlInfoForm.rep_Details.ReadOnly = False
+        pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage6
+        pdlInfoForm.ShowDialog()
+    End Sub
 End Class

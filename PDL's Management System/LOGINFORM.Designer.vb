@@ -31,6 +31,7 @@ Partial Class LOGINFORM
         Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges9 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LOGINFORM))
         Panel1 = New Panel()
         Guna2ImageCheckBox1 = New Guna.UI2.WinForms.Guna2ImageCheckBox()
         Label5 = New Label()
@@ -229,6 +230,7 @@ Partial Class LOGINFORM
         Controls.Add(Panel1)
         DoubleBuffered = True
         FormBorderStyle = FormBorderStyle.None
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "LOGINFORM"
         StartPosition = FormStartPosition.CenterScreen
         Text = "PDL's Management System"

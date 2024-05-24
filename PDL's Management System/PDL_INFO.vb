@@ -13,7 +13,7 @@ Public Class PDL_INFO
     End Sub
 
     'DISPLAY OF SELECTED INFORMATIONS'
-    Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False, Optional isTabPage1 As Boolean = False, Optional isTabPage5 As Boolean = False)
+    Public Sub New(rowData As List(Of List(Of String)), Optional isTabPage3 As Boolean = False, Optional isTabPage1 As Boolean = False, Optional isTabPage5 As Boolean = False, Optional isTabPage6 As Boolean = False)
         InitializeComponent()
         If isTabPage3 Then
             For Each rowDataItem As List(Of String) In rowData
@@ -64,6 +64,13 @@ Public Class PDL_INFO
                     End If
                     visit_pdl_name.Text = rowDataItem(5) & " " & rowDataItem(6)
                 End If
+            Next
+        ElseIf isTabPage6 Then
+            For Each rowDataItem As List(Of String) In rowData
+                report_idKey.Text = rowDataItem(0)
+                rep_date.Text = GetDateTimeFromMySQLDate(rowDataItem(1))
+                rep_pdlName.Text = rowDataItem(2) & " " & rowDataItem(3)
+                rep_Details.Text = rowDataItem(4)
             Next
         End If
     End Sub
@@ -447,14 +454,15 @@ Public Class PDL_INFO
                 Return
             End If
 
-            Dim cellblockId As String = cellblock_display.Text
-            Dim cellCapacity As Integer = CInt(cellval_display_capacity.Value)
+            Dim cellblockId = cellblock_display.Text
+            Dim cellCapacity As Integer = cellval_display_capacity.Value
 
             OpenConnection()
             dashboardForm.RefreshDataGridView()
             dashboardForm.DisplayStatusCounts()
+
             If Not cellval_display_capacity.Value <= 0 Then
-                Dim updateQuery As String = "UPDATE cell_block_list SET cell_capacity = @cellCapacity WHERE cellblock_id = @cellblockId"
+                Dim updateQuery = "UPDATE cell_block_list SET cell_capacity = @cellCapacity WHERE cellblock_id = @cellblockId"
 
                 Using updateCmd As New MySqlCommand(updateQuery, conn)
                     updateCmd.Parameters.AddWithValue("@cellCapacity", cellCapacity)
@@ -474,7 +482,7 @@ Public Class PDL_INFO
         cell_cancel_btn.Visible = False
         cellval_display_capacity.Visible = False
         display_capacity.Visible = True
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub DisplayPDLsForCellBlock()
@@ -522,14 +530,10 @@ Public Class PDL_INFO
             If conn.State = ConnectionState.Open Then
                 Dim requestId As Integer = Convert.ToInt32(visit_requestID.Text)
 
-                Dim checkRequestId_query As New MySqlCommand("SELECT COUNT(*) FROM appointment WHERE request_id = @requestId", conn)
+                Dim checkRequestId_query As New MySqlCommand("DELETE FROM appointment WHERE request_id = @requestId", conn)
                 checkRequestId_query.Parameters.AddWithValue("@requestId", requestId)
-                Dim requestIdCount As Integer = Convert.ToInt32(checkRequestId_query.ExecuteScalar())
-
-                If requestIdCount > 0 Then
-                    MessageBox.Show("This appointment has already been approved and cannot be declined.")
-                    Return
-                End If
+                checkRequestId_query.ExecuteNonQuery()
+                MessageBox.Show("Appointment declined successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Dim declinedID_query As New MySqlCommand("UPDATE appointment_requests SET status_id = (SELECT status_id FROM appointment_status WHERE status_name = 'Declined') WHERE request_id = @requestId", conn)
                 declinedID_query.Parameters.AddWithValue("@requestId", requestId)
@@ -557,17 +561,7 @@ Public Class PDL_INFO
                 Dim requestIdCount As Integer = Convert.ToInt32(checkRequestIdCommand.ExecuteScalar())
 
                 If requestIdCount > 0 Then
-                    MessageBox.Show("This request ID has already been approved.")
-                    Return
-                End If
-
-                ' Check if the request has been declined
-                Dim checkDeclinedCommand As New MySqlCommand("SELECT COUNT(*) FROM appointment_requests WHERE request_id = @requestId AND status_id = (SELECT status_id FROM appointment_status WHERE status_name = 'Declined')", conn)
-                checkDeclinedCommand.Parameters.AddWithValue("@requestId", requestId)
-                Dim isDeclined As Integer = Convert.ToInt32(checkDeclinedCommand.ExecuteScalar())
-
-                If isDeclined > 0 Then
-                    MessageBox.Show("This request has been declined and cannot be approved.")
+                    MessageBox.Show("This request ID has already been approved.", "Already Approved", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Return
                 End If
 
