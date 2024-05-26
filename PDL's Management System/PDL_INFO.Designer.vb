@@ -108,10 +108,10 @@ Partial Class PDL_INFO
         Dim CustomizableEdges76 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges77 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges78 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges81 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges82 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges79 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges80 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges81 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges82 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges85 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges86 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges87 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -160,12 +160,10 @@ Partial Class PDL_INFO
         Dim CustomizableEdges128 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges129 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges130 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges135 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges136 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges133 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges134 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges137 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges138 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges135 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges136 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges139 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges140 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges141 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -176,10 +174,10 @@ Partial Class PDL_INFO
         Dim CustomizableEdges146 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges147 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges148 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges159 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges160 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges149 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges150 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges161 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges162 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges151 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges152 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges153 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -188,12 +186,16 @@ Partial Class PDL_INFO
         Dim CustomizableEdges156 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges157 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges158 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges161 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges162 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges159 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges160 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges163 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges164 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges165 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges166 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges167 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges168 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges133 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges134 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(components)
         Guna2TabControl1 = New Guna.UI2.WinForms.Guna2TabControl()
         TabPage1 = New TabPage()
@@ -266,8 +268,8 @@ Partial Class PDL_INFO
         Guna2ControlBox4 = New Guna.UI2.WinForms.Guna2ControlBox()
         Label23 = New Label()
         save_btn_cell = New Guna.UI2.WinForms.Guna2Button()
-        cell_delete_btn = New Guna.UI2.WinForms.Guna2Button()
         cell_modify_btn = New Guna.UI2.WinForms.Guna2Button()
+        cell_delete_btn = New Guna.UI2.WinForms.Guna2Button()
         cellval_display_capacity = New Guna.UI2.WinForms.Guna2NumericUpDown()
         Label26 = New Label()
         TabPage4 = New TabPage()
@@ -336,6 +338,7 @@ Partial Class PDL_INFO
         rep_del_btn = New Guna.UI2.WinForms.Guna2Button()
         mesahebox = New Guna.UI2.WinForms.Guna2MessageDialog()
         Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
+        Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Guna2TabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         CType(Guna2PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -1804,6 +1807,36 @@ Partial Class PDL_INFO
         save_btn_cell.TextAlign = HorizontalAlignment.Left
         save_btn_cell.Visible = False
         ' 
+        ' cell_modify_btn
+        ' 
+        cell_modify_btn.BorderColor = Color.FromArgb(CByte(255), CByte(159), CByte(89))
+        cell_modify_btn.BorderRadius = 15
+        cell_modify_btn.BorderThickness = 2
+        cell_modify_btn.CheckedState.FillColor = Color.White
+        cell_modify_btn.CheckedState.ForeColor = Color.Black
+        cell_modify_btn.CustomImages.ImageAlign = HorizontalAlignment.Left
+        cell_modify_btn.CustomizableEdges = CustomizableEdges79
+        cell_modify_btn.DisabledState.BorderColor = Color.DarkGray
+        cell_modify_btn.DisabledState.CustomBorderColor = Color.DarkGray
+        cell_modify_btn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        cell_modify_btn.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        cell_modify_btn.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
+        cell_modify_btn.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        cell_modify_btn.ForeColor = Color.Black
+        cell_modify_btn.HoverState.FillColor = Color.Silver
+        cell_modify_btn.HoverState.ForeColor = Color.Black
+        cell_modify_btn.Image = My.Resources.Resources.icons8_update_64
+        cell_modify_btn.ImageAlign = HorizontalAlignment.Left
+        cell_modify_btn.ImageSize = New Size(25, 25)
+        cell_modify_btn.Location = New Point(729, 3)
+        cell_modify_btn.Margin = New Padding(0)
+        cell_modify_btn.Name = "cell_modify_btn"
+        cell_modify_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges80
+        cell_modify_btn.Size = New Size(117, 36)
+        cell_modify_btn.TabIndex = 60
+        cell_modify_btn.Text = "Modify"
+        cell_modify_btn.TextAlign = HorizontalAlignment.Left
+        ' 
         ' cell_delete_btn
         ' 
         cell_delete_btn.BorderColor = Color.FromArgb(CByte(255), CByte(159), CByte(89))
@@ -1834,36 +1867,6 @@ Partial Class PDL_INFO
         cell_delete_btn.Text = "Delete"
         cell_delete_btn.TextAlign = HorizontalAlignment.Left
         cell_delete_btn.Visible = False
-        ' 
-        ' cell_modify_btn
-        ' 
-        cell_modify_btn.BorderColor = Color.FromArgb(CByte(255), CByte(159), CByte(89))
-        cell_modify_btn.BorderRadius = 15
-        cell_modify_btn.BorderThickness = 2
-        cell_modify_btn.CheckedState.FillColor = Color.White
-        cell_modify_btn.CheckedState.ForeColor = Color.Black
-        cell_modify_btn.CustomImages.ImageAlign = HorizontalAlignment.Left
-        cell_modify_btn.CustomizableEdges = CustomizableEdges79
-        cell_modify_btn.DisabledState.BorderColor = Color.DarkGray
-        cell_modify_btn.DisabledState.CustomBorderColor = Color.DarkGray
-        cell_modify_btn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        cell_modify_btn.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        cell_modify_btn.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
-        cell_modify_btn.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
-        cell_modify_btn.ForeColor = Color.Black
-        cell_modify_btn.HoverState.FillColor = Color.Silver
-        cell_modify_btn.HoverState.ForeColor = Color.Black
-        cell_modify_btn.Image = My.Resources.Resources.icons8_update_64
-        cell_modify_btn.ImageAlign = HorizontalAlignment.Left
-        cell_modify_btn.ImageSize = New Size(25, 25)
-        cell_modify_btn.Location = New Point(729, 3)
-        cell_modify_btn.Margin = New Padding(0)
-        cell_modify_btn.Name = "cell_modify_btn"
-        cell_modify_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges80
-        cell_modify_btn.Size = New Size(117, 36)
-        cell_modify_btn.TabIndex = 60
-        cell_modify_btn.Text = "Modify"
-        cell_modify_btn.TextAlign = HorizontalAlignment.Left
         ' 
         ' cellval_display_capacity
         ' 
@@ -2591,11 +2594,12 @@ Partial Class PDL_INFO
         ' 
         Guna2Panel7.BorderColor = Color.White
         Guna2Panel7.BorderThickness = 2
+        Guna2Panel7.Controls.Add(Guna2Button1)
         Guna2Panel7.Controls.Add(visit_pdl_name)
-        Guna2Panel7.CustomizableEdges = CustomizableEdges135
+        Guna2Panel7.CustomizableEdges = CustomizableEdges137
         Guna2Panel7.Location = New Point(-41, -34)
         Guna2Panel7.Name = "Guna2Panel7"
-        Guna2Panel7.ShadowDecoration.CustomizableEdges = CustomizableEdges136
+        Guna2Panel7.ShadowDecoration.CustomizableEdges = CustomizableEdges138
         Guna2Panel7.Size = New Size(1029, 187)
         Guna2Panel7.TabIndex = 72
         ' 
@@ -2605,7 +2609,7 @@ Partial Class PDL_INFO
         visit_pdl_name.BorderColor = Color.Gray
         visit_pdl_name.BorderRadius = 5
         visit_pdl_name.BorderThickness = 2
-        visit_pdl_name.CustomizableEdges = CustomizableEdges133
+        visit_pdl_name.CustomizableEdges = CustomizableEdges135
         visit_pdl_name.DefaultText = ""
         visit_pdl_name.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         visit_pdl_name.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -2623,7 +2627,7 @@ Partial Class PDL_INFO
         visit_pdl_name.PlaceholderText = ""
         visit_pdl_name.ReadOnly = True
         visit_pdl_name.SelectedText = ""
-        visit_pdl_name.ShadowDecoration.CustomizableEdges = CustomizableEdges134
+        visit_pdl_name.ShadowDecoration.CustomizableEdges = CustomizableEdges136
         visit_pdl_name.Size = New Size(306, 31)
         visit_pdl_name.TabIndex = 65
         ' 
@@ -2660,7 +2664,7 @@ Partial Class PDL_INFO
         rep_add_btn.CheckedState.FillColor = Color.White
         rep_add_btn.CheckedState.ForeColor = Color.Black
         rep_add_btn.CustomImages.ImageAlign = HorizontalAlignment.Left
-        rep_add_btn.CustomizableEdges = CustomizableEdges137
+        rep_add_btn.CustomizableEdges = CustomizableEdges139
         rep_add_btn.DisabledState.BorderColor = Color.DarkGray
         rep_add_btn.DisabledState.CustomBorderColor = Color.DarkGray
         rep_add_btn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -2676,7 +2680,7 @@ Partial Class PDL_INFO
         rep_add_btn.Location = New Point(667, 47)
         rep_add_btn.Margin = New Padding(0)
         rep_add_btn.Name = "rep_add_btn"
-        rep_add_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges138
+        rep_add_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges140
         rep_add_btn.Size = New Size(206, 36)
         rep_add_btn.TabIndex = 84
         rep_add_btn.Text = "Add Report"
@@ -2691,7 +2695,7 @@ Partial Class PDL_INFO
         rep_update_btn.CheckedState.FillColor = Color.White
         rep_update_btn.CheckedState.ForeColor = Color.Black
         rep_update_btn.CustomImages.ImageAlign = HorizontalAlignment.Left
-        rep_update_btn.CustomizableEdges = CustomizableEdges139
+        rep_update_btn.CustomizableEdges = CustomizableEdges141
         rep_update_btn.DisabledState.BorderColor = Color.DarkGray
         rep_update_btn.DisabledState.CustomBorderColor = Color.DarkGray
         rep_update_btn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -2707,7 +2711,7 @@ Partial Class PDL_INFO
         rep_update_btn.Location = New Point(756, 90)
         rep_update_btn.Margin = New Padding(0)
         rep_update_btn.Name = "rep_update_btn"
-        rep_update_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges140
+        rep_update_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges142
         rep_update_btn.Size = New Size(117, 36)
         rep_update_btn.TabIndex = 83
         rep_update_btn.Text = "Update"
@@ -2732,7 +2736,7 @@ Partial Class PDL_INFO
         case_numID.BorderColor = Color.Gray
         case_numID.BorderRadius = 5
         case_numID.BorderThickness = 2
-        case_numID.CustomizableEdges = CustomizableEdges141
+        case_numID.CustomizableEdges = CustomizableEdges143
         case_numID.DefaultText = ""
         case_numID.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         case_numID.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -2749,7 +2753,7 @@ Partial Class PDL_INFO
         case_numID.PlaceholderForeColor = Color.Silver
         case_numID.PlaceholderText = ""
         case_numID.SelectedText = ""
-        case_numID.ShadowDecoration.CustomizableEdges = CustomizableEdges142
+        case_numID.ShadowDecoration.CustomizableEdges = CustomizableEdges144
         case_numID.Size = New Size(306, 31)
         case_numID.TabIndex = 81
         ' 
@@ -2793,7 +2797,7 @@ Partial Class PDL_INFO
         rep_date.BorderColor = Color.Gray
         rep_date.BorderRadius = 5
         rep_date.BorderThickness = 2
-        rep_date.CustomizableEdges = CustomizableEdges143
+        rep_date.CustomizableEdges = CustomizableEdges145
         rep_date.DefaultText = ""
         rep_date.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         rep_date.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -2811,7 +2815,7 @@ Partial Class PDL_INFO
         rep_date.PlaceholderText = ""
         rep_date.ReadOnly = True
         rep_date.SelectedText = ""
-        rep_date.ShadowDecoration.CustomizableEdges = CustomizableEdges144
+        rep_date.ShadowDecoration.CustomizableEdges = CustomizableEdges146
         rep_date.Size = New Size(306, 31)
         rep_date.TabIndex = 76
         ' 
@@ -2821,7 +2825,7 @@ Partial Class PDL_INFO
         rep_pdlName.BorderColor = Color.Gray
         rep_pdlName.BorderRadius = 5
         rep_pdlName.BorderThickness = 2
-        rep_pdlName.CustomizableEdges = CustomizableEdges145
+        rep_pdlName.CustomizableEdges = CustomizableEdges147
         rep_pdlName.DefaultText = ""
         rep_pdlName.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         rep_pdlName.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -2839,7 +2843,7 @@ Partial Class PDL_INFO
         rep_pdlName.PlaceholderText = ""
         rep_pdlName.ReadOnly = True
         rep_pdlName.SelectedText = ""
-        rep_pdlName.ShadowDecoration.CustomizableEdges = CustomizableEdges146
+        rep_pdlName.ShadowDecoration.CustomizableEdges = CustomizableEdges148
         rep_pdlName.Size = New Size(306, 31)
         rep_pdlName.TabIndex = 66
         ' 
@@ -2873,7 +2877,7 @@ Partial Class PDL_INFO
         rep_Details.BorderColor = Color.Gray
         rep_Details.BorderRadius = 5
         rep_Details.BorderThickness = 2
-        rep_Details.CustomizableEdges = CustomizableEdges147
+        rep_Details.CustomizableEdges = CustomizableEdges149
         rep_Details.DefaultText = "Add_Report"
         rep_Details.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         rep_Details.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -2892,7 +2896,7 @@ Partial Class PDL_INFO
         rep_Details.PlaceholderText = ""
         rep_Details.ReadOnly = True
         rep_Details.SelectedText = ""
-        rep_Details.ShadowDecoration.CustomizableEdges = CustomizableEdges148
+        rep_Details.ShadowDecoration.CustomizableEdges = CustomizableEdges150
         rep_Details.Size = New Size(682, 226)
         rep_Details.TabIndex = 67
         ' 
@@ -2906,10 +2910,10 @@ Partial Class PDL_INFO
         Guna2Panel12.Controls.Add(Guna2ControlBox15)
         Guna2Panel12.Controls.Add(Guna2ControlBox16)
         Guna2Panel12.Controls.Add(Label40)
-        Guna2Panel12.CustomizableEdges = CustomizableEdges159
+        Guna2Panel12.CustomizableEdges = CustomizableEdges161
         Guna2Panel12.Location = New Point(-4, 0)
         Guna2Panel12.Name = "Guna2Panel12"
-        Guna2Panel12.ShadowDecoration.CustomizableEdges = CustomizableEdges160
+        Guna2Panel12.ShadowDecoration.CustomizableEdges = CustomizableEdges162
         Guna2Panel12.Size = New Size(900, 41)
         Guna2Panel12.TabIndex = 64
         ' 
@@ -2918,12 +2922,12 @@ Partial Class PDL_INFO
         Guna2ControlBox17.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Guna2ControlBox17.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom
         Guna2ControlBox17.CustomIconSize = 20F
-        Guna2ControlBox17.CustomizableEdges = CustomizableEdges149
+        Guna2ControlBox17.CustomizableEdges = CustomizableEdges151
         Guna2ControlBox17.FillColor = Color.FromArgb(CByte(41), CByte(73), CByte(98))
         Guna2ControlBox17.IconColor = Color.White
         Guna2ControlBox17.Location = New Point(849, 3)
         Guna2ControlBox17.Name = "Guna2ControlBox17"
-        Guna2ControlBox17.ShadowDecoration.CustomizableEdges = CustomizableEdges150
+        Guna2ControlBox17.ShadowDecoration.CustomizableEdges = CustomizableEdges152
         Guna2ControlBox17.Size = New Size(43, 37)
         Guna2ControlBox17.TabIndex = 35
         ' 
@@ -2932,12 +2936,12 @@ Partial Class PDL_INFO
         Guna2ControlBox13.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Guna2ControlBox13.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom
         Guna2ControlBox13.CustomIconSize = 20F
-        Guna2ControlBox13.CustomizableEdges = CustomizableEdges151
+        Guna2ControlBox13.CustomizableEdges = CustomizableEdges153
         Guna2ControlBox13.FillColor = Color.FromArgb(CByte(41), CByte(73), CByte(98))
         Guna2ControlBox13.IconColor = Color.White
         Guna2ControlBox13.Location = New Point(1549, 3)
         Guna2ControlBox13.Name = "Guna2ControlBox13"
-        Guna2ControlBox13.ShadowDecoration.CustomizableEdges = CustomizableEdges152
+        Guna2ControlBox13.ShadowDecoration.CustomizableEdges = CustomizableEdges154
         Guna2ControlBox13.Size = New Size(43, 37)
         Guna2ControlBox13.TabIndex = 34
         ' 
@@ -2946,12 +2950,12 @@ Partial Class PDL_INFO
         Guna2ControlBox14.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Guna2ControlBox14.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom
         Guna2ControlBox14.CustomIconSize = 20F
-        Guna2ControlBox14.CustomizableEdges = CustomizableEdges153
+        Guna2ControlBox14.CustomizableEdges = CustomizableEdges155
         Guna2ControlBox14.FillColor = Color.FromArgb(CByte(41), CByte(73), CByte(98))
         Guna2ControlBox14.IconColor = Color.White
         Guna2ControlBox14.Location = New Point(2249, 3)
         Guna2ControlBox14.Name = "Guna2ControlBox14"
-        Guna2ControlBox14.ShadowDecoration.CustomizableEdges = CustomizableEdges154
+        Guna2ControlBox14.ShadowDecoration.CustomizableEdges = CustomizableEdges156
         Guna2ControlBox14.Size = New Size(43, 37)
         Guna2ControlBox14.TabIndex = 33
         ' 
@@ -2960,12 +2964,12 @@ Partial Class PDL_INFO
         Guna2ControlBox15.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Guna2ControlBox15.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom
         Guna2ControlBox15.CustomIconSize = 20F
-        Guna2ControlBox15.CustomizableEdges = CustomizableEdges155
+        Guna2ControlBox15.CustomizableEdges = CustomizableEdges157
         Guna2ControlBox15.FillColor = Color.FromArgb(CByte(41), CByte(73), CByte(98))
         Guna2ControlBox15.IconColor = Color.White
         Guna2ControlBox15.Location = New Point(2949, 3)
         Guna2ControlBox15.Name = "Guna2ControlBox15"
-        Guna2ControlBox15.ShadowDecoration.CustomizableEdges = CustomizableEdges156
+        Guna2ControlBox15.ShadowDecoration.CustomizableEdges = CustomizableEdges158
         Guna2ControlBox15.Size = New Size(43, 37)
         Guna2ControlBox15.TabIndex = 32
         ' 
@@ -2975,12 +2979,12 @@ Partial Class PDL_INFO
         Guna2ControlBox16.BorderStyle = Drawing2D.DashStyle.Dash
         Guna2ControlBox16.ControlBoxStyle = Guna.UI2.WinForms.Enums.ControlBoxStyle.Custom
         Guna2ControlBox16.CustomIconSize = 20F
-        Guna2ControlBox16.CustomizableEdges = CustomizableEdges157
+        Guna2ControlBox16.CustomizableEdges = CustomizableEdges159
         Guna2ControlBox16.FillColor = Color.FromArgb(CByte(41), CByte(73), CByte(98))
         Guna2ControlBox16.IconColor = Color.White
         Guna2ControlBox16.Location = New Point(3649, 3)
         Guna2ControlBox16.Name = "Guna2ControlBox16"
-        Guna2ControlBox16.ShadowDecoration.CustomizableEdges = CustomizableEdges158
+        Guna2ControlBox16.ShadowDecoration.CustomizableEdges = CustomizableEdges160
         Guna2ControlBox16.Size = New Size(43, 37)
         Guna2ControlBox16.TabIndex = 30
         ' 
@@ -3003,7 +3007,7 @@ Partial Class PDL_INFO
         rep_edit_btn.CheckedState.FillColor = Color.White
         rep_edit_btn.CheckedState.ForeColor = Color.Black
         rep_edit_btn.CustomImages.ImageAlign = HorizontalAlignment.Left
-        rep_edit_btn.CustomizableEdges = CustomizableEdges161
+        rep_edit_btn.CustomizableEdges = CustomizableEdges163
         rep_edit_btn.DisabledState.BorderColor = Color.DarkGray
         rep_edit_btn.DisabledState.CustomBorderColor = Color.DarkGray
         rep_edit_btn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -3019,7 +3023,7 @@ Partial Class PDL_INFO
         rep_edit_btn.Location = New Point(756, 48)
         rep_edit_btn.Margin = New Padding(0)
         rep_edit_btn.Name = "rep_edit_btn"
-        rep_edit_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges162
+        rep_edit_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges164
         rep_edit_btn.Size = New Size(117, 36)
         rep_edit_btn.TabIndex = 77
         rep_edit_btn.Text = "Edit"
@@ -3033,7 +3037,7 @@ Partial Class PDL_INFO
         rep_del_btn.CheckedState.FillColor = Color.White
         rep_del_btn.CheckedState.ForeColor = Color.Black
         rep_del_btn.CustomImages.ImageAlign = HorizontalAlignment.Left
-        rep_del_btn.CustomizableEdges = CustomizableEdges163
+        rep_del_btn.CustomizableEdges = CustomizableEdges165
         rep_del_btn.DisabledState.BorderColor = Color.DarkGray
         rep_del_btn.DisabledState.CustomBorderColor = Color.DarkGray
         rep_del_btn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -3049,7 +3053,7 @@ Partial Class PDL_INFO
         rep_del_btn.Location = New Point(756, 48)
         rep_del_btn.Margin = New Padding(0)
         rep_del_btn.Name = "rep_del_btn"
-        rep_del_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges164
+        rep_del_btn.ShadowDecoration.CustomizableEdges = CustomizableEdges166
         rep_del_btn.Size = New Size(117, 36)
         rep_del_btn.TabIndex = 78
         rep_del_btn.Text = "Delete"
@@ -3067,13 +3071,44 @@ Partial Class PDL_INFO
         ' 
         ' Guna2Panel2
         ' 
-        Guna2Panel2.CustomizableEdges = CustomizableEdges165
+        Guna2Panel2.CustomizableEdges = CustomizableEdges167
         Guna2Panel2.Dock = DockStyle.Fill
         Guna2Panel2.Location = New Point(0, 0)
         Guna2Panel2.Name = "Guna2Panel2"
-        Guna2Panel2.ShadowDecoration.CustomizableEdges = CustomizableEdges166
+        Guna2Panel2.ShadowDecoration.CustomizableEdges = CustomizableEdges168
         Guna2Panel2.Size = New Size(1184, 700)
         Guna2Panel2.TabIndex = 1
+        ' 
+        ' Guna2Button1
+        ' 
+        Guna2Button1.BorderColor = Color.FromArgb(CByte(255), CByte(159), CByte(89))
+        Guna2Button1.BorderRadius = 15
+        Guna2Button1.BorderThickness = 2
+        Guna2Button1.CheckedState.FillColor = Color.White
+        Guna2Button1.CheckedState.ForeColor = Color.Black
+        Guna2Button1.CustomImages.ImageAlign = HorizontalAlignment.Left
+        Guna2Button1.CustomizableEdges = CustomizableEdges133
+        Guna2Button1.DisabledState.BorderColor = Color.DarkGray
+        Guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray
+        Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        Guna2Button1.FillColor = Color.FromArgb(CByte(248), CByte(130), CByte(108))
+        Guna2Button1.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        Guna2Button1.ForeColor = Color.Black
+        Guna2Button1.HoverState.FillColor = Color.Silver
+        Guna2Button1.HoverState.ForeColor = Color.Black
+        Guna2Button1.Image = My.Resources.Resources.icons8_delete_90
+        Guna2Button1.ImageAlign = HorizontalAlignment.Left
+        Guna2Button1.ImageSize = New Size(25, 25)
+        Guna2Button1.Location = New Point(812, 79)
+        Guna2Button1.Margin = New Padding(0)
+        Guna2Button1.Name = "Guna2Button1"
+        Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges134
+        Guna2Button1.Size = New Size(117, 36)
+        Guna2Button1.TabIndex = 82
+        Guna2Button1.Text = "Delete"
+        Guna2Button1.TextAlign = HorizontalAlignment.Left
+        Guna2Button1.Visible = False
         ' 
         ' PDL_INFO
         ' 
@@ -3270,4 +3305,5 @@ Partial Class PDL_INFO
     Friend WithEvents case_numID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents rep_update_btn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents rep_add_btn As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
 End Class

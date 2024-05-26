@@ -29,6 +29,7 @@ Public Class PDL_INFO
                     display_capacity.Text = rowDataItem(4)
                 End If
             Next
+            'PDL INFORMATION DISPLAY'
         ElseIf isTabPage1 Then
             For Each rowDataItem As List(Of String) In rowData
                 If rowDataItem.Count > 1 Then
@@ -47,25 +48,26 @@ Public Class PDL_INFO
                     End If
                 End If
             Next
+            'APPOINTMENT INFORMATION DISPLAY
         ElseIf isTabPage5 Then
             For Each rowDataItem As List(Of String) In rowData
-                If rowDataItem.Count >= 7 Then
-                    visit_requestID.Text = rowDataItem(0)
-                    user_visitorName.Text = rowDataItem(1)
-                    date_schedule.Text = GetDateTimeFromMySQLDate(rowDataItem(2))
-                    time_schedule.Text = rowDataItem(3)
-                    If rowDataItem.Count >= 5 Then
-                        visitation_status.Text = rowDataItem(4)
-                        If visitation_status.Text = "1" Then
-                            visitation_status.Text = "Pending"
-                        ElseIf visitation_status.Text = "2" Then
-                            visitation_status.Text = "Approved"
-                        Else visitation_status.Text = "Declined"
-                        End If
+                visit_requestID.Text = rowDataItem(0)
+                user_visitorName.Text = rowDataItem(1)
+                date_schedule.Text = GetDateTimeFromMySQLDate(rowDataItem(2))
+                time_schedule.Text = rowDataItem(3)
+                If rowDataItem.Count >= 5 Then
+                    visitation_status.Text = rowDataItem(4)
+                    If visitation_status.Text = "1" Then
+                        visitation_status.Text = "Pending"
+                    ElseIf visitation_status.Text = "2" Then
+                        visitation_status.Text = "Approved"
+                    Else visitation_status.Text = "Declined"
                     End If
-                    visit_pdl_name.Text = rowDataItem(5) & " " & rowDataItem(6)
                 End If
+                visit_pdl_name.Text = rowDataItem(5) & " " & rowDataItem(6)
+                contact_num.Text = rowDataItem(7)
             Next
+            'REPORT INFORMATION DISPLAY
         ElseIf isTabPage6 Then
             For Each rowDataItem As List(Of String) In rowData
                 report_idKey.Text = rowDataItem(0)
@@ -243,15 +245,14 @@ Public Class PDL_INFO
                 ' Update data in the database
                 UpdateDataInDatabase(updatedCaseNum, updatedFirstName, updatedLastName, updatedStatus, updatedCrime, updatedGender, updatedDateOfBirth, updatedYearsSentence, updatedCellBLock)
                 MessageBox.Show("Information updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                dashboardForm.RefreshDataGridView()
-                dashboardForm.DisplayStatusCounts()
-                ' Clear the DataGridView rows and refresh it
+
             End If
         Catch ex As Exception
             MessageBox.Show("Error updating data in database: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             CloseConnection()
         End Try
+        Me.Close()
     End Sub
 
     Private Sub UpdateDataInDatabase(caseNum As String, firstName As String, lastName As String, status As String, crime As String, gender As String, dateOfBirth As String, yearsSentence As String, cellBLock As String)
@@ -420,8 +421,6 @@ Public Class PDL_INFO
             Dim genderUnit = cell_gender_units.SelectedItem.ToString
 
             OpenConnection()
-            dashboardForm.RefreshDataGridView()
-            dashboardForm.DisplayStatusCounts()
             Dim query = "INSERT INTO cell_block_list (cellblock_id, cell_capacity, gender_unit) VALUES (@cellblockId, @cellCapacity, @genderUnit)"
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
@@ -437,6 +436,8 @@ Public Class PDL_INFO
             ' Close the database connection
             CloseConnection()
         End Try
+        dashboardForm.PopulatePDLData()
+        dashboardForm.DisplayStatusCounts()
         Close()
     End Sub
 
@@ -461,9 +462,6 @@ Public Class PDL_INFO
             Dim cellCapacity As Integer = cellval_display_capacity.Value
 
             OpenConnection()
-            dashboardForm.RefreshDataGridView()
-            dashboardForm.DisplayStatusCounts()
-
             If Not cellval_display_capacity.Value <= 0 Then
                 Dim updateQuery = "UPDATE cell_block_list SET cell_capacity = @cellCapacity WHERE cellblock_id = @cellblockId"
 
@@ -474,6 +472,7 @@ Public Class PDL_INFO
                     MessageBox.Show("Cell Capacity update successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
             End If
+
         Catch ex As Exception
             MessageBox.Show("Error:  " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -527,13 +526,13 @@ Public Class PDL_INFO
     End Sub
 
     Private Sub cell_delete_btn_Click(sender As Object, e As EventArgs) Handles cell_delete_btn.Click
-        Dim selectedCellblockID As String = cellblock_display.Text ' Implement this function to get the selected cellblock ID
+        Dim selectedCellblockID = cellblock_display.Text ' Implement this function to get the selected cellblock ID
         If String.IsNullOrEmpty(selectedCellblockID) Then
             MessageBox.Show("Please select a cellblock to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
-        Dim confirmResult As DialogResult = MessageBox.Show("Are you sure you want to delete this cellblock?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim confirmResult = MessageBox.Show("Are you sure you want to delete this cellblock?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If confirmResult = DialogResult.Yes Then
             DeleteCellblock(selectedCellblockID)
         End If
@@ -580,13 +579,12 @@ Public Class PDL_INFO
                 Dim checkRequestId_query As New MySqlCommand("DELETE FROM appointment WHERE request_id = @requestId", conn)
                 checkRequestId_query.Parameters.AddWithValue("@requestId", requestId)
                 checkRequestId_query.ExecuteNonQuery()
-                MessageBox.Show("Appointment declined successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Dim declinedID_query As New MySqlCommand("UPDATE appointment_requests SET status_id = (SELECT status_id FROM appointment_status WHERE status_name = 'Declined') WHERE request_id = @requestId", conn)
                 declinedID_query.Parameters.AddWithValue("@requestId", requestId)
                 declinedID_query.ExecuteNonQuery()
 
-                MessageBox.Show("Appointment Declined.")
+                MessageBox.Show("Appointment declined successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Close()
             End If
         Catch ex As Exception
@@ -698,7 +696,6 @@ Public Class PDL_INFO
         rep_edit_btn.Visible = False
 
         case_numID.ReadOnly = False
-        rep_pdlName.ReadOnly = False
         rep_date.ReadOnly = False
         rep_Details.ReadOnly = False
     End Sub

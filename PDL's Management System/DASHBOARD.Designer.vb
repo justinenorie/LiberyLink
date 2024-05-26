@@ -60,6 +60,8 @@ Partial Class DASHBOARD
         Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim CustomizableEdges29 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges30 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges31 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges32 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -67,6 +69,8 @@ Partial Class DASHBOARD
         Dim DataGridViewCellStyle13 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim CustomizableEdges33 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges34 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges35 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges36 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges37 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -106,10 +110,6 @@ Partial Class DASHBOARD
         Dim CustomizableEdges68 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges65 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges66 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges29 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges30 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges33 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges34 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DASHBOARD))
         TabControl = New Guna.UI2.WinForms.Guna2TabControl()
         dash = New TabPage()
@@ -151,7 +151,8 @@ Partial Class DASHBOARD
         crime = New DataGridViewTextBoxColumn()
         acti = New DataGridViewButtonColumn()
         vis = New TabPage()
-        Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
+        visit_refreshBtn = New Guna.UI2.WinForms.Guna2Button()
+        visit_searchBar = New Guna.UI2.WinForms.Guna2TextBox()
         visitors_sched = New Guna.UI2.WinForms.Guna2DataGridView()
         visitor_reqID = New DataGridViewTextBoxColumn()
         visitor = New DataGridViewTextBoxColumn()
@@ -160,8 +161,9 @@ Partial Class DASHBOARD
         request_date = New DataGridViewTextBoxColumn()
         sched_act = New DataGridViewButtonColumn()
         rep = New TabPage()
+        report_refreshBtn = New Guna.UI2.WinForms.Guna2Button()
         add_reports = New Guna.UI2.WinForms.Guna2Button()
-        Guna2TextBox5 = New Guna.UI2.WinForms.Guna2TextBox()
+        report_searchBar = New Guna.UI2.WinForms.Guna2TextBox()
         reports_data = New Guna.UI2.WinForms.Guna2DataGridView()
         reports_keyID = New DataGridViewTextBoxColumn()
         list_date = New DataGridViewTextBoxColumn()
@@ -187,8 +189,6 @@ Partial Class DASHBOARD
         Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         lblDisplay = New Label()
         Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
-        Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         TabControl.SuspendLayout()
         dash.SuspendLayout()
         Guna2CustomGradientPanel3.SuspendLayout()
@@ -900,8 +900,8 @@ Partial Class DASHBOARD
         ' vis
         ' 
         vis.BackColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
-        vis.Controls.Add(Guna2Button1)
-        vis.Controls.Add(Guna2TextBox3)
+        vis.Controls.Add(visit_refreshBtn)
+        vis.Controls.Add(visit_searchBar)
         vis.Controls.Add(visitors_sched)
         vis.Location = New Point(4, 44)
         vis.Name = "vis"
@@ -910,32 +910,50 @@ Partial Class DASHBOARD
         vis.TabIndex = 5
         vis.Text = "Visitor"
         ' 
-        ' Guna2TextBox3
+        ' visit_refreshBtn
         ' 
-        Guna2TextBox3.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        Guna2TextBox3.BorderRadius = 10
-        Guna2TextBox3.BorderThickness = 2
-        Guna2TextBox3.CustomizableEdges = CustomizableEdges31
-        Guna2TextBox3.DefaultText = ""
-        Guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox3.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox3.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Guna2TextBox3.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox3.IconLeft = My.Resources.Resources.icons8_search_50
-        Guna2TextBox3.IconLeftOffset = New Point(10, 0)
-        Guna2TextBox3.IconLeftSize = New Size(25, 25)
-        Guna2TextBox3.Location = New Point(14, 7)
-        Guna2TextBox3.Margin = New Padding(4)
-        Guna2TextBox3.Name = "Guna2TextBox3"
-        Guna2TextBox3.PasswordChar = ChrW(0)
-        Guna2TextBox3.PlaceholderText = "Search"
-        Guna2TextBox3.SelectedText = ""
-        Guna2TextBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges32
-        Guna2TextBox3.Size = New Size(727, 36)
-        Guna2TextBox3.TabIndex = 12
+        visit_refreshBtn.CustomizableEdges = CustomizableEdges29
+        visit_refreshBtn.DisabledState.BorderColor = Color.DarkGray
+        visit_refreshBtn.DisabledState.CustomBorderColor = Color.DarkGray
+        visit_refreshBtn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        visit_refreshBtn.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        visit_refreshBtn.FillColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
+        visit_refreshBtn.Font = New Font("Segoe UI", 9F)
+        visit_refreshBtn.ForeColor = Color.White
+        visit_refreshBtn.Image = My.Resources.Resources.icons8_refresh_90
+        visit_refreshBtn.ImageSize = New Size(50, 50)
+        visit_refreshBtn.Location = New Point(748, 3)
+        visit_refreshBtn.Name = "visit_refreshBtn"
+        visit_refreshBtn.ShadowDecoration.CustomizableEdges = CustomizableEdges30
+        visit_refreshBtn.Size = New Size(45, 43)
+        visit_refreshBtn.TabIndex = 14
+        ' 
+        ' visit_searchBar
+        ' 
+        visit_searchBar.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        visit_searchBar.BorderRadius = 10
+        visit_searchBar.BorderThickness = 2
+        visit_searchBar.CustomizableEdges = CustomizableEdges31
+        visit_searchBar.DefaultText = ""
+        visit_searchBar.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        visit_searchBar.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        visit_searchBar.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        visit_searchBar.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        visit_searchBar.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        visit_searchBar.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        visit_searchBar.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        visit_searchBar.IconLeft = My.Resources.Resources.icons8_search_50
+        visit_searchBar.IconLeftOffset = New Point(10, 0)
+        visit_searchBar.IconLeftSize = New Size(25, 25)
+        visit_searchBar.Location = New Point(14, 7)
+        visit_searchBar.Margin = New Padding(4)
+        visit_searchBar.Name = "visit_searchBar"
+        visit_searchBar.PasswordChar = ChrW(0)
+        visit_searchBar.PlaceholderText = "Search"
+        visit_searchBar.SelectedText = ""
+        visit_searchBar.ShadowDecoration.CustomizableEdges = CustomizableEdges32
+        visit_searchBar.Size = New Size(727, 36)
+        visit_searchBar.TabIndex = 12
         ' 
         ' visitors_sched
         ' 
@@ -1068,9 +1086,9 @@ Partial Class DASHBOARD
         ' rep
         ' 
         rep.BackColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
-        rep.Controls.Add(Guna2Button2)
+        rep.Controls.Add(report_refreshBtn)
         rep.Controls.Add(add_reports)
-        rep.Controls.Add(Guna2TextBox5)
+        rep.Controls.Add(report_searchBar)
         rep.Controls.Add(reports_data)
         rep.Location = New Point(4, 44)
         rep.Name = "rep"
@@ -1078,6 +1096,24 @@ Partial Class DASHBOARD
         rep.Size = New Size(808, 574)
         rep.TabIndex = 7
         rep.Text = "Reports"
+        ' 
+        ' report_refreshBtn
+        ' 
+        report_refreshBtn.CustomizableEdges = CustomizableEdges33
+        report_refreshBtn.DisabledState.BorderColor = Color.DarkGray
+        report_refreshBtn.DisabledState.CustomBorderColor = Color.DarkGray
+        report_refreshBtn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        report_refreshBtn.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        report_refreshBtn.FillColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
+        report_refreshBtn.Font = New Font("Segoe UI", 9F)
+        report_refreshBtn.ForeColor = Color.White
+        report_refreshBtn.Image = My.Resources.Resources.icons8_refresh_90
+        report_refreshBtn.ImageSize = New Size(50, 50)
+        report_refreshBtn.Location = New Point(575, 3)
+        report_refreshBtn.Name = "report_refreshBtn"
+        report_refreshBtn.ShadowDecoration.CustomizableEdges = CustomizableEdges34
+        report_refreshBtn.Size = New Size(45, 43)
+        report_refreshBtn.TabIndex = 15
         ' 
         ' add_reports
         ' 
@@ -1109,32 +1145,32 @@ Partial Class DASHBOARD
         add_reports.Text = "Add Reports"
         add_reports.TextAlign = HorizontalAlignment.Left
         ' 
-        ' Guna2TextBox5
+        ' report_searchBar
         ' 
-        Guna2TextBox5.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        Guna2TextBox5.BorderRadius = 10
-        Guna2TextBox5.BorderThickness = 2
-        Guna2TextBox5.CustomizableEdges = CustomizableEdges37
-        Guna2TextBox5.DefaultText = ""
-        Guna2TextBox5.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox5.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox5.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox5.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox5.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox5.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Guna2TextBox5.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox5.IconLeft = My.Resources.Resources.icons8_search_50
-        Guna2TextBox5.IconLeftOffset = New Point(10, 0)
-        Guna2TextBox5.IconLeftSize = New Size(25, 25)
-        Guna2TextBox5.Location = New Point(14, 7)
-        Guna2TextBox5.Margin = New Padding(4)
-        Guna2TextBox5.Name = "Guna2TextBox5"
-        Guna2TextBox5.PasswordChar = ChrW(0)
-        Guna2TextBox5.PlaceholderText = "Search"
-        Guna2TextBox5.SelectedText = ""
-        Guna2TextBox5.ShadowDecoration.CustomizableEdges = CustomizableEdges38
-        Guna2TextBox5.Size = New Size(556, 36)
-        Guna2TextBox5.TabIndex = 13
+        report_searchBar.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        report_searchBar.BorderRadius = 10
+        report_searchBar.BorderThickness = 2
+        report_searchBar.CustomizableEdges = CustomizableEdges37
+        report_searchBar.DefaultText = ""
+        report_searchBar.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        report_searchBar.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        report_searchBar.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        report_searchBar.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        report_searchBar.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        report_searchBar.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        report_searchBar.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        report_searchBar.IconLeft = My.Resources.Resources.icons8_search_50
+        report_searchBar.IconLeftOffset = New Point(10, 0)
+        report_searchBar.IconLeftSize = New Size(25, 25)
+        report_searchBar.Location = New Point(14, 7)
+        report_searchBar.Margin = New Padding(4)
+        report_searchBar.Name = "report_searchBar"
+        report_searchBar.PasswordChar = ChrW(0)
+        report_searchBar.PlaceholderText = "Search"
+        report_searchBar.SelectedText = ""
+        report_searchBar.ShadowDecoration.CustomizableEdges = CustomizableEdges38
+        report_searchBar.Size = New Size(556, 36)
+        report_searchBar.TabIndex = 13
         ' 
         ' reports_data
         ' 
@@ -1597,42 +1633,6 @@ Partial Class DASHBOARD
         Guna2PictureBox2.TabIndex = 0
         Guna2PictureBox2.TabStop = False
         ' 
-        ' Guna2Button1
-        ' 
-        Guna2Button1.CustomizableEdges = CustomizableEdges29
-        Guna2Button1.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button1.FillColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
-        Guna2Button1.Font = New Font("Segoe UI", 9F)
-        Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Image = My.Resources.Resources.icons8_refresh_90
-        Guna2Button1.ImageSize = New Size(50, 50)
-        Guna2Button1.Location = New Point(748, 3)
-        Guna2Button1.Name = "Guna2Button1"
-        Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges30
-        Guna2Button1.Size = New Size(45, 43)
-        Guna2Button1.TabIndex = 14
-        ' 
-        ' Guna2Button2
-        ' 
-        Guna2Button2.CustomizableEdges = CustomizableEdges33
-        Guna2Button2.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button2.FillColor = Color.FromArgb(CByte(255), CByte(250), CByte(230))
-        Guna2Button2.Font = New Font("Segoe UI", 9F)
-        Guna2Button2.ForeColor = Color.White
-        Guna2Button2.Image = My.Resources.Resources.icons8_refresh_90
-        Guna2Button2.ImageSize = New Size(50, 50)
-        Guna2Button2.Location = New Point(575, 3)
-        Guna2Button2.Name = "Guna2Button2"
-        Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges34
-        Guna2Button2.Size = New Size(45, 43)
-        Guna2Button2.TabIndex = 15
-        ' 
         ' DASHBOARD
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -1713,8 +1713,8 @@ Partial Class DASHBOARD
     Friend WithEvents Guna2Panel8 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents reports_data As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents pdl_searchbar As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2TextBox3 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2TextBox5 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents visit_searchBar As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents report_searchBar As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2CustomGradientPanel2 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents Label6 As Label
     Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
@@ -1754,6 +1754,6 @@ Partial Class DASHBOARD
     Friend WithEvents list_name As DataGridViewTextBoxColumn
     Friend WithEvents list_rep As DataGridViewTextBoxColumn
     Friend WithEvents report_action As DataGridViewButtonColumn
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents visit_refreshBtn As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents report_refreshBtn As Guna.UI2.WinForms.Guna2Button
 End Class

@@ -15,7 +15,7 @@ Public Class DASHBOARD
                     MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
                 DisplayStatusCounts()
-                RefreshDataGridView()
+                PopulatePDLData()
                 RefreshCellBlockDataGrid()
                 LoadAppointments()
                 PopulatingReports()
@@ -107,10 +107,11 @@ Public Class DASHBOARD
         Try
             OpenConnection
             If conn.State = ConnectionState.Open Then
-                RefreshDataGridView
-                DisplayStatusCounts
-                RefreshCellBlockDataGrid
-                PopulatingReports
+                DisplayStatusCounts()
+                PopulatePDLData()
+                RefreshCellBlockDataGrid()
+                LoadAppointments()
+                PopulatingReports()
             End If
         Catch ex As Exception
             Throw New Exception("Error updating data in database: " & ex.Message)
@@ -124,9 +125,46 @@ Public Class DASHBOARD
         Try
             OpenConnection()
             If conn.State = ConnectionState.Open Then
-                RefreshDataGridView()
                 DisplayStatusCounts()
+                PopulatePDLData()
                 RefreshCellBlockDataGrid()
+                LoadAppointments()
+                PopulatingReports()
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub visit_refreshBtn_Click(sender As Object, e As EventArgs) Handles visit_refreshBtn.Click
+        visit_searchBar.Clear()
+        Try
+            OpenConnection()
+            If conn.State = ConnectionState.Open Then
+                DisplayStatusCounts()
+                PopulatePDLData()
+                RefreshCellBlockDataGrid()
+                LoadAppointments()
+                PopulatingReports()
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub report_refreshBtn_Click(sender As Object, e As EventArgs) Handles report_refreshBtn.Click
+        report_searchBar.Clear()
+        Try
+            OpenConnection()
+            If conn.State = ConnectionState.Open Then
+                DisplayStatusCounts()
+                PopulatePDLData()
+                RefreshCellBlockDataGrid()
+                LoadAppointments()
                 PopulatingReports()
             End If
         Catch ex As Exception
@@ -158,6 +196,28 @@ Public Class DASHBOARD
                 .Any(Function(cell) cell.Value IsNot Nothing AndAlso (If(isMaleSearch,
                 cell.Value.ToString().Equals("Male", StringComparison.OrdinalIgnoreCase),
                 cell.Value.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0)))
+            End If
+        Next
+    End Sub
+
+    Private Sub visit_searchBar_TextChanged(sender As Object, e As EventArgs) Handles visit_searchBar.TextChanged
+        Dim searchTerm As String = visit_searchBar.Text.Trim()
+        For Each row As DataGridViewRow In visitors_sched.Rows
+            If Not row.IsNewRow Then
+                row.Visible = row.Cells.Cast(Of DataGridViewCell)() _
+                .Take(5) _
+                .Any(Function(cell) cell.Value IsNot Nothing AndAlso cell.Value.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0)
+            End If
+        Next
+    End Sub
+
+    Private Sub report_searchBar_TextChanged(sender As Object, e As EventArgs) Handles report_searchBar.TextChanged
+        Dim searchTerm As String = report_searchBar.Text.Trim()
+        For Each row As DataGridViewRow In reports_data.Rows
+            If Not row.IsNewRow Then
+                row.Visible = row.Cells.Cast(Of DataGridViewCell)() _
+                .Take(4) _
+                .Any(Function(cell) cell.Value IsNot Nothing AndAlso cell.Value.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0)
             End If
         Next
     End Sub
@@ -199,22 +259,24 @@ Public Class DASHBOARD
     End Function
 
     'Populate pdl information in DataGrid
-    Public Sub RefreshDataGridView()
-        pdl_list_information.Rows.Clear()
-        Dim pdlList_Query As New MySqlCommand("SELECT case_num, CONCAT(first_name, ' ', last_name) AS pdlName, status, crime FROM pdl_list", conn)
-        Using reader As MySqlDataReader = pdlList_Query.ExecuteReader()
-            If reader.HasRows Then
-                While reader.Read()
-                    Dim caseNum As String = reader.GetString("case_num")
-                    Dim pdlName As String = reader.GetString("pdlName")
-                    Dim status As String = reader.GetString("status")
-                    Dim crime As String = reader.GetString("crime")
-                    pdl_list_information.Rows.Add(caseNum, pdlName, status, crime)
-                End While
-            Else
-                MessageBox.Show("No data found in the pdl_list table.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
-        End Using
+    Public Sub PopulatePDLData()
+        If conn.State = ConnectionState.Open Then
+            pdl_list_information.Rows.Clear()
+            Dim pdlList_Query As New MySqlCommand("SELECT case_num, CONCAT(first_name, ' ', last_name) AS pdlName, status, crime FROM pdl_list", conn)
+            Using reader As MySqlDataReader = pdlList_Query.ExecuteReader()
+                If reader.HasRows Then
+                    While reader.Read()
+                        Dim caseNum As String = reader.GetString("case_num")
+                        Dim pdlName As String = reader.GetString("pdlName")
+                        Dim status As String = reader.GetString("status")
+                        Dim crime As String = reader.GetString("crime")
+                        pdl_list_information.Rows.Add(caseNum, pdlName, status, crime)
+                    End While
+                Else
+                    MessageBox.Show("No data found in the pdl_list table.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End Using
+        End If
     End Sub
 
     Private Sub create_pdl_list_Click(sender As Object, e As EventArgs) Handles create_pdl_list.Click
@@ -355,14 +417,17 @@ Public Class DASHBOARD
         Try
             OpenConnection()
             If conn.State = ConnectionState.Open Then
-                Dim getVisitors_query As New MySqlCommand("SELECT * FROM appointment_requests WHERE request_id = @requestID", conn)
+                ' Modify the query to join appointment_requests with user_visitors
+                Dim getVisitors_query As New MySqlCommand("SELECT ar.*, uv.contact_num FROM appointment_requests ar JOIN user_visitors uv ON ar.visitor_username = uv.username WHERE ar.request_id = @requestID", conn)
                 getVisitors_query.Parameters.AddWithValue("@requestID", visitorUsername)
                 Using reader As MySqlDataReader = getVisitors_query.ExecuteReader()
                     While reader.Read()
                         Dim rowData As New List(Of String)
+                        ' Add all fields from appointment_requests
                         For i As Integer = 0 To reader.FieldCount - 1
                             rowData.Add(reader(i).ToString())
                         Next
+                        rowData.Add(reader("contact_num").ToString())
                         rowDataList.Add(rowData)
                     End While
                 End Using
