@@ -103,18 +103,19 @@ Public Class DASHBOARD
 
     'REFRESH BUTTONS'
     Private Sub pdllist_refresh_btn_Click(sender As Object, e As EventArgs) Handles pdllist_refresh_btn.Click
-        pdl_searchbar.Clear()
+        pdl_searchbar.Clear
         Try
-            OpenConnection()
+            OpenConnection
             If conn.State = ConnectionState.Open Then
-                RefreshDataGridView()
-                DisplayStatusCounts()
-                RefreshCellBlockDataGrid()
+                RefreshDataGridView
+                DisplayStatusCounts
+                RefreshCellBlockDataGrid
+                PopulatingReports
             End If
         Catch ex As Exception
             Throw New Exception("Error updating data in database: " & ex.Message)
         Finally
-            CloseConnection()
+            CloseConnection
         End Try
     End Sub
 
@@ -126,6 +127,7 @@ Public Class DASHBOARD
                 RefreshDataGridView()
                 DisplayStatusCounts()
                 RefreshCellBlockDataGrid()
+                PopulatingReports()
             End If
         Catch ex As Exception
             Throw New Exception("Error updating data in database: " & ex.Message)
@@ -444,8 +446,10 @@ Public Class DASHBOARD
         Dim rowDataList As New List(Of List(Of String))()
         Dim pdlInfoForm As New PDL_INFO(rowDataList)
         pdlInfoForm.rep_date.ReadOnly = False
-        pdlInfoForm.rep_pdlName.ReadOnly = False
         pdlInfoForm.rep_Details.ReadOnly = False
+        pdlInfoForm.rep_edit_btn.Visible = False
+        pdlInfoForm.rep_add_btn.Visible = True
+        pdlInfoForm.Label44.Visible = False
         pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage6
         pdlInfoForm.ShowDialog()
     End Sub

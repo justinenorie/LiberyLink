@@ -10,6 +10,7 @@ Public Class PDL_INFO
         delete_btn.Visible = False
         PopulateComboBox(cellblock_location)
         DisplayPDLsForCellBlock()
+        rep_date.Text = DateTime.Now.ToString("yyyy-MM-dd")
     End Sub
 
     'DISPLAY OF SELECTED INFORMATIONS'
@@ -71,6 +72,7 @@ Public Class PDL_INFO
                 rep_date.Text = GetDateTimeFromMySQLDate(rowDataItem(1))
                 rep_pdlName.Text = rowDataItem(2) & " " & rowDataItem(3)
                 rep_Details.Text = rowDataItem(4)
+                case_numID.Text = rowDataItem(5)
             Next
         End If
     End Sub
@@ -235,6 +237,7 @@ Public Class PDL_INFO
             Dim updatedDateOfBirth = birth_display.Value.ToString("yyyy-MM-dd")
             Dim updatedYearsSentence = years_sentence.Text
             Dim updatedCellBLock = cellblock_location.Text
+            display_cellBlockVal.Text = cellblock_location.Text
             OpenConnection()
             If conn.State = ConnectionState.Open Then
                 ' Update data in the database
@@ -351,39 +354,6 @@ Public Class PDL_INFO
         Close()
     End Sub
 
-    Private Sub cell_save_btn_Click(sender As Object, e As EventArgs) Handles cell_save_btn.Click
-        Dim dashboardForm As New DASHBOARD
-        Try
-            If String.IsNullOrEmpty(cell_blocknum.Text) Then
-                MessageBox.Show("Please enter a cell block number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return
-            End If
-
-            Dim cellblockId = cell_blocknum.Text
-            Dim cellCapacity As Integer = cell_block_capacity.Value
-            Dim genderUnit = cell_gender_units.SelectedItem.ToString
-
-            OpenConnection()
-            dashboardForm.RefreshDataGridView()
-            dashboardForm.DisplayStatusCounts()
-            Dim query = "INSERT INTO cell_block_list (cellblock_id, cell_capacity, gender_unit) VALUES (@cellblockId, @cellCapacity, @genderUnit)"
-            Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
-                cmd.Parameters.AddWithValue("@cellCapacity", cellCapacity)
-                cmd.Parameters.AddWithValue("@genderUnit", genderUnit)
-                cmd.ExecuteNonQuery()
-                MessageBox.Show("New cell block added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End Using
-        Catch ex As Exception
-            ' Display an error message if an exception occurs
-            MessageBox.Show("Error adding new cell block: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            ' Close the database connection
-            CloseConnection()
-        End Try
-        Close()
-    End Sub
-
     Public Sub PopulateComboBox(comboBox As Guna.UI2.WinForms.Guna2ComboBox)
         comboBox.Items.Clear()
         Try
@@ -437,6 +407,39 @@ Public Class PDL_INFO
     End Sub
 
     'CELL BLOCK INFORMATION FUNCTIONALITIES'
+    Private Sub cell_save_btn_Click(sender As Object, e As EventArgs) Handles cell_save_btn.Click
+        Dim dashboardForm As New DASHBOARD
+        Try
+            If String.IsNullOrEmpty(cell_blocknum.Text) Then
+                MessageBox.Show("Please enter a cell block number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            Dim cellblockId = cell_blocknum.Text
+            Dim cellCapacity As Integer = cell_block_capacity.Value
+            Dim genderUnit = cell_gender_units.SelectedItem.ToString
+
+            OpenConnection()
+            dashboardForm.RefreshDataGridView()
+            dashboardForm.DisplayStatusCounts()
+            Dim query = "INSERT INTO cell_block_list (cellblock_id, cell_capacity, gender_unit) VALUES (@cellblockId, @cellCapacity, @genderUnit)"
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@cellblockId", cellblockId)
+                cmd.Parameters.AddWithValue("@cellCapacity", cellCapacity)
+                cmd.Parameters.AddWithValue("@genderUnit", genderUnit)
+                cmd.ExecuteNonQuery()
+                MessageBox.Show("New cell block added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Using
+        Catch ex As Exception
+            ' Display an error message if an exception occurs
+            MessageBox.Show("Error adding new cell block: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Close the database connection
+            CloseConnection()
+        End Try
+        Close()
+    End Sub
+
     Private Sub cell_modify_btn_Click(sender As Object, e As EventArgs) Handles cell_modify_btn.Click
         cell_modify_btn.Visible = False
         cell_delete_btn.Visible = True
@@ -522,6 +525,50 @@ Public Class PDL_INFO
         cellval_display_capacity.Visible = False
         display_capacity.Visible = True
     End Sub
+
+    Private Sub cell_delete_btn_Click(sender As Object, e As EventArgs) Handles cell_delete_btn.Click
+        Dim selectedCellblockID As String = cellblock_display.Text ' Implement this function to get the selected cellblock ID
+        If String.IsNullOrEmpty(selectedCellblockID) Then
+            MessageBox.Show("Please select a cellblock to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim confirmResult As DialogResult = MessageBox.Show("Are you sure you want to delete this cellblock?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If confirmResult = DialogResult.Yes Then
+            DeleteCellblock(selectedCellblockID)
+        End If
+    End Sub
+
+    Private Sub DeleteCellblock(cellblockID As String)
+        If cellblockID = "!NO_CELLBLOCK" OrElse cellblockID = "!RELEASED" Then
+            MessageBox.Show("You cannot delete the special cellblock !NO_CELLBLOCK or !RELEASED.", "Delete Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Else
+            Try
+                OpenConnection()
+                If conn.State = ConnectionState.Open Then
+                    MovePDLToNone(cellblockID)
+                    Dim deleteQuery As New MySqlCommand("DELETE FROM cell_block_list WHERE cellblock_id = @cellblockID", conn)
+                    deleteQuery.Parameters.AddWithValue("@cellblockID", cellblockID)
+                    deleteQuery.ExecuteNonQuery()
+                    MessageBox.Show("Cellblock deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Error deleting cellblock: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Sub MovePDLToNone(cellblockID As String)
+        Try
+            Dim updateQuery As New MySqlCommand("UPDATE pdl_list SET cellblock_id = '!NO_CELLBLOCK' WHERE cellblock_id = @cellblockID", conn)
+            updateQuery.Parameters.AddWithValue("@cellblockID", cellblockID)
+            updateQuery.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error updating PDL list: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
 
     'VISITATION LIST FUNCTIONALITIES'
     Private Sub visit_decline_Click(sender As Object, e As EventArgs) Handles visit_decline.Click
@@ -615,5 +662,130 @@ Public Class PDL_INFO
         Finally
             CloseConnection()
         End Try
+    End Sub
+
+    'REPORTS FUNCTIONALITIES'
+    'Automatic Fill PDL Name in Reports'
+    Private Sub case_numID_TextChanged(sender As Object, e As EventArgs) Handles case_numID.TextChanged
+        If Not String.IsNullOrWhiteSpace(case_numID.Text) Then
+            FillPdlName(case_numID.Text)
+        Else
+            rep_pdlName.Text = String.Empty
+        End If
+    End Sub
+
+    Private Sub FillPdlName(caseNum As String)
+        Try
+            OpenConnection()
+            Dim checkpdl_query As New MySqlCommand("SELECT CONCAT(first_name, ' ', last_name) AS pdl_name FROM pdl_list WHERE case_num = @caseNum", conn)
+            checkpdl_query.Parameters.AddWithValue("@caseNum", caseNum)
+            Dim pdlName As Object = checkpdl_query.ExecuteScalar()
+            If pdlName IsNot Nothing Then
+                rep_pdlName.Text = pdlName.ToString()
+            Else
+                rep_pdlName.Text = "PDL Name not Found!"
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub rep_edit_btn_Click(sender As Object, e As EventArgs) Handles rep_edit_btn.Click
+        rep_del_btn.Visible = True
+        rep_update_btn.Visible = True
+        rep_edit_btn.Visible = False
+
+        case_numID.ReadOnly = False
+        rep_pdlName.ReadOnly = False
+        rep_date.ReadOnly = False
+        rep_Details.ReadOnly = False
+    End Sub
+
+    Private Sub rep_del_btn_Click(sender As Object, e As EventArgs) Handles rep_del_btn.Click
+        Try
+            OpenConnection()
+            Dim reportsID As String = report_idKey.Text
+            Dim reportDel_query As New MySqlCommand("DELETE FROM reports WHERE report_id = @reportId", conn)
+            reportDel_query.Parameters.AddWithValue("@reportId", reportsID)
+            reportDel_query.ExecuteNonQuery()
+            MessageBox.Show("Report deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As Exception
+            MessageBox.Show("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+        Me.Close()
+    End Sub
+
+    Private Sub rep_update_btn_Click(sender As Object, e As EventArgs) Handles rep_update_btn.Click
+        rep_del_btn.Visible = False
+        rep_update_btn.Visible = False
+        rep_edit_btn.Visible = True
+
+        Try
+            OpenConnection()
+            If conn.State = ConnectionState.Open Then
+                Dim nameParts As String() = rep_pdlName.Text.Split(" "c)
+                Dim pdlFirstName As String = nameParts(0)
+                Dim pdlLastName As String = nameParts(1)
+                Dim curDate As String = rep_date.Text
+                Dim repDetails As String = rep_Details.Text
+                Dim reportID As String = report_idKey.Text
+
+                Dim updateReport_Query As New MySqlCommand("UPDATE reports SET creation_date = @currentDate, pdl_first_name = @first_name, pdl_last_name = @last_name, report_details = @reportDetail WHERE report_id = @reportID", conn)
+                updateReport_Query.Parameters.AddWithValue("@currentDate", curDate)
+                updateReport_Query.Parameters.AddWithValue("@first_name", pdlFirstName)
+                updateReport_Query.Parameters.AddWithValue("@last_name", pdlLastName)
+                updateReport_Query.Parameters.AddWithValue("@reportDetail", repDetails)
+                updateReport_Query.Parameters.AddWithValue("@reportID", reportID)
+                updateReport_Query.ExecuteNonQuery()
+                MessageBox.Show("Reports update successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub rep_add_btn_Click(sender As Object, e As EventArgs) Handles rep_add_btn.Click
+
+        Try
+            OpenConnection()
+            If conn.State = ConnectionState.Open Then
+                Dim caseNum As String = case_numID.Text
+                Dim checkCaseNumQuery As New MySqlCommand("SELECT COUNT(*) FROM pdl_list WHERE case_num = @caseNum", conn)
+                checkCaseNumQuery.Parameters.AddWithValue("@caseNum", caseNum)
+                Dim caseNumCount As String = checkCaseNumQuery.ExecuteScalar()
+
+                If caseNumCount = 0 Then
+                    MessageBox.Show("PDL Name and Case Number do not exist in the Database!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return
+                End If
+
+                ' Split rep_pdlName into first and last 
+                Dim nameParts As String() = rep_pdlName.Text.Split(" "c)
+                Dim pdlFirstName As String = nameParts(0)
+                Dim pdlLastName As String = nameParts(1)
+
+                Dim reportDetails As String = rep_Details.Text
+                Dim addReport_query As New MySqlCommand("INSERT INTO reports (creation_date, pdl_first_name, pdl_last_name, report_details, case_num) VALUES (NOW(), @pdlFirstName, @pdlLastName, @reportDetails, @caseNum)", conn)
+                addReport_query.Parameters.AddWithValue("@pdlFirstName", pdlFirstName)
+                addReport_query.Parameters.AddWithValue("@pdlLastName", pdlLastName)
+                addReport_query.Parameters.AddWithValue("@reportDetails", reportDetails)
+                addReport_query.Parameters.AddWithValue("@caseNum", caseNum)
+                addReport_query.ExecuteNonQuery()
+
+                MessageBox.Show("Report added successfully.")
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+        Me.Close()
     End Sub
 End Class

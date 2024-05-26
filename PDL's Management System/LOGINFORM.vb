@@ -30,4 +30,5 @@ Public Class LOGINFORM
             isPasswordVisible = False
         End If
     End Sub
+
 End Class
