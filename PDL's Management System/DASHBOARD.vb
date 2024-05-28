@@ -2,6 +2,9 @@
 Imports MySql.Data.MySqlClient
 Public Class DASHBOARD
     Public Sub DASHBOARD_Load(sender As Object, e As EventArgs) Handles Me.Shown
+
+        TabControl.TabMenuVisible = False
+
         Try
             OpenConnection()
             If conn.State = ConnectionState.Open Then
@@ -296,7 +299,7 @@ Public Class DASHBOARD
     'Populate cellblock information in DataGrid
     Public Sub RefreshCellBlockDataGrid()
         cell_block_table.Rows.Clear()
-        Dim cellblock_Query As New MySqlCommand("SELECT cellblock_id, gender_unit FROM cell_block_list", conn)
+        Dim cellblock_Query As New MySqlCommand("SELECT * FROM `cell_block_list` WHERE `cellblock_id` NOT LIKE '%!%'", conn)
         Using reader As MySqlDataReader = cellblock_Query.ExecuteReader()
             If reader.HasRows Then
                 While reader.Read()
@@ -388,7 +391,7 @@ Public Class DASHBOARD
                             Dim reqID As String = reader.GetInt32("request_id").ToString()
                             Dim visitorUsern As String = reader.GetString("visitor_username")
                             Dim pdlFullName As String = reader.GetString("pdl_full_name")
-                            Dim requestDate As String = reader.GetDateTime("requested_date").ToString("yyyy-MM-dd")
+                            Dim requestDate As String = reader.GetDateTime("requested_date").ToString("dd/MM/yyyy")
                             Dim requestTime As String = reader.GetTimeSpan("requested_time").ToString()
                             Dim statusID As Integer = reader.GetInt32("status_id")
                             Dim status As String
@@ -403,7 +406,7 @@ Public Class DASHBOARD
                                     status = "Unknown"
                             End Select
 
-                            visitors_sched.Rows.Add(reqID, visitorUsern, pdlFullName, requestDate, requestTime, status)
+                            visitors_sched.Rows.Add(reqID, visitorUsern, pdlFullName, requestTime, requestDate, status)
                         End While
                     Else
                         MessageBox.Show("No data found in the table.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -413,7 +416,7 @@ Public Class DASHBOARD
                 MessageBox.Show("Database connection is not open.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
-            MessageBox.Show("Error loading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Console.WriteLine("Error loading data: " & ex.Message)
         End Try
     End Sub
 
@@ -426,7 +429,7 @@ Public Class DASHBOARD
                 pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage5
                 pdlInfoForm.ShowDialog()
             Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Error:  " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
     End Sub
@@ -461,8 +464,9 @@ Public Class DASHBOARD
 
     'REPORTS FUNCTIONALITY'
     Public Sub PopulatingReports()
+        'CONCAT(first_name, ' ', last_name) AS pdlName
         reports_data.Rows.Clear()
-        Dim reports_Query As New MySqlCommand("SELECT report_id, creation_date, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, report_details, case_num FROM reports", conn)
+        Dim reports_Query As New MySqlCommand("SELECT report_id, creation_date, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, CASE WHEN LENGTH(report_details) > 10 THEN CONCAT(SUBSTRING(report_details, 1, 10), '...') ELSE report_details END AS report_details, case_num FROM reports", conn)
         Try
             If conn.State = ConnectionState.Open Then
                 Using reader As MySqlDataReader = reports_Query.ExecuteReader()
@@ -536,5 +540,9 @@ Public Class DASHBOARD
         pdlInfoForm.Label44.Visible = False
         pdlInfoForm.Guna2TabControl1.SelectedTab = pdlInfoForm.TabPage6
         pdlInfoForm.ShowDialog()
+    End Sub
+
+    Private Sub DASHBOARD_RightToLeftLayoutChanged(sender As Object, e As EventArgs) Handles Me.RightToLeftLayoutChanged
+
     End Sub
 End Class

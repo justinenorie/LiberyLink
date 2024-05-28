@@ -79,7 +79,7 @@ Public Class PDL_INFO
         End If
     End Sub
 
-    Private Function GetDateTimeFromMySQLDate(mysqlDate As String) As DateTime
+    Public Function GetDateTimeFromMySQLDate(mysqlDate As String) As DateTime
         Dim formats() As String = {"yyyy-MM-dd", "dd/MM/yyyy hh:mm:ss tt"}
         Dim dateResult As DateTime
         If DateTime.TryParseExact(mysqlDate, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, dateResult) Then
