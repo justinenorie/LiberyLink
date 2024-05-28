@@ -115,7 +115,7 @@ Partial Class DASHBOARD
         dash = New TabPage()
         Guna2CustomGradientPanel3 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Guna2Panel9 = New Guna.UI2.WinForms.Guna2Panel()
-        Label7 = New Label()
+        total_visitDisplay = New Label()
         Label13 = New Label()
         Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Guna2Panel7 = New Guna.UI2.WinForms.Guna2Panel()
@@ -159,6 +159,7 @@ Partial Class DASHBOARD
         pdl_visited_name = New DataGridViewTextBoxColumn()
         request_time = New DataGridViewTextBoxColumn()
         request_date = New DataGridViewTextBoxColumn()
+        appoint_status = New DataGridViewTextBoxColumn()
         sched_act = New DataGridViewButtonColumn()
         rep = New TabPage()
         report_refreshBtn = New Guna.UI2.WinForms.Guna2Button()
@@ -265,7 +266,7 @@ Partial Class DASHBOARD
         ' 
         Guna2CustomGradientPanel3.BorderRadius = 30
         Guna2CustomGradientPanel3.Controls.Add(Guna2Panel9)
-        Guna2CustomGradientPanel3.Controls.Add(Label7)
+        Guna2CustomGradientPanel3.Controls.Add(total_visitDisplay)
         Guna2CustomGradientPanel3.Controls.Add(Label13)
         Guna2CustomGradientPanel3.CustomizableEdges = CustomizableEdges3
         Guna2CustomGradientPanel3.FillColor = Color.FromArgb(CByte(0), CByte(63), CByte(94))
@@ -290,17 +291,17 @@ Partial Class DASHBOARD
         Guna2Panel9.Size = New Size(77, 75)
         Guna2Panel9.TabIndex = 18
         ' 
-        ' Label7
+        ' total_visitDisplay
         ' 
-        Label7.AutoSize = True
-        Label7.BackColor = Color.Transparent
-        Label7.Font = New Font("Segoe UI Variable Display Semib", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label7.ForeColor = Color.White
-        Label7.Location = New Point(30, 78)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(134, 43)
-        Label7.TabIndex = 14
-        Label7.Text = "000,000"
+        total_visitDisplay.AutoSize = True
+        total_visitDisplay.BackColor = Color.Transparent
+        total_visitDisplay.Font = New Font("Segoe UI Variable Display Semib", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        total_visitDisplay.ForeColor = Color.White
+        total_visitDisplay.Location = New Point(30, 78)
+        total_visitDisplay.Name = "total_visitDisplay"
+        total_visitDisplay.Size = New Size(134, 43)
+        total_visitDisplay.TabIndex = 14
+        total_visitDisplay.Text = "000,000"
         ' 
         ' Label13
         ' 
@@ -980,7 +981,7 @@ Partial Class DASHBOARD
         visitors_sched.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         visitors_sched.ColumnHeadersHeight = 45
         visitors_sched.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        visitors_sched.Columns.AddRange(New DataGridViewColumn() {visitor_reqID, visitor, pdl_visited_name, request_time, request_date, sched_act})
+        visitors_sched.Columns.AddRange(New DataGridViewColumn() {visitor_reqID, visitor, pdl_visited_name, request_time, request_date, appoint_status, sched_act})
         DataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle13.BackColor = Color.White
         DataGridViewCellStyle13.Font = New Font("Segoe UI Semibold", 8.5F, FontStyle.Bold)
@@ -1046,35 +1047,42 @@ Partial Class DASHBOARD
         ' 
         ' visitor
         ' 
-        visitor.FillWeight = 62.5342026F
+        visitor.FillWeight = 81.9354858F
         visitor.HeaderText = "Name of Visitor"
         visitor.Name = "visitor"
         visitor.ReadOnly = True
         ' 
         ' pdl_visited_name
         ' 
-        pdl_visited_name.FillWeight = 62.5342026F
+        pdl_visited_name.FillWeight = 81.9354858F
         pdl_visited_name.HeaderText = "Visited PDL Name"
         pdl_visited_name.Name = "pdl_visited_name"
         pdl_visited_name.ReadOnly = True
         ' 
         ' request_time
         ' 
-        request_time.FillWeight = 62.5342026F
+        request_time.FillWeight = 62.2388649F
         request_time.HeaderText = "Requested Time"
         request_time.Name = "request_time"
         request_time.ReadOnly = True
         ' 
         ' request_date
         ' 
-        request_date.FillWeight = 62.5342026F
+        request_date.FillWeight = 58.7005424F
         request_date.HeaderText = "Requested Date"
         request_date.Name = "request_date"
         request_date.ReadOnly = True
         ' 
+        ' appoint_status
+        ' 
+        appoint_status.FillWeight = 54.3652878F
+        appoint_status.HeaderText = "Appointment Status"
+        appoint_status.Name = "appoint_status"
+        appoint_status.ReadOnly = True
+        ' 
         ' sched_act
         ' 
-        sched_act.FillWeight = 35.3300629F
+        sched_act.FillWeight = 46.2912445F
         sched_act.HeaderText = "Action"
         sched_act.Name = "sched_act"
         sched_act.ReadOnly = True
@@ -1736,18 +1744,12 @@ Partial Class DASHBOARD
     Friend WithEvents Guna2Panel5 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2CustomGradientPanel3 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents Guna2Panel9 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Label7 As Label
+    Friend WithEvents total_visitDisplay As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents Guna2Panel7 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents total_cell_block As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents visitor_reqID As DataGridViewTextBoxColumn
-    Friend WithEvents visitor As DataGridViewTextBoxColumn
-    Friend WithEvents pdl_visited_name As DataGridViewTextBoxColumn
-    Friend WithEvents request_time As DataGridViewTextBoxColumn
-    Friend WithEvents request_date As DataGridViewTextBoxColumn
-    Friend WithEvents sched_act As DataGridViewButtonColumn
     Friend WithEvents add_reports As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents reports_keyID As DataGridViewTextBoxColumn
     Friend WithEvents list_date As DataGridViewTextBoxColumn
@@ -1756,4 +1758,11 @@ Partial Class DASHBOARD
     Friend WithEvents report_action As DataGridViewButtonColumn
     Friend WithEvents visit_refreshBtn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents report_refreshBtn As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents visitor_reqID As DataGridViewTextBoxColumn
+    Friend WithEvents visitor As DataGridViewTextBoxColumn
+    Friend WithEvents pdl_visited_name As DataGridViewTextBoxColumn
+    Friend WithEvents request_time As DataGridViewTextBoxColumn
+    Friend WithEvents request_date As DataGridViewTextBoxColumn
+    Friend WithEvents appoint_status As DataGridViewTextBoxColumn
+    Friend WithEvents sched_act As DataGridViewButtonColumn
 End Class

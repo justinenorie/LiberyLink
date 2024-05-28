@@ -34,14 +34,17 @@ Public Class DASHBOARD
     Public Sub DisplayStatusCounts()
         If conn.State = ConnectionState.Open Then
             Dim dashboard_query As New MySqlCommand("SELECT 'Active' AS status, COUNT(*) AS num_rows FROM pdl_list WHERE status = 'Active' " &
-                              "UNION " &
-                              "SELECT 'Released' AS status, COUNT(*) AS num_rows FROM pdl_list WHERE status = 'Released' " &
-                              "UNION " &
-                              "SELECT 'Cell Blocks' AS status, COUNT(*) AS num_rows FROM cell_block_list", conn)
+                          "UNION " &
+                          "SELECT 'Released' AS status, COUNT(*) AS num_rows FROM pdl_list WHERE status = 'Released' " &
+                          "UNION " &
+                          "SELECT 'Cell Blocks' AS status, COUNT(*) AS num_rows FROM cell_block_list " &
+                          "UNION " &
+                          "SELECT 'Today Visit' AS status, COUNT(*) AS num_rows FROM appointment_requests WHERE DATE(requested_date) = CURDATE()", conn)
             Using reader As MySqlDataReader = dashboard_query.ExecuteReader()
                 Dim activeCount As Integer = 0
                 Dim releasedCount As Integer = 0
                 Dim cellBlockCount As Integer = 0
+                Dim todayVisitCount As Integer = 0
                 While reader.Read()
                     Dim status As String = reader("status").ToString()
                     Dim count As Integer = Convert.ToInt32(reader("num_rows"))
@@ -51,11 +54,14 @@ Public Class DASHBOARD
                         releasedCount = count
                     ElseIf status = "Cell Blocks" Then
                         cellBlockCount = count
+                    ElseIf status = "Today Visit" Then
+                        todayVisitCount = count
                     End If
                 End While
                 active_pdl_dis.Text = activeCount.ToString()
                 released_pdl_dis.Text = releasedCount.ToString()
                 total_cell_block.Text = cellBlockCount.ToString()
+                total_visitDisplay.Text = todayVisitCount.ToString()
             End Using
         End If
     End Sub
@@ -373,7 +379,7 @@ Public Class DASHBOARD
     'Populate appointment information in DataGrid
     Public Sub LoadAppointments()
         visitors_sched.Rows.Clear()
-        Dim appointment_Query As New MySqlCommand("SELECT request_id, visitor_username, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, requested_date, requested_time FROM appointment_requests", conn)
+        Dim appointment_Query As New MySqlCommand("SELECT request_id, visitor_username, CONCAT(pdl_first_name, ' ', pdl_last_name) AS pdl_full_name, requested_date, requested_time, status_id FROM appointment_requests", conn)
         Try
             If conn.State = ConnectionState.Open Then
                 Using reader As MySqlDataReader = appointment_Query.ExecuteReader()
@@ -384,7 +390,20 @@ Public Class DASHBOARD
                             Dim pdlFullName As String = reader.GetString("pdl_full_name")
                             Dim requestDate As String = reader.GetDateTime("requested_date").ToString("yyyy-MM-dd")
                             Dim requestTime As String = reader.GetTimeSpan("requested_time").ToString()
-                            visitors_sched.Rows.Add(reqID, visitorUsern, pdlFullName, requestDate, requestTime)
+                            Dim statusID As Integer = reader.GetInt32("status_id")
+                            Dim status As String
+                            Select Case statusID
+                                Case 1
+                                    status = "Pending"
+                                Case 2
+                                    status = "Approved"
+                                Case 3
+                                    status = "Declined"
+                                Case Else
+                                    status = "Unknown"
+                            End Select
+
+                            visitors_sched.Rows.Add(reqID, visitorUsern, pdlFullName, requestDate, requestTime, status)
                         End While
                     Else
                         MessageBox.Show("No data found in the table.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)

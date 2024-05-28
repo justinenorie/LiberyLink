@@ -653,14 +653,35 @@ Public Class PDL_INFO
                 Else
                     MessageBox.Show("PDL details not found for the given request ID.")
                 End If
-                Me.Close()
             End If
         Catch ex As Exception
             MessageBox.Show("Error updating data in database: " & ex.Message)
         Finally
             CloseConnection()
         End Try
+        Me.Close()
     End Sub
+
+    Private Sub visit_deleteBtn_Click(sender As Object, e As EventArgs) Handles visit_deleteBtn.Click
+        Try
+            OpenConnection()
+            Dim confirmResult = MessageBox.Show("Are you sure, you want to delete this Appointment Request?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If visitation_status.Text = "Approved" Then
+                MessageBox.Show("You can't Delete the Approved Appointment Request", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ElseIf confirmResult = DialogResult.Yes Then
+                Dim visitDelete_query As New MySqlCommand("DELETE FROM appointment_requests WHERE request_id = @requestId", conn)
+                visitDelete_query.Parameters.AddWithValue("@requestId", visit_requestID.Text)
+                visitDelete_query.ExecuteNonQuery()
+                MessageBox.Show("Appointment Request Deleted Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            Throw New Exception("Error updating data in database: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+
 
     'REPORTS FUNCTIONALITIES'
     'Automatic Fill PDL Name in Reports'

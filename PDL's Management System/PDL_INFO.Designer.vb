@@ -162,6 +162,8 @@ Partial Class PDL_INFO
         Dim CustomizableEdges130 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges137 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges138 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges133 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges134 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges135 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges136 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges139 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
@@ -194,8 +196,6 @@ Partial Class PDL_INFO
         Dim CustomizableEdges166 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges167 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges168 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges133 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges134 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(components)
         Guna2TabControl1 = New Guna.UI2.WinForms.Guna2TabControl()
         TabPage1 = New TabPage()
@@ -313,6 +313,7 @@ Partial Class PDL_INFO
         Guna2ControlBox11 = New Guna.UI2.WinForms.Guna2ControlBox()
         Label31 = New Label()
         Guna2Panel7 = New Guna.UI2.WinForms.Guna2Panel()
+        visit_deleteBtn = New Guna.UI2.WinForms.Guna2Button()
         visit_pdl_name = New Guna.UI2.WinForms.Guna2TextBox()
         TabPage6 = New TabPage()
         rep_add_btn = New Guna.UI2.WinForms.Guna2Button()
@@ -338,7 +339,6 @@ Partial Class PDL_INFO
         rep_del_btn = New Guna.UI2.WinForms.Guna2Button()
         mesahebox = New Guna.UI2.WinForms.Guna2MessageDialog()
         Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
-        Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Guna2TabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         CType(Guna2PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -2461,12 +2461,12 @@ Partial Class PDL_INFO
         visit_confirm.DisabledState.CustomBorderColor = Color.DarkGray
         visit_confirm.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         visit_confirm.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        visit_confirm.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
+        visit_confirm.FillColor = Color.FromArgb(CByte(255), CByte(217), CByte(161))
         visit_confirm.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         visit_confirm.ForeColor = Color.Black
         visit_confirm.HoverState.FillColor = Color.Silver
         visit_confirm.HoverState.ForeColor = Color.Black
-        visit_confirm.Image = My.Resources.Resources.icons8_save_50
+        visit_confirm.Image = My.Resources.Resources.icons8_approved_50
         visit_confirm.ImageAlign = HorizontalAlignment.Left
         visit_confirm.ImageSize = New Size(25, 25)
         visit_confirm.Location = New Point(484, 453)
@@ -2489,12 +2489,12 @@ Partial Class PDL_INFO
         visit_decline.DisabledState.CustomBorderColor = Color.DarkGray
         visit_decline.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         visit_decline.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        visit_decline.FillColor = Color.FromArgb(CByte(255), CByte(112), CByte(8))
+        visit_decline.FillColor = Color.FromArgb(CByte(248), CByte(130), CByte(108))
         visit_decline.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
         visit_decline.ForeColor = Color.Black
         visit_decline.HoverState.FillColor = Color.Silver
         visit_decline.HoverState.ForeColor = Color.Black
-        visit_decline.Image = My.Resources.Resources.icons8_save_50
+        visit_decline.Image = My.Resources.Resources.icons8_cancel_50
         visit_decline.ImageAlign = HorizontalAlignment.Left
         visit_decline.ImageSize = New Size(25, 25)
         visit_decline.Location = New Point(196, 453)
@@ -2594,7 +2594,7 @@ Partial Class PDL_INFO
         ' 
         Guna2Panel7.BorderColor = Color.White
         Guna2Panel7.BorderThickness = 2
-        Guna2Panel7.Controls.Add(Guna2Button1)
+        Guna2Panel7.Controls.Add(visit_deleteBtn)
         Guna2Panel7.Controls.Add(visit_pdl_name)
         Guna2Panel7.CustomizableEdges = CustomizableEdges137
         Guna2Panel7.Location = New Point(-41, -34)
@@ -2602,6 +2602,36 @@ Partial Class PDL_INFO
         Guna2Panel7.ShadowDecoration.CustomizableEdges = CustomizableEdges138
         Guna2Panel7.Size = New Size(1029, 187)
         Guna2Panel7.TabIndex = 72
+        ' 
+        ' visit_deleteBtn
+        ' 
+        visit_deleteBtn.BorderColor = Color.FromArgb(CByte(255), CByte(159), CByte(89))
+        visit_deleteBtn.BorderRadius = 15
+        visit_deleteBtn.BorderThickness = 2
+        visit_deleteBtn.CheckedState.FillColor = Color.White
+        visit_deleteBtn.CheckedState.ForeColor = Color.Black
+        visit_deleteBtn.CustomImages.ImageAlign = HorizontalAlignment.Left
+        visit_deleteBtn.CustomizableEdges = CustomizableEdges133
+        visit_deleteBtn.DisabledState.BorderColor = Color.DarkGray
+        visit_deleteBtn.DisabledState.CustomBorderColor = Color.DarkGray
+        visit_deleteBtn.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        visit_deleteBtn.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        visit_deleteBtn.FillColor = Color.FromArgb(CByte(248), CByte(130), CByte(108))
+        visit_deleteBtn.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        visit_deleteBtn.ForeColor = Color.Black
+        visit_deleteBtn.HoverState.FillColor = Color.Silver
+        visit_deleteBtn.HoverState.ForeColor = Color.Black
+        visit_deleteBtn.Image = My.Resources.Resources.icons8_delete_90
+        visit_deleteBtn.ImageAlign = HorizontalAlignment.Left
+        visit_deleteBtn.ImageSize = New Size(25, 25)
+        visit_deleteBtn.Location = New Point(813, 79)
+        visit_deleteBtn.Margin = New Padding(0)
+        visit_deleteBtn.Name = "visit_deleteBtn"
+        visit_deleteBtn.ShadowDecoration.CustomizableEdges = CustomizableEdges134
+        visit_deleteBtn.Size = New Size(117, 36)
+        visit_deleteBtn.TabIndex = 82
+        visit_deleteBtn.Text = "Delete"
+        visit_deleteBtn.TextAlign = HorizontalAlignment.Left
         ' 
         ' visit_pdl_name
         ' 
@@ -2878,7 +2908,7 @@ Partial Class PDL_INFO
         rep_Details.BorderRadius = 5
         rep_Details.BorderThickness = 2
         rep_Details.CustomizableEdges = CustomizableEdges149
-        rep_Details.DefaultText = "Add_Report"
+        rep_Details.DefaultText = ""
         rep_Details.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         rep_Details.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         rep_Details.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
@@ -3079,37 +3109,6 @@ Partial Class PDL_INFO
         Guna2Panel2.Size = New Size(1184, 700)
         Guna2Panel2.TabIndex = 1
         ' 
-        ' Guna2Button1
-        ' 
-        Guna2Button1.BorderColor = Color.FromArgb(CByte(255), CByte(159), CByte(89))
-        Guna2Button1.BorderRadius = 15
-        Guna2Button1.BorderThickness = 2
-        Guna2Button1.CheckedState.FillColor = Color.White
-        Guna2Button1.CheckedState.ForeColor = Color.Black
-        Guna2Button1.CustomImages.ImageAlign = HorizontalAlignment.Left
-        Guna2Button1.CustomizableEdges = CustomizableEdges133
-        Guna2Button1.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button1.FillColor = Color.FromArgb(CByte(248), CByte(130), CByte(108))
-        Guna2Button1.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
-        Guna2Button1.ForeColor = Color.Black
-        Guna2Button1.HoverState.FillColor = Color.Silver
-        Guna2Button1.HoverState.ForeColor = Color.Black
-        Guna2Button1.Image = My.Resources.Resources.icons8_delete_90
-        Guna2Button1.ImageAlign = HorizontalAlignment.Left
-        Guna2Button1.ImageSize = New Size(25, 25)
-        Guna2Button1.Location = New Point(812, 79)
-        Guna2Button1.Margin = New Padding(0)
-        Guna2Button1.Name = "Guna2Button1"
-        Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges134
-        Guna2Button1.Size = New Size(117, 36)
-        Guna2Button1.TabIndex = 82
-        Guna2Button1.Text = "Delete"
-        Guna2Button1.TextAlign = HorizontalAlignment.Left
-        Guna2Button1.Visible = False
-        ' 
         ' PDL_INFO
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -3305,5 +3304,5 @@ Partial Class PDL_INFO
     Friend WithEvents case_numID As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents rep_update_btn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents rep_add_btn As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents visit_deleteBtn As Guna.UI2.WinForms.Guna2Button
 End Class
