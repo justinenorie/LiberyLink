@@ -479,7 +479,7 @@ Public Class DASHBOARD
                             reports_data.Rows.Add(reportsID, creationDate, pdlFullName, reportDetails)
                         End While
                     Else
-                        MessageBox.Show("No data found in the table.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("No data found in the table.", "No Dat", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
                 End Using
             Else
