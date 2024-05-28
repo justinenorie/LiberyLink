@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2024 at 07:32 PM
+-- Generation Time: May 28, 2024 at 02:21 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -55,6 +55,14 @@ CREATE TABLE `appointment` (
   `request_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`username`, `pdl_first_name`, `pdl_last_name`, `appointment_date`, `appointment_time`, `request_id`) VALUES
+('Test', 'Oliver', 'Davis', '2024-05-25', '02:28:00', 6),
+('Test', 'Oliver', 'Davis', '2024-05-25', '20:10:00', 9);
+
 -- --------------------------------------------------------
 
 --
@@ -76,12 +84,14 @@ CREATE TABLE `appointment_requests` (
 --
 
 INSERT INTO `appointment_requests` (`request_id`, `visitor_username`, `requested_date`, `requested_time`, `status_id`, `pdl_first_name`, `pdl_last_name`) VALUES
-(6, 'Test', '2024-05-25', '02:28:00', 3, 'Oliver', 'Davis'),
-(9, 'Test', '2024-05-25', '20:10:00', 3, 'Oliver', 'Davis'),
+(6, 'Test', '2024-05-25', '02:28:00', 2, 'Oliver', 'Davis'),
+(9, 'Test', '2024-05-25', '20:10:00', 2, 'Oliver', 'Davis'),
 (10, 'Test', '2024-05-31', '12:53:00', 3, 'James', 'Wilson'),
 (12, 'Test', '2024-05-25', '12:08:00', 1, 'Ava', 'Davis'),
 (13, 'Test', '0000-00-00', '00:00:00', 1, 'Ava', 'Davis'),
-(14, 'Test', '2024-05-04', '06:00:00', 1, 'Ava', 'Davis');
+(14, 'Test', '2024-05-04', '06:00:00', 1, 'Ava', 'Davis'),
+(15, 'Test', '2024-05-25', '09:43:00', 1, 'Ava', 'Davis'),
+(16, 'Test', '2024-05-28', '19:09:00', 1, 'James', 'Wilson');
 
 -- --------------------------------------------------------
 
@@ -123,7 +133,7 @@ INSERT INTO `cell_block_list` (`cellblock_id`, `cell_capacity`, `gender_unit`) V
 ('!NO_CELLBLOCK', '999999', ''),
 ('!RELEASED', '999999', ''),
 ('0001', '5', 'Male'),
-('0002', '5', 'Female'),
+('0002', '6', 'Female'),
 ('0003', '5', 'Male'),
 ('0004', '5', 'Female'),
 ('0005', '5', 'Male'),
@@ -154,7 +164,7 @@ CREATE TABLE `pdl_list` (
 --
 
 INSERT INTO `pdl_list` (`case_num`, `first_name`, `last_name`, `status`, `crime`, `gender`, `date_birth`, `sentence_years`, `cellblock_id`) VALUES
-('001', 'Liame', 'Johnson', 'Active', 'Homicide', 'Male', '1970-08-22', '15 years', '0006'),
+('001', 'Liame', 'Johnson', 'Released', 'Homicide', 'Male', '1970-08-22', '15 years', '!RELEASED'),
 ('002', 'Noah', 'Brown', 'Active', 'Robbery', 'Male', '1980-01-01', '10 years', '0006'),
 ('003', 'Oliver', 'Davis', 'Active', 'Fraud', 'Male', '1990-01-01', '7 years', '0001'),
 ('004', 'Luis', 'Ultimo', 'Active', 'Murder', 'Male', '1989-08-26', '30 Years', '0001'),
@@ -195,7 +205,6 @@ CREATE TABLE `reports` (
 --
 
 INSERT INTO `reports` (`report_id`, `creation_date`, `pdl_first_name`, `pdl_last_name`, `report_details`, `case_num`) VALUES
-(13, '2024-05-26', 'Liame', 'Johnson', 'Add_Reportasdasdsadas', '009'),
 (14, '2024-05-25', 'Henry', 'Thomas', 'Add_Report', '009'),
 (15, '2024-05-25', 'Mia', 'Anderson', 'Add_Report', '018'),
 (17, '2024-05-26', 'Mia', 'Anderson', 'REPORT REPORT I DID SOMETHING', '018'),
@@ -223,7 +232,7 @@ CREATE TABLE `user_visitors` (
 
 INSERT INTO `user_visitors` (`user_firstname`, `user_lastname`, `gender`, `contact_num`, `username`, `email`, `password`) VALUES
 ('', '', '', '', '', '', ''),
-('Test', 'Test', 'Male', '0937128378', 'Test', 'Test@gmail.com', 'Test'),
+('Test', 'Test', 'Male', '123123', 'Test', 'Test@gmail.com', 'Test'),
 ('Test1', 'Test1', 'Female', '09123456789', 'Test1', 'Test1@gmail.com', 'Test1'),
 ('Test2', 'Test2', '', 'Test2', 'Test2', 'Test2@gmail.com', 'Test2');
 
@@ -290,7 +299,7 @@ ALTER TABLE `user_visitors`
 -- AUTO_INCREMENT for table `appointment_requests`
 --
 ALTER TABLE `appointment_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `appointment_status`
